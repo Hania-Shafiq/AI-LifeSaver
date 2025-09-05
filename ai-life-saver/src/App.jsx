@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Emergency from "./pages/Emergency";
 import Contacts from "./pages/Contacts";
-import NotFound from "./pages/NotFound";
+import About from "./pages/About";
 
 function App() {
   const [language, setLanguage] = useState("en"); // default English
@@ -21,7 +21,7 @@ function App() {
             <Route path="/" element={<Home language={language} />} />
             <Route path="/emergency" element={<Emergency language={language} />} />
             <Route path="/contacts" element={<Contacts language={language} />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/about" element={<About language={language} />} />
           </Routes>
         </main>
 

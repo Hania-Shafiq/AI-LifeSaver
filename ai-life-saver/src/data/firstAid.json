@@ -11,6 +11,7 @@
       "If hepatitis history with stomach swelling/fever: call ambulance immediately.",
       "If due to fits (seizure): protect from injury, place on side after seizure stops.",
       "If sodium/electrolyte imbalance suspected: give ORS or salt-sugar water if conscious.",
+      "If equipment available: check BP, blood sugar, oxygen level.",
       "Stay until recovery. If no response within 1 minute, call ambulance."
     ],
     "ur": [
@@ -18,12 +19,13 @@
       "سانس اور نبض چیک کریں۔ اگر بند ہو تو فوراً ایمبولینس بلائیں اور سی پی آر شروع کریں۔",
       "تنگ کپڑے کھول دیں تاکہ سانس لینے میں آسانی ہو۔",
       "اگر مریض شوگر کا ہے اور شوگر کم ہے تو پانی میں چینی ڈال کر پلائیں، جوس دیں یا ڈیکسٹروز انجکشن لگائیں۔",
-      "اگر گھبراہٹ کی وجہ سے ہے تو مریض کو تسلی دیں، آہستہ سانس لینے کو کہیں اور پرسکون جگہ پر لے جائیں۔",
+      "اگر گھبراہٹ (پینک اٹیک) کی وجہ سے ہے تو مریض کو تسلی دیں، آہستہ سانس لینے کو کہیں اور پرسکون جگہ پر لے جائیں۔",
       "اگر بخار کی وجہ سے کپکپی ہو رہی ہے تو کمبل اوڑھائیں، درجہ حرارت چیک کریں اور ڈاکٹر کو دکھائیں۔",
-      "اگر فالج کا مریض ہے اور دوا نہیں لی تو فوراً ایمبولینس بلائیں۔",
+      "اگر مریض فالج کا مریض ہے اور دوا نہیں لی تو فوراً ایمبولینس بلائیں۔",
       "اگر ہیپاٹائٹس کی ہسٹری ہے اور پیٹ سوجا ہے یا بخار ہے تو فوراً ایمبولینس بلائیں۔",
       "اگر دورے کی وجہ سے بیہوشی ہے تو مریض کو بچائیں، اور دورہ ختم ہونے پر پہلو کے بل لٹا دیں۔",
       "اگر سوڈیم یا الیکٹرولائٹ کی کمی ہے تو مریض کو او آر ایس یا نمکین-میٹھا پانی دیں (اگر ہوش میں ہے)۔",
+      "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
       "مریض کے ساتھ رہیں۔ اگر ایک منٹ میں ہوش نہ آئے تو فوراً ایمبولینس بلائیں۔"
     ],
     "synonyms": ["fainting", "behosh", "unconscious", "بیہوشی"]
@@ -34,6 +36,7 @@
       "If chest pain but still conscious: give Disprin and Polidogar tablet, and rush to hospital immediately.",
       "If attack occurs during sleep: wake and check breathing. If absent, start CPR and call ambulance.",
       "Use AED if available.",
+      "If equipment available: check BP, blood sugar, oxygen level.",
       "Do not leave patient alone until ambulance arrives."
     ],
     "ur": [
@@ -41,6 +44,7 @@
       "اگر مریض کو سینے میں درد ہے مگر ہوش میں ہے تو ڈسپرین اور پولی ڈوگر گولی دیں اور فوراً اسپتال لے جائیں۔",
       "اگر سوتے ہوئے حملہ ہو تو جگائیں اور سانس چیک کریں۔ اگر سانس بند ہے تو فوراً سی پی آر شروع کریں اور ایمبولینس بلائیں۔",
       "اگر AED مشین دستیاب ہے تو استعمال کریں۔",
+      "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
       "ایمبولینس آنے تک مریض کو اکیلا نہ چھوڑیں۔"
     ],
     "synonyms": ["cardiac arrest", "heart attack", "دل کا دورہ"]
@@ -50,48 +54,403 @@
       "If chemical/phenyl: do NOT induce vomiting. Take container for hospital reference.",
       "If overdose of medicine (not corrosive): induce vomiting immediately while rushing to hospital.",
       "If unconscious but breathing: place in recovery position.",
+      "If equipment available: check BP, blood sugar, oxygen level.",
       "Call ambulance immediately."
     ],
     "ur": [
       "اگر زہر کیمیکل یا فینائل ہے تو مریض کو قے نہ کروائیں۔ بوتل یا ڈبہ ڈاکٹر کو دکھانے کے لیے ساتھ رکھیں۔",
       "اگر دوائی زیادہ کھائی ہے (کیمیکل نہیں) تو فوراً قے کروائیں اور اسپتال لے جائیں۔",
       "اگر مریض بے ہوش ہے لیکن سانس لے رہا ہے تو اسے پہلو کے بل لٹا دیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
       "فوراً ایمبولینس بلائیں۔"
     ],
     "synonyms": ["poisoning", "zehr", "زہر کھانا"]
   },
+  "sodium_imbalance": {
+    "en": [
+      "If conscious, give ORS solution or salt-sugar water.",
+      "Keep them lying down in a cool place.",
+      "If vomiting or unconscious, call ambulance immediately.",
+      "If equipment available: check BP, blood sugar, oxygen level.",
+      "Do not give anything by mouth if unconscious."
+    ],
+    "ur": [
+      "اگر مریض ہوش میں ہے تو او آر ایس محلول یا نمکین-میٹھا پانی پلائیں۔",
+      "مریض کو ٹھنڈی اور آرام دہ جگہ پر لٹائیں۔",
+      "اگر الٹی ہو رہی ہے یا مریض بے ہوش ہے تو فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
+      "اگر مریض بے ہوش ہے تو منہ سے کچھ نہ دیں۔"
+    ],
+    "synonyms": ["sodium imbalance", "electrolyte imbalance", "سوڈیم کی کمی", "الیکٹرولائٹ کی کمی"]
+},
+"burns": {
+    "en": [
+      "Immediately pour cool (not ice) water over the burn for 10-15 minutes.",
+      "Do not apply toothpaste, ghee, or oil.",
+      "Cover with a clean cloth or sterile gauze.",
+      "If severe (large area or blistering): call ambulance.",
+      "If equipment available: check BP and oxygen level.",
+      "Keep patient hydrated."
+    ],
+    "ur": [
+      "جلنے کی صورت میں فوراً ٹھنڈا (لیکن برف والا نہیں) پانی 10 سے 15 منٹ تک ڈالیں۔",
+      "ٹوٹھ پیسٹ، گھی یا تیل نہ لگائیں۔",
+      "صاف کپڑا یا سٹرل گاز سے ڈھانپ دیں۔",
+      "اگر شدید جلنے یا چھالے ہیں تو فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
+      "مریض کو پانی پلاتے رہیں۔"
+    ],
+    "synonyms": ["burn", "جلنا", "burn injury"]
+  },
+  "fracture": {
+    "en": [
+      "Do not move the injured limb unnecessarily.",
+      "Immobilize with a splint (wooden stick, cardboard, etc.).",
+      "Apply ice wrapped in cloth to reduce swelling.",
+      "If bone visible or severe bleeding: call ambulance immediately.",
+      "If equipment available: check BP.",
+      "Do not give food/drink if surgery may be needed."
+    ],
+    "ur": [
+      "چوٹ لگنے والی جگہ کو زیادہ حرکت نہ دیں۔",
+      "لکڑی، گتے یا کسی چیز سے سہارا دے کر سیدھا رکھیں۔",
+      "سوجن کم کرنے کے لیے کپڑے میں لپٹی برف لگائیں۔",
+      "اگر ہڈی باہر نکل آئی ہے یا زیادہ خون بہہ رہا ہے تو فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی چیک کریں۔",
+      "اگر سرجری کی ضرورت ہو سکتی ہے تو کھانے پینے کی چیز نہ دیں۔"
+    ],
+    "synonyms": ["fracture", "bone break", "ہڈی ٹوٹنا"]
+  },
   "stroke": {
     "en": [
-      "Identify FAST symptoms: Face drooping, Arm weakness, Speech difficulty, Time to call ambulance.",
-      "Lay the patient on one side.",
-      "Do not give food or water by mouth.",
-      "Call ambulance immediately and note the time stroke started.",
-      "Take previous medical history and medicines to hospital."
+      "Check for FAST signs: Face drooping, Arm weakness, Speech difficulty, Time to act fast.",
+      "Call ambulance immediately.",
+      "Do not give food/drink.",
+      "Keep patient’s head slightly elevated.",
+      "If equipment available: check BP, sugar, oxygen level.",
+      "Stay with patient until help arrives."
     ],
     "ur": [
-      "فاسٹ علامات دیکھیں: چہرہ ٹیڑھا ہونا، بازو میں کمزوری، بولنے میں مشکل، وقت ضائع نہ کریں فوراً ایمبولینس بلائیں۔",
-      "مریض کو پہلو کے بل لٹائیں۔",
-      "مریض کو کھانے یا پینے کی چیز نہ دیں۔",
-      "فوراً ایمبولینس بلائیں اور وقت نوٹ کریں جب فالج شروع ہوا۔",
-      "مریض کی پچھلی میڈیکل ہسٹری اور ادویات اسپتال ساتھ لے جائیں۔"
+      "فالج کی علامات دیکھیں: چہرہ ٹیڑھا ہونا، بازو کمزور ہونا، بولنے میں مشکل، فوراً وقت ضائع نہ کریں۔",
+      "فوراً ایمبولینس بلائیں۔",
+      "کھانے پینے کی چیز نہ دیں۔",
+      "مریض کا سر تھوڑا اونچا رکھیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
+      "ایمبولینس آنے تک مریض کے ساتھ رہیں۔"
     ],
-    "synonyms": ["stroke", "falij", "فالج"]
+    "synonyms": ["stroke", "paralysis", "فالج"]
   },
-  "burn": {
+  "epilepsy": {
     "en": [
-      "For fire burns: remove burning clothes, pour room-temperature water (not ice).",
-      "For boiling water: wash with tap water for 20 minutes.",
-      "For electrical burns: turn off power source before touching the person.",
-      "Cover burn with clean cloth or sterile gauze. Do not apply ointments or toothpaste.",
-      "Call ambulance if burns are large, deep, or on face/genitals."
+      "Do not put anything in the mouth.",
+      "Clear surrounding area to prevent injury.",
+      "After seizure ends, place patient on their side.",
+      "If seizure lasts more than 5 minutes: call ambulance immediately.",
+      "If equipment available: check oxygen level.",
+      "Stay until patient regains full consciousness."
     ],
     "ur": [
-      "آگ لگنے کی صورت میں جلتے کپڑے فوراً اتاریں اور عام درجہ حرارت کا پانی ڈالیں (برف نہ ڈالیں)۔",
-      "گرم پانی سے جلنے پر 20 منٹ تک ٹھنڈے پانی سے دھوئیں۔",
-      "بجلی سے جلنے پر مریض کو چھونے سے پہلے بجلی کا کنکشن بند کریں۔",
-      "زخم پر صاف کپڑا یا جراثیم سے پاک پٹی باندھیں۔ مرہم یا ٹوتھ پیسٹ نہ لگائیں۔",
-      "اگر جلن زیادہ ہو، گہری ہو یا چہرے/پرائیویٹ حصوں پر ہو تو فوراً ایمبولینس بلائیں۔"
+      "منہ میں کوئی چیز نہ ڈالیں۔",
+      "اطراف کی چیزیں ہٹا دیں تاکہ چوٹ نہ لگے۔",
+      "دورہ ختم ہونے کے بعد مریض کو پہلو کے بل لٹا دیں۔",
+      "اگر دورہ 5 منٹ سے زیادہ رہے تو فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔",
+      "مریض کے ہوش میں آنے تک ساتھ رہیں۔"
     ],
-    "synonyms": ["burn", "jalna", "جلنا"]
-  }
+    "synonyms": ["epilepsy", "fits", "seizure", "مرگی", "دورہ"]
 }
+,
+"heatstroke": {
+  "en": [
+    "Move the patient to a cool, shaded place.",
+    "Remove excess clothing.",
+    "Apply cool wet cloths or sponge the body with water.",
+    "Give sips of cool water if conscious.",
+    "If unconscious or very high fever: call ambulance immediately.",
+    "If equipment available: check BP, sugar, oxygen level."
+  ],
+  "ur": [
+    "مریض کو ٹھنڈی اور سایہ دار جگہ پر لے جائیں۔",
+    "اضافی کپڑے اتار دیں۔",
+    "ٹھنڈے پانی کے کپڑے یا اسپنج سے جسم کو صاف کریں۔",
+    "اگر مریض ہوش میں ہے تو ٹھنڈا پانی تھوڑا تھوڑا پلائیں۔",
+    "اگر مریض بے ہوش ہو یا تیز بخار ہو تو فوراً ایمبولینس بلائیں۔",
+    "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔"
+  ],
+  "synonyms": ["heatstroke", "loo lagna", "heat illness", "ضربِ حرارت", "لو لگنا"]
+},
+  "choking": {
+    "en": [
+      "If adult: perform Heimlich maneuver (abdominal thrusts).",
+      "If child: back blows and chest thrusts.",
+      "If patient becomes unconscious: start CPR immediately.",
+      "If equipment available: check oxygen level after relief.",
+      "Call ambulance if not relieved quickly."
+    ],
+    "ur": [
+      "اگر مریض بالغ ہے تو ہیم لیک حرکت (پیٹ پر دباؤ) کریں۔",
+      "اگر بچہ ہے تو پشت پر تھپتھپائیں اور سینے پر ہلکا دباؤ ڈالیں۔",
+      "اگر مریض بے ہوش ہو جائے تو فوراً سی پی آر شروع کریں۔",
+      "اگر آلات دستیاب ہوں تو رکاوٹ ختم ہونے کے بعد آکسیجن لیول چیک کریں۔",
+      "اگر فوراً آرام نہ آئے تو ایمبولینس بلائیں۔"
+    ],
+    "synonyms": ["choking", "دم گھٹنا", "سانس رک جانا"]
+  },
+  "drowning": {
+    "en": [
+      "Remove patient from water safely.",
+      "Lay flat and check breathing.",
+      "If not breathing: start rescue breaths and CPR.",
+      "Keep patient warm with blanket.",
+      "If equipment available: check oxygen level.",
+      "Call ambulance immediately."
+    ],
+    "ur": [
+      "مریض کو احتیاط سے پانی سے باہر نکالیں۔",
+      "سیدھا لٹا کر سانس چیک کریں۔",
+      "اگر سانس نہ لے رہا ہو تو ریسکیو بریتھ اور سی پی آر شروع کریں۔",
+      "کمبل یا کپڑے سے مریض کو گرم رکھیں۔",
+      "اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔",
+      "فوراً ایمبولینس بلائیں۔"
+    ],
+    "synonyms": ["drowning", "ڈوبنا", "pani me doobna"]
+  },
+  "allergic_reaction": {
+    "en": [
+      "If mild (rash, itching): give antihistamine if available.",
+      "If severe (swelling, difficulty breathing): use epinephrine (EpiPen) if available.",
+      "Lay patient flat, loosen clothing.",
+      "If equipment available: check BP and oxygen level.",
+      "Call ambulance immediately for severe reaction."
+    ],
+    "ur": [
+      "اگر ہلکی الرجی ہو (خارش، دانے) تو اینٹی ہسٹامائن دیں۔",
+      "اگر شدید ہو (سوجن، سانس لینے میں مشکل) تو ایپی نیفرین (ایپی پین) لگائیں اگر دستیاب ہے۔",
+      "مریض کو سیدھا لٹا کر کپڑے ڈھیلے کر دیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
+      "شدید الرجی کی صورت میں فوراً ایمبولینس بلائیں۔"
+    ],
+    "synonyms": ["allergy", "allergic reaction", "الرجی"]
+  }
+,
+  "asthma_attack": {
+    "en": [
+      "Give their inhaler (2 puffs every few minutes as needed).",
+      "Loosen tight clothing.",
+      "If no improvement within 10 minutes: call ambulance.",
+      "If equipment available: check oxygen level.",
+      "Stay calm and reassure the patient."
+    ],
+    "ur": [
+      "مریض کو سیدھا بٹھائیں، لٹائیں نہیں۔",
+      "انہیں انہیلر دیں (ضرورت کے مطابق ہر چند منٹ بعد 2 پف دیں)۔",
+      "تنگ کپڑے ڈھیلے کر دیں۔",
+      "اگر 10 منٹ میں آرام نہ آئے تو فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔",
+      "پرسکون رہیں اور مریض کو تسلی دیں۔"
+    ],
+    "synonyms": ["asthma", "asthma attack", "دمہ", "سانس کا اٹیک"]
+  },
+  "diabetic_emergency": {
+    "en": [
+      "If low sugar (sweating, weakness, confusion): give sugar water, juice, or glucose tablets.",
+      "If high sugar (fruity breath, vomiting, drowsy): do NOT give sugar, call ambulance immediately.",
+      "If unconscious: do not give anything by mouth, call ambulance immediately.",
+      "If equipment available: check blood sugar and BP.",
+      "Stay with patient until help arrives."
+    ],
+    "ur": [
+      "اگر شوگر کم ہو (پسینہ، کمزوری، الجھن) تو مریض کو چینی والا پانی، جوس یا گلوکوز ٹیبلٹ دیں۔",
+      "اگر شوگر زیادہ ہو (سانس میں بو، الٹی، غنودگی) تو چینی نہ دیں اور فوراً ایمبولینس بلائیں۔",
+      "اگر مریض بے ہوش ہے تو منہ سے کچھ نہ دیں اور فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو شوگر اور بی پی چیک کریں۔",
+      "ایمبولینس آنے تک مریض کے ساتھ رہیں۔"
+    ],
+    "synonyms": ["diabetes", "sugar attack", "diabetic emergency", "شوگر کا دورہ"]
+  },
+  "severe_bleeding": {
+    "en": [
+      "Apply firm pressure on wound with clean cloth.",
+      "Keep pressure until bleeding stops or ambulance arrives.",
+      "Elevate injured part if possible.",
+      "If bleeding severe: call ambulance immediately.",
+      "If equipment available: check BP.",
+      "Do not remove cloth once soaked; keep adding more on top."
+    ],
+    "ur": [
+      "زخم پر صاف کپڑے سے زور سے دبائیں۔",
+      "دباؤ کو برقرار رکھیں جب تک خون نہ رک جائے یا ایمبولینس نہ آجائے۔",
+      "اگر ممکن ہو تو زخمی حصے کو اونچا رکھیں۔",
+      "اگر خون زیادہ بہہ رہا ہے تو فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی چیک کریں۔",
+      "اگر کپڑا خون سے بھر جائے تو نہ ہٹائیں بلکہ اوپر دوسرا رکھیں۔"
+    ],
+    "synonyms": ["bleeding", "severe bleeding", "خون بہنا"]
+  },
+  "electric_shock": {
+    "en": [
+      "Turn off the power source first.",
+      "Do not touch the person until safe.",
+      "Check breathing and pulse. If absent: start CPR.",
+      "If burns present: cover with clean cloth.",
+      "If equipment available: check BP and oxygen level.",
+      "Call ambulance immediately."
+    ],
+    "ur": [
+      "پہلے بجلی کا کنکشن بند کریں۔",
+      "جب تک بجلی بند نہ ہو مریض کو ہاتھ نہ لگائیں۔",
+      "سانس اور نبض چیک کریں۔ اگر بند ہو تو سی پی آر شروع کریں۔",
+      "اگر جلنے کے نشانات ہیں تو صاف کپڑا رکھیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
+      "فوراً ایمبولینس بلائیں۔"
+    ],
+    "synonyms": ["electric shock", "کرنٹ لگنا", "بجلی کا جھٹکا"]
+},
+  "eye_injury": {
+    "en": [
+      "If foreign object visible: do not try to remove, cover with clean cloth.",
+      "If severe pain, bleeding, or vision loss: call ambulance immediately.",
+      "If equipment available: check BP.",
+      "Keep patient calm and avoid pressure on eye."
+    ],
+    "ur": [
+      "آنکھ نہ رگڑیں۔",
+      "اگر کیمیکل چلا جائے تو کم از کم 15 منٹ تک صاف پانی سے دھوئیں۔",
+      "اگر کوئی چیز آنکھ میں پھنسی ہوئی ہے تو نہ نکالیں بلکہ صاف کپڑا رکھیں۔",
+      "اگر شدید درد، خون یا نظر جانے کا خدشہ ہو تو فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی چیک کریں۔",
+      "مریض کو پرسکون رکھیں اور آنکھ پر دباؤ نہ ڈالیں۔"
+    ],
+    "synonyms": ["eye injury", "آنکھ کی چوٹ", "eye accident"]
+  },
+    "en": [
+      "Keep patient still and calm to slow venom spread.",
+      "Do not cut, suck, or apply ice.",
+      "Immobilize bitten limb and keep at heart level.",
+      "Remove tight jewelry or clothing near bite area.",
+      "Call ambulance immediately.",
+      "If equipment available: check BP and oxygen level."
+    ],
+    "ur": [
+      "مریض کو پرسکون رکھیں اور حرکت کم کریں تاکہ زہر نہ پھیلے۔",
+      "زخم کو نہ کاٹیں، نہ چوسیں اور نہ برف لگائیں۔",
+      "کاٹے ہوئے حصے کو سیدھا رکھیں اور دل کی سطح پر رکھیں۔",
+      "کٹے حصے کے قریب کڑا یا تنگ کپڑا فوراً ہٹا دیں۔",
+      "فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔"
+    ],
+  "synonyms": ["snake bite", "سانپ کا کاٹنا"]
+,
+"dog_bite": {
+    "en": [
+      "Wash wound with soap and running water for 10 minutes.",
+      "Cover with clean cloth.",
+      "Do not stitch the wound immediately.",
+      "Go to hospital immediately for anti-rabies and tetanus vaccine.",
+      "If equipment available: check BP.",
+      "Monitor for signs of infection."
+    ],
+    "ur": [
+      "زخم کو صابن اور بہتے پانی سے 10 منٹ تک دھوئیں۔",
+      "صاف کپڑا باندھ دیں۔",
+      "زخم کو فوراً ٹانکے نہ لگائیں۔",
+      "فوراً اسپتال جائیں اور اینٹی ریبیز اور ٹیٹنس ویکسین لگوائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی چیک کریں۔",
+      "انفیکشن کی علامات پر نظر رکھیں۔"
+    ],
+    "synonyms": ["dog bite", "کتا کاٹنا", "rabies"]
+  },
+  "childbirth_emergency": {
+    "en": [
+      "Call ambulance immediately.",
+      "Lay mother on clean surface with knees bent.",
+      "Prepare clean towels and warm cloths.",
+      "If delivery starts: support baby’s head gently.",
+      "Do not pull the baby.",
+      "If equipment available: check BP and oxygen level of mother.",
+      "Keep both mother and baby warm."
+    ],
+    "ur": [
+      "فوراً ایمبولینس بلائیں۔",
+      "ماں کو صاف جگہ پر لٹائیں اور گھٹنے موڑ دیں۔",
+      "صاف تولیے اور گرم کپڑے تیار رکھیں۔",
+      "اگر ولادت شروع ہو جائے تو بچے کے سر کو آہستہ سہارا دیں۔",
+      "بچے کو نہ کھینچیں۔",
+      "اگر آلات دستیاب ہوں تو ماں کا بی پی اور آکسیجن لیول چیک کریں۔",
+      "ماں اور بچے کو گرم رکھیں۔"
+    ],
+  "synonyms": ["childbirth", "delivery", "emergency birth", "ایمرجنسی ولادت"]
+},
+"head_injury": {
+    "en": [
+      "Call ambulance immediately if drowsy, unconscious, or seizure.",
+      "If equipment available: check BP and oxygen level.",
+      "Keep head elevated slightly."
+    ],
+    "ur": [
+      "اگر خون نکل رہا ہے تو صاف کپڑے سے ہلکا دباؤ ڈالیں۔",
+      "اگر مریض بے ہوش ہو یا الٹی کر رہا ہو تو پہلو کے بل لٹا دیں۔",
+      "کھانے پینے کی کوئی چیز نہ دیں۔",
+      "اگر مریض غنودگی میں ہو، بے ہوش ہو یا دورہ پڑے تو فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
+      "سر کو تھوڑا اونچا رکھیں۔"
+    ],
+    "synonyms": ["head injury", "سر کی چوٹ", "brain injury"]
+  },
+  "hypothermia": {
+    "en": [
+      "Move patient to warm, dry place.",
+      "Remove wet clothing and cover with blankets.",
+      "Give warm (not hot) drinks if conscious.",
+      "If unconscious: do not give by mouth, call ambulance.",
+      "If equipment available: check BP and oxygen level.",
+      "Warm body gradually, not suddenly."
+    ],
+    "ur": [
+      "مریض کو گرم اور خشک جگہ پر لے جائیں۔",
+      "گیلے کپڑے اتار دیں اور کمبل اوڑھائیں۔",
+      "اگر مریض ہوش میں ہے تو نیم گرم مشروب دیں (بہت گرم نہ ہو)۔",
+      "اگر مریض بے ہوش ہے تو منہ سے کچھ نہ دیں اور فوراً ایمبولینس بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
+      "جسم کو آہستہ آہستہ گرم کریں، اچانک نہیں۔"
+    ],
+    "synonyms": ["hypothermia", "cold exposure", "شدید سردی"]
+  },
+  "nosebleed": {
+    "en": [
+      "Sit patient upright, lean forward slightly.",
+      "Pinch soft part of nose for 10 minutes.",
+      "Apply cold compress on nose bridge.",
+      "Do not tilt head back.",
+      "If bleeding >20 minutes or recurrent: call doctor/ambulance.",
+      "If equipment available: check BP (especially in adults)."
+    ],
+    "ur": [
+      "مریض کو سیدھا بٹھائیں اور تھوڑا آگے جھکائیں۔",
+      "ناک کے نرم حصے کو 10 منٹ تک دبائے رکھیں۔",
+      "ناک کی ہڈی پر ٹھنڈا کپڑا یا برف رکھیں۔",
+      "سر کو پیچھے نہ جھکائیں۔",
+      "اگر خون 20 منٹ سے زیادہ بہے یا بار بار ہو تو ڈاکٹر یا ایمبولینس کو بلائیں۔",
+      "اگر آلات دستیاب ہوں تو بی پی چیک کریں (خاص طور پر بڑوں میں)۔"
+    ],
+    "synonyms": ["nosebleed", "epistaxis", "ناک سے خون آنا"]
+  },
+  "food_poisoning": {
+    "en": [
+      "If mild: give ORS and plenty of fluids.",
+      "If vomiting severe: give small sips of water frequently.",
+      "If unconscious, blood in vomit, or dehydration signs: call ambulance.",
+      "Do not give solid food until stable.",
+      "If equipment available: check BP and sugar.",
+      "Monitor urine output."
+    ],
+      "ur": [
+        "اگر ہلکی حالت ہے تو او آر ایس اور زیادہ سیال دیں۔",
+        "اگر الٹی زیادہ ہو رہی ہو تو تھوڑا تھوڑا پانی بار بار دیں۔",
+        "اگر مریض بے ہوش ہو، الٹی میں خون ہو یا پانی کی شدید کمی ہو تو فوراً ایمبولینس بلائیں۔",
+        "جب تک حالت بہتر نہ ہو کھانے کی چیزیں نہ دیں۔",
+        "اگر آلات دستیاب ہوں تو بی پی اور شوگر چیک کریں۔"
+      ],
+          "synonyms": ["food poisoning", "zehrila khana", "فوڈ پوائزننگ"]
+        }
+    }
