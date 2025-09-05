@@ -34,7 +34,8 @@ export default function Navbar({ language, setLanguage }) {
         <div className="hidden md:flex items-center gap-10">
           <NavItem to="/" label={texts[language].navHome} />
           <NavItem to="/contacts" label={texts[language].navContacts} />
-          <NavItem to="/download" label={texts[language].navDownload} />
+          <NavItem to="/download" label={texts[language].navEmergency} />
+          
 
           {/* Emergency Button */}
           <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.95 }}>

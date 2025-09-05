@@ -1,15 +1,16 @@
 import { PhoneCall, Hospital, Droplet } from "lucide-react";
 import { motion } from "framer-motion";
+import texts from "../data/texts.json";
 
-export default function ContactPage() {
+export default function ContactPage({ language }) {
   const bloodbank = new URL("../assets/blood-bank.png", import.meta.url).href;
   const emergencycall = new URL("../assets/call.png", import.meta.url).href;
   const hospital1 = new URL("../assets/helpline.png", import.meta.url).href;
 
   const services = [
     {
-      title: "Emergency & Ambulances",
-      desc: "Major ambulance services across Pakistan. Call these numbers in case of emergencies.",
+      title: texts[language].contactEmergencyTitle,
+      desc: texts[language].contactEmergencyDesc,
       icon: <PhoneCall className="w-6 h-6 text-[#E53935]" />,
       image: hospital1,
       numbers: [
@@ -17,24 +18,23 @@ export default function ContactPage() {
         { name: "Edhi Foundation", tel: "115" },
         { name: "Al Khidmat Foundation", tel: "1023" },
         { name: "Chhipa Welfare", tel: "1020" },
-        
       ],
     },
     {
-      title: "Nearby Hospitals",
-      desc: "Find trusted hospitals around your location instantly.",
+      title: texts[language].contactHospitalsTitle,
+      desc: texts[language].contactHospitalsDesc,
       icon: <Hospital className="w-6 h-6 text-[#1E88E5]" />,
       image: emergencycall,
       href: "https://maps.google.com/?q=hospitals+near+me",
-      cta: "View Map",
+      cta: texts[language].contactHospitalsCTA,
     },
     {
-      title: "Blood Banks",
-      desc: "Locate blood donation centers near you quickly.",
+      title: texts[language].contactBloodTitle,
+      desc: texts[language].contactBloodDesc,
       icon: <Droplet className="w-6 h-6 text-[#EC407A]" />,
       image: bloodbank,
       href: "https://maps.google.com/?q=blood+banks+near+me",
-      cta: "Find Blood Banks",
+      cta: texts[language].contactBloodCTA,
     },
   ];
 
@@ -48,7 +48,7 @@ export default function ContactPage() {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug"
         >
-          Emergency Contacts
+          {texts[language].contactHeading}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -56,7 +56,7 @@ export default function ContactPage() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-gray-700 text-base md:text-lg mt-4 leading-relaxed"
         >
-          Access critical services instantly, whether it's medical help, blood donations, or nearby hospitals. Stay safe and prepared with just a click.
+          {texts[language].contactSubheading}
         </motion.p>
       </div>
 
@@ -118,19 +118,3 @@ export default function ContactPage() {
     </section>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

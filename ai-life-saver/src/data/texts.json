@@ -9,7 +9,25 @@
     "languageEnglish": "English",
     "languageUrdu": "اردو",
     "getStarted": "Get Started",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "contactHeading": "Emergency Contacts",
+    "contactSubheading": "Access critical services instantly, whether it's medical help, blood donations, or nearby hospitals. Stay safe and prepared with just a click.",
+    "contactEmergencyTitle": "Emergency & Ambulances",
+    "contactEmergencyDesc": "Major ambulance services across Pakistan. Call these numbers in case of emergencies.",
+    "contactHospitalsTitle": "Nearby Hospitals",
+    "contactHospitalsDesc": "Find trusted hospitals around your location instantly.",
+    "contactHospitalsCTA": "View Map",
+    "contactBloodTitle": "Blood Banks",
+    "contactBloodDesc": "Locate blood donation centers near you quickly.",
+    "contactBloodCTA": "Find Blood Banks",
+    "emergencyTitle": "Emergency First Aid Assistant",
+    "emergencyPlaceholder": "Type your emergency (e.g., burn, cut)",
+    "emergencySearchBtn": "Search",
+    "emergencyStepsHeading": "First Aid Steps",
+    "emergencyDownloadBtn": "Download PDF",
+    "emergencyNoMatch": "No matching first aid guide found.",
+    "emergencyPDFHeader": "AI LifeSaver - First Aid",
+  "emergencyHeaderImageAlt": "Emergency Guide Illustration"
   },
   "ur": {
     "heroTitle": "اے آئی لائف سیور",
@@ -21,6 +39,30 @@
     "languageEnglish": "English",
     "languageUrdu": "اردو",
     "getStarted": "شروع کریں",
-     "learnMore": "مزید جانیں"
+    "learnMore": "مزید جانیں",
+    "contactHeading": "ایمرجنسی رابطے",
+    "contactSubheading": "اہم خدمات تک فوری رسائی حاصل کریں، چاہے یہ طبی امداد، خون کی عطیات، یا قریب ترین ہسپتال ہوں۔ صرف ایک کلک سے محفوظ اور تیار رہیں۔",
+    "contactEmergencyTitle": "ایمرجنسی اور ایمبولینسز",
+    "contactEmergencyDesc": "پاکستان بھر میں اہم ایمبولینس خدمات۔ ہنگامی صورت میں یہ نمبر کال کریں۔",
+    "contactHospitalsTitle": "قریبی ہسپتال",
+    "contactHospitalsDesc": "اپنی لوکیشن کے قریب معتبر ہسپتال فوری تلاش کریں۔",
+    "contactHospitalsCTA": "نقشہ دیکھیں",
+    "contactBloodTitle": "بلڈ بینک",
+    "contactBloodDesc": "قریبی خون عطیہ مراکز جلدی تلاش کریں۔",
+    "contactBloodCTA": "بلڈ بینک تلاش کریں",
+    "emergencyTitle": "ایمرجنسی فرسٹ ایڈ اسسٹنٹ",
+    "emergencyPlaceholder": "ایمرجنسی لکھیں (مثلاً جلنا، کٹنا)",
+    "emergencySearchBtn": "تلاش کریں",
+    "emergencyStepsHeading": "فرسٹ ایڈ اقدامات",
+    "emergencyDownloadBtn": "پی ڈی ایف ڈاؤن لوڈ کریں",
+    "emergencyNoMatch": "کوئی میچنگ فرسٹ ایڈ گائیڈ نہیں ملا۔",
+    "emergencyPDFHeader": "اے آئی لائف سیور - فرسٹ ایڈ",
+    "emergencyHeaderImageAlt": "ایمرجنسی گائیڈ تصویر",
+    "footerAppNamePart1": "اے آئی",
+    "footerAppNamePart2": "لائف سیور",
+    "footerTagline": "آپ کا AI ایمرجنسی ساتھی",
+    "footerCopyright": "© {year} اے آئی لائف سیور۔ جملہ حقوق محفوظ ہیں۔"
   }
 }
+
+

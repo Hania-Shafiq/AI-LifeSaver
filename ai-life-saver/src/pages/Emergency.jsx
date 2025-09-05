@@ -4,16 +4,17 @@ import { Search, FileText } from "lucide-react";
 import { jsPDF } from "jspdf";
 import firstAidData from "../data/firstAid.json";
 import emergGuide from "../assets/guideBox.png";
+import texts from "../data/texts.json"; // add this
 
-export default function Emergency() {
+export default function Emergency({ language }) {
   const [input, setInput] = useState("");
   const [result, setResult] = useState(null);
 
   // Handle Search
   const handleSearch = () => {
     const key = input.toLowerCase().trim();
-    if (firstAidData[key]) setResult(firstAidData[key]["en"]);
-    else setResult(["No matching first aid guide found."]);
+    if (firstAidData[key]) setResult(firstAidData[key][language] || firstAidData[key]["en"]);
+    else setResult([texts[language].emergencyNoMatch]);
   };
 
   // Download PDF
@@ -24,7 +25,7 @@ export default function Emergency() {
     // Header
     doc.setFontSize(20);
     doc.setTextColor(231, 34, 32); // red
-    doc.text("AI LifeSaver - First Aid", 14, 20);
+    doc.text(texts[language].emergencyPDFHeader, 14, 20);
 
     // Line under header
     doc.setDrawColor(0, 0, 0);
@@ -49,24 +50,22 @@ export default function Emergency() {
 
       {/* Header with Image */}
       <div className="flex flex-col items-center gap-4 mb-6 text-center">
-        {/* Image */}
         <motion.img
           src={emergGuide}
-          alt="Emergency Guide Illustration"
+          alt={texts[language].emergencyHeaderImageAlt}
           className="w-24 md:w-28 rounded-xl shadow-md"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
 
-        {/* Title */}
         <motion.h2
           className="text-4xl font-extrabold text-red-600 drop-shadow-md"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
         >
-          Emergency First Aid Assistant
+          {texts[language].emergencyTitle}
         </motion.h2>
       </div>
 
@@ -80,7 +79,7 @@ export default function Emergency() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type your emergency (e.g., burn, cut)"
+          placeholder={texts[language].emergencyPlaceholder}
           className="flex-1 border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
         />
 
@@ -90,7 +89,7 @@ export default function Emergency() {
           whileTap={{ scale: 0.97 }}
         >
           <Search className="w-5 h-5" />
-          Search
+          {texts[language].emergencySearchBtn}
         </motion.button>
       </motion.div>
 
@@ -104,7 +103,7 @@ export default function Emergency() {
         >
           <h3 className="text-2xl font-semibold text-gray-700 mb-4 flex items-center gap-2">
             <FileText className="w-6 h-6 text-red-600" />
-            First Aid Steps
+            {texts[language].emergencyStepsHeading}
           </h3>
           <ul className="list-decimal list-inside space-y-2">
             {result.map((step, i) => (
@@ -127,7 +126,7 @@ export default function Emergency() {
             whileTap={{ scale: 0.95 }}
           >
             <FileText className="w-5 h-5" />
-            Download PDF
+            {texts[language].emergencyDownloadBtn}
           </motion.button>
         </motion.div>
       )}

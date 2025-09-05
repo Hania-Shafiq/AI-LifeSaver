@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { HeartPulse, Globe, Siren } from "lucide-react";
+import { HeartPulse } from "lucide-react";
+import texts from "../data/texts.json";
 
-export default function Footer() {
+export default function Footer({ language }) {
+  // Default to English if language is undefined or invalid
+  const lang = texts[language] ? language : "en";
+
   return (
     <motion.footer
       initial={{ opacity: 0 }}
@@ -22,28 +26,32 @@ export default function Footer() {
           </div>
           <div className="text-center md:text-left">
             <h1 className="text-gray-900 font-extrabold text-xl tracking-wide">
-              AI{" "}
+              {texts[lang]?.footerAppNamePart1 || "AI"}{" "}
               <span className="bg-gradient-to-r from-red-500 via-[#BC0201] to-[#BC0201] bg-clip-text text-transparent">
-                LifeSaver
+                {texts[lang]?.footerAppNamePart2 || "LifeSaver"}
               </span>
             </h1>
-            <p className="text-gray-600 text-sm">Your AI Emergency Companion</p>
+            <p className="text-gray-600 text-sm">
+              {texts[lang]?.footerTagline || "Your AI Emergency Companion"}
+            </p>
           </div>
         </div>
 
-
-       
       </div>
 
+      {/* Copyright */}
       <div className="text-center text-gray-500 text-sm py-4 border-t border-white/20">
-        © {new Date().getFullYear()} AI LifeSaver. All rights reserved.
+        {(texts[lang]?.footerCopyright || "© AI LifeSaver. All rights reserved.")
+          .replace("{year}", new Date().getFullYear())}
       </div>
     </motion.footer>
   );
 }
 
-// 🔹 Reusable Footer Link
-function FooterLink({ to, label, icon }) {
+// Optional: Bilingual-safe Footer Link
+export function FooterLink({ to, label, icon, language }) {
+  const lang = texts[language] ? language : "en";
+
   return (
     <motion.div whileHover={{ y: -2 }} className="relative group">
       <Link
