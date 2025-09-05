@@ -26,7 +26,7 @@ function App() {
         </main>
 
         {/* Footer */}
-        <Footer language={language}  />
+        <Footer language={language} />
       </div>
     </BrowserRouter>
   );
