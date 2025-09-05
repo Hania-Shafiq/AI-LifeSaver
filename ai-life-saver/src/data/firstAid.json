@@ -158,8 +158,7 @@
       "مریض کے ہوش میں آنے تک ساتھ رہیں۔"
     ],
     "synonyms": ["epilepsy", "fits", "seizure", "مرگی", "دورہ"]
-}
-,
+        },
 "heatstroke": {
   "en": [
     "Move the patient to a cool, shaded place.",
@@ -452,5 +451,27 @@
         "اگر آلات دستیاب ہوں تو بی پی اور شوگر چیک کریں۔"
       ],
           "synonyms": ["food poisoning", "zehrila khana", "فوڈ پوائزننگ"]
-        }
-    }
+        },
+        "road_accident": {
+  "en": [
+    "Ensure your own safety before helping.",
+    "Call ambulance immediately.",
+    "If patient is bleeding: apply firm pressure with clean cloth.",
+    "If fracture suspected: do not move unnecessarily, support with splint.",
+    "If unconscious: check breathing and pulse, start CPR if needed.",
+    "Do not remove helmet if motorbike accident.",
+    "If equipment available: check BP, oxygen, and sugar."
+  ],
+  "ur": [
+    "مدد کرنے سے پہلے اپنی حفاظت یقینی بنائیں۔",
+    "فوراً ایمبولینس بلائیں۔",
+    "اگر مریض کو خون بہہ رہا ہے تو صاف کپڑے سے دباؤ ڈالیں۔",
+    "اگر ہڈی ٹوٹنے کا شک ہے تو مریض کو غیر ضروری نہ ہلائیں، سہارا دیں۔",
+    "اگر مریض بے ہوش ہے تو سانس اور نبض چیک کریں اور ضرورت ہو تو سی پی آر شروع کریں۔",
+    "اگر موٹر سائیکل حادثہ ہو تو ہیلمٹ نہ اتاریں۔",
+    "اگر آلات دستیاب ہوں تو بی پی، آکسیجن اور شوگر چیک کریں۔"
+  ],
+  "synonyms": ["road accident", "traffic accident", "car crash", "حادثہ", "گاڑی کا ایکسیڈنٹ"]
+}
+
+      }
