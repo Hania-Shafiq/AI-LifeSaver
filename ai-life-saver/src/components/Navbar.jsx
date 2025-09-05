@@ -7,14 +7,14 @@ import texts from "../data/texts.json";
 export default function Navbar({ language, setLanguage }) {
   return (
     <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 w-full z-50 
-                 bg-gradient-to-r from-[#E8F1FF] via-[#FFE5E5] to-blue-200
-                 backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.12)] 
-                 border-b border-white/30"
-    >
+  initial={{ y: 0, opacity: 1 }}
+  animate={{ y: 0, opacity: 1 }}
+  className="fixed top-0 w-full z-50 
+             bg-gradient-to-r from-[#E8F1FF] via-[#FFE5E5] to-blue-200
+             backdrop-blur-xl shadow-[0_4px_20px_rgba(0,0,0,0.12)] 
+             border-b border-white/30"
+>
+
       <div className="max-w-7xl mx-auto flex items-center justify-between px-10 py-4">
 
         {/* Logo */}
