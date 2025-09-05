@@ -1,0 +1,32 @@
+{
+  "burn": {
+    "en": [
+      "Cool the burn under running water for 20 minutes.",
+      "Do not apply toothpaste or oil.",
+      "Cover with a clean cloth.",
+      "Call 1122 if severe."
+    ],
+    "ur": [
+      "jalne wali jagah ko 20 minutes tak pani ke neeche thanda karein.",
+      "toothpaste ya tel bilkul na lagayein.",
+      "saaf kapray se dhak dein.",
+      "agar zyada jal gaya ho to 1122 par rabta karein."
+    ],
+    "synonyms": ["burn", "jalna", "burn injury"]
+  },
+  "unconscious": {
+    "en": [
+      "Check response and breathing.",
+      "Call 1122 immediately.",
+      "Place in recovery position.",
+      "Do not give anything by mouth."
+    ],
+    "ur": [
+      "reaktion aur saans check karein.",
+      "foran 1122 par call karein.",
+      "recovery position me lita dein.",
+      "munh se kuch na den."
+    ],
+    "synonyms": ["unconscious", "behosh", "fainted", "bhosh"]
+  }
+}
