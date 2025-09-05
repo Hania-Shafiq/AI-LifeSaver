@@ -1,0 +1,26 @@
+{
+  "en": {
+    "heroTitle": "AI LifeSaver",
+    "heroSubtitle": "A bilingual (Urdu & English) AI-powered first aid app. Get Instant, step-by-step help in emergencies, faster than ever",
+    "navHome": "Home",
+    "navContacts": "Contacts",
+    "navDownload": "Download PDF",
+    "navEmergency": "Emergency",
+    "languageEnglish": "English",
+    "languageUrdu": "اردو",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "ur": {
+    "heroTitle": "اے آئی لائف سیور",
+    "heroSubtitle": "اے سے چلنے  چلنے والی اردو و انگریزی فرسٹ ایڈ ایپ۔ ایمرجنسی میں فوری اور آسان  مرحلہ وار مدد حاصل کریں۔",
+    "navHome": "ہوم",
+    "navContacts": "رابطہ کریں",
+    "navDownload": "پی ڈی ایف ڈاؤنلوڈ کریں",
+    "navEmergency": "ایمرجنسی",
+    "languageEnglish": "English",
+    "languageUrdu": "اردو",
+    "getStarted": "شروع کریں",
+     "learnMore": "مزید جانیں"
+  }
+}

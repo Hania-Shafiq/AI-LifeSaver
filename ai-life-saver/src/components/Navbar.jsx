@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { HeartPulse, Siren, Globe } from "lucide-react";
+import { HeartPulse, Siren } from "lucide-react";
+import texts from "../data/texts.json";
 
-export default function Navbar() {
+export default function Navbar({ language, setLanguage }) {
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
@@ -14,28 +16,25 @@ export default function Navbar() {
                  border-b border-white/30"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-10 py-4">
-        
+
         {/* Logo */}
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          className="flex items-center gap-2 cursor-pointer"
-        >
+        <motion.div whileHover={{ scale: 1.05 }} className="flex items-center gap-2 cursor-pointer">
           <div className="p-2 rounded-full bg-gradient-to-r from-red-500 via-[#BC0201] to-blue-500 shadow-md">
             <HeartPulse className="text-white w-6 h-6" />
           </div>
           <h1 className="text-gray-900 font-extrabold text-2xl tracking-wide">
-            AI{" "}
+            {texts[language].heroTitle.split(" ")[0]}{" "}
             <span className="bg-gradient-to-r from-red-500 via-[#BC0201] to-[#BC0201] bg-clip-text text-transparent">
-              LifeSaver
+              {texts[language].heroTitle.split(" ")[1]}
             </span>
           </h1>
         </motion.div>
 
         {/* Navigation */}
         <div className="hidden md:flex items-center gap-10">
-          <NavItem to="/" label="Home" />
-          <NavItem to="/contacts" label="Contacts" />
-          <NavItem to="/download" label="Download PDF" />
+          <NavItem to="/" label={texts[language].navHome} />
+          <NavItem to="/contacts" label={texts[language].navContacts} />
+          <NavItem to="/download" label={texts[language].navDownload} />
 
           {/* Emergency Button */}
           <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.95 }}>
@@ -45,30 +44,37 @@ export default function Navbar() {
                          bg-gradient-to-r from-red-500 via-[#BC0201] to-[#BC0201] 
                          hover:shadow-[0_0_25px_rgba(0,128,255,0.6)] transition"
             >
-              <Siren className="w-5 h-5" /> Emergency
+              <Siren className="w-5 h-5" /> {texts[language].navEmergency}
             </Link>
           </motion.div>
 
-         {/* Language Toggle */}
-<motion.div whileTap={{ scale: 0.95 }}>
-  <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-full p-1">
-    
-    <button
-      className="px-4 py-2 rounded-full text-sm font-semibold 
-                 bg-gradient-to-r from-blue-500 to-blue-600 text-white 
-                 shadow-md hover:opacity-90 transition"
-    >
-      English
-    </button>
-    
-    <button
-      className="px-4 py-2 rounded-full text-sm font-semibold 
-                 text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition"
-    >
-      اردو
-    </button>
-  </div>
-</motion.div>
+          {/* Language Toggle */}
+          <motion.div whileTap={{ scale: 0.95 }}>
+            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-full p-1">
+              
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+                  language === "en"
+                    ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md"
+                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-100"
+                }`}
+              >
+                {texts[language].languageEnglish}
+              </button>
+              
+              <button
+                onClick={() => setLanguage("ur")}
+                className={`px-4 py-2 rounded-full text-sm font-semibold transition ${
+                  language === "ur"
+                    ? "bg-gradient-to-r from-red-500 to-red-600 text-white shadow-md"
+                    : "text-gray-700 hover:text-red-600 hover:bg-gray-100"
+                }`}
+              >
+                {texts[language].languageUrdu}
+              </button>
+            </div>
+          </motion.div>
 
         </div>
       </div>
@@ -92,18 +98,3 @@ function NavItem({ to, label }) {
     </motion.div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
