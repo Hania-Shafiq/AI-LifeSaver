@@ -1,32 +1,97 @@
 {
+  "fainting": {
+    "en": [
+      "Lay them flat on their back and elevate legs above heart level.",
+      "Check breathing and pulse. If absent, call ambulance and start CPR.",
+      "Loosen tight clothes for easier breathing.",
+      "If diabetic and sugar is low: give sugar water, juice, or dextrose injection if available.",
+      "If due to panic attack: reassure, slow breathing, move to quiet place.",
+      "If shivering due to fever: cover with blanket, check temperature, call doctor if severe.",
+      "If stroke history and missed medicine: call ambulance immediately.",
+      "If hepatitis history with stomach swelling/fever: call ambulance immediately.",
+      "If due to fits (seizure): protect from injury, place on side after seizure stops.",
+      "If sodium/electrolyte imbalance suspected: give ORS or salt-sugar water if conscious.",
+      "Stay until recovery. If no response within 1 minute, call ambulance."
+    ],
+    "ur": [
+      "مریض کو سیدھا لٹا دیں اور ٹانگیں دل کی سطح سے بلند کریں۔",
+      "سانس اور نبض چیک کریں۔ اگر بند ہو تو فوراً ایمبولینس بلائیں اور سی پی آر شروع کریں۔",
+      "تنگ کپڑے کھول دیں تاکہ سانس لینے میں آسانی ہو۔",
+      "اگر مریض شوگر کا ہے اور شوگر کم ہے تو پانی میں چینی ڈال کر پلائیں، جوس دیں یا ڈیکسٹروز انجکشن لگائیں۔",
+      "اگر گھبراہٹ کی وجہ سے ہے تو مریض کو تسلی دیں، آہستہ سانس لینے کو کہیں اور پرسکون جگہ پر لے جائیں۔",
+      "اگر بخار کی وجہ سے کپکپی ہو رہی ہے تو کمبل اوڑھائیں، درجہ حرارت چیک کریں اور ڈاکٹر کو دکھائیں۔",
+      "اگر فالج کا مریض ہے اور دوا نہیں لی تو فوراً ایمبولینس بلائیں۔",
+      "اگر ہیپاٹائٹس کی ہسٹری ہے اور پیٹ سوجا ہے یا بخار ہے تو فوراً ایمبولینس بلائیں۔",
+      "اگر دورے کی وجہ سے بیہوشی ہے تو مریض کو بچائیں، اور دورہ ختم ہونے پر پہلو کے بل لٹا دیں۔",
+      "اگر سوڈیم یا الیکٹرولائٹ کی کمی ہے تو مریض کو او آر ایس یا نمکین-میٹھا پانی دیں (اگر ہوش میں ہے)۔",
+      "مریض کے ساتھ رہیں۔ اگر ایک منٹ میں ہوش نہ آئے تو فوراً ایمبولینس بلائیں۔"
+    ],
+    "synonyms": ["fainting", "behosh", "unconscious", "بیہوشی"]
+  },
+  "cardiac_arrest": {
+    "en": [
+      "If sudden collapse: check responsiveness, call ambulance, and start CPR immediately.",
+      "If chest pain but still conscious: give Disprin and Polidogar tablet, and rush to hospital immediately.",
+      "If attack occurs during sleep: wake and check breathing. If absent, start CPR and call ambulance.",
+      "Use AED if available.",
+      "Do not leave patient alone until ambulance arrives."
+    ],
+    "ur": [
+      "اگر مریض اچانک گر جائے تو ہوش دیکھیں، فوراً ایمبولینس بلائیں اور سی پی آر شروع کریں۔",
+      "اگر مریض کو سینے میں درد ہے مگر ہوش میں ہے تو ڈسپرین اور پولی ڈوگر گولی دیں اور فوراً اسپتال لے جائیں۔",
+      "اگر سوتے ہوئے حملہ ہو تو جگائیں اور سانس چیک کریں۔ اگر سانس بند ہے تو فوراً سی پی آر شروع کریں اور ایمبولینس بلائیں۔",
+      "اگر AED مشین دستیاب ہے تو استعمال کریں۔",
+      "ایمبولینس آنے تک مریض کو اکیلا نہ چھوڑیں۔"
+    ],
+    "synonyms": ["cardiac arrest", "heart attack", "دل کا دورہ"]
+  },
+  "poisoning": {
+    "en": [
+      "If chemical/phenyl: do NOT induce vomiting. Take container for hospital reference.",
+      "If overdose of medicine (not corrosive): induce vomiting immediately while rushing to hospital.",
+      "If unconscious but breathing: place in recovery position.",
+      "Call ambulance immediately."
+    ],
+    "ur": [
+      "اگر زہر کیمیکل یا فینائل ہے تو مریض کو قے نہ کروائیں۔ بوتل یا ڈبہ ڈاکٹر کو دکھانے کے لیے ساتھ رکھیں۔",
+      "اگر دوائی زیادہ کھائی ہے (کیمیکل نہیں) تو فوراً قے کروائیں اور اسپتال لے جائیں۔",
+      "اگر مریض بے ہوش ہے لیکن سانس لے رہا ہے تو اسے پہلو کے بل لٹا دیں۔",
+      "فوراً ایمبولینس بلائیں۔"
+    ],
+    "synonyms": ["poisoning", "zehr", "زہر کھانا"]
+  },
+  "stroke": {
+    "en": [
+      "Identify FAST symptoms: Face drooping, Arm weakness, Speech difficulty, Time to call ambulance.",
+      "Lay the patient on one side.",
+      "Do not give food or water by mouth.",
+      "Call ambulance immediately and note the time stroke started.",
+      "Take previous medical history and medicines to hospital."
+    ],
+    "ur": [
+      "فاسٹ علامات دیکھیں: چہرہ ٹیڑھا ہونا، بازو میں کمزوری، بولنے میں مشکل، وقت ضائع نہ کریں فوراً ایمبولینس بلائیں۔",
+      "مریض کو پہلو کے بل لٹائیں۔",
+      "مریض کو کھانے یا پینے کی چیز نہ دیں۔",
+      "فوراً ایمبولینس بلائیں اور وقت نوٹ کریں جب فالج شروع ہوا۔",
+      "مریض کی پچھلی میڈیکل ہسٹری اور ادویات اسپتال ساتھ لے جائیں۔"
+    ],
+    "synonyms": ["stroke", "falij", "فالج"]
+  },
   "burn": {
     "en": [
-      "Cool the burn under running water for 20 minutes.",
-      "Do not apply toothpaste or oil.",
-      "Cover with a clean cloth.",
-      "Call 1122 if severe."
+      "For fire burns: remove burning clothes, pour room-temperature water (not ice).",
+      "For boiling water: wash with tap water for 20 minutes.",
+      "For electrical burns: turn off power source before touching the person.",
+      "Cover burn with clean cloth or sterile gauze. Do not apply ointments or toothpaste.",
+      "Call ambulance if burns are large, deep, or on face/genitals."
     ],
     "ur": [
-      "jalne wali jagah ko 20 minutes tak pani ke neeche thanda karein.",
-      "toothpaste ya tel bilkul na lagayein.",
-      "saaf kapray se dhak dein.",
-      "agar zyada jal gaya ho to 1122 par rabta karein."
+      "آگ لگنے کی صورت میں جلتے کپڑے فوراً اتاریں اور عام درجہ حرارت کا پانی ڈالیں (برف نہ ڈالیں)۔",
+      "گرم پانی سے جلنے پر 20 منٹ تک ٹھنڈے پانی سے دھوئیں۔",
+      "بجلی سے جلنے پر مریض کو چھونے سے پہلے بجلی کا کنکشن بند کریں۔",
+      "زخم پر صاف کپڑا یا جراثیم سے پاک پٹی باندھیں۔ مرہم یا ٹوتھ پیسٹ نہ لگائیں۔",
+      "اگر جلن زیادہ ہو، گہری ہو یا چہرے/پرائیویٹ حصوں پر ہو تو فوراً ایمبولینس بلائیں۔"
     ],
-    "synonyms": ["burn", "jalna", "burn injury"]
-  },
-  "unconscious": {
-    "en": [
-      "Check response and breathing.",
-      "Call 1122 immediately.",
-      "Place in recovery position.",
-      "Do not give anything by mouth."
-    ],
-    "ur": [
-      "reaktion aur saans check karein.",
-      "foran 1122 par call karein.",
-      "recovery position me lita dein.",
-      "munh se kuch na den."
-    ],
-    "synonyms": ["unconscious", "behosh", "fainted", "bhosh"]
+    "synonyms": ["burn", "jalna", "جلنا"]
   }
 }

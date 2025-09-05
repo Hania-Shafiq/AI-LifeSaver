@@ -25,11 +25,11 @@ export default function Home({ language }) {
                 <HeartPulse className="text-white w-8 h-8" />
               </div>
               <h1 className="text-5xl md:text-6xl font-extrabold leading-snug tracking-wide">
-                {t.heroTitle.split(" ")[0]}{" "}
-                <span className="bg-gradient-to-r from-red-500 via-[#BC0201] to-[#BC0201] bg-clip-text text-transparent">
-                  {t.heroTitle.split(" ")[1]}
-                </span>
-              </h1>
+  {t.heroTitle1}{" "}
+  <span className="bg-gradient-to-r from-red-500 via-[#BC0201] to-[#BC0201] bg-clip-text text-transparent">
+    {t.heroTitle2}
+  </span>
+</h1>
             </motion.div>
           </div>
 

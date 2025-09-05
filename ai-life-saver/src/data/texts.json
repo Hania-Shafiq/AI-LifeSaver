@@ -1,6 +1,8 @@
 {
   "en": {
     "heroTitle": "AI LifeSaver",
+      "heroTitle1": "AI",
+  "heroTitle2": "LifeSaver",
     "heroSubtitle": "A bilingual (Urdu & English) AI-powered first aid app. Get Instant, step-by-step help in emergencies, faster than ever",
     "navHome": "Home",
     "navContacts": "Contacts",
@@ -31,6 +33,8 @@
   },
   "ur": {
     "heroTitle": "اے آئی لائف سیور",
+     "heroTitle1": "اے آئی",
+  "heroTitle2": "لائف سیور",
     "heroSubtitle": "اے سے چلنے  چلنے والی اردو و انگریزی فرسٹ ایڈ ایپ۔ ایمرجنسی میں فوری اور آسان  مرحلہ وار مدد حاصل کریں۔",
     "navHome": "ہوم",
     "navContacts": "رابطہ کریں",
