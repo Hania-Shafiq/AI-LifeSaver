@@ -49,14 +49,27 @@ export default function Navbar() {
             </Link>
           </motion.div>
 
-          {/* Language Toggle */}
-          <motion.div whileTap={{ scale: 0.9 }}>
-            <button className="flex items-center gap-2 px-4 py-1 rounded-full border border-gray-300 
-                               text-gray-700 text-sm bg-white/70 backdrop-blur-sm 
-                               hover:border-blue-400 hover:text-blue-600 transition">
-              <Globe className="w-4 h-4 text-blue-500" /> EN | UR
-            </button>
-          </motion.div>
+         {/* Language Toggle */}
+<motion.div whileTap={{ scale: 0.95 }}>
+  <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-gray-300 rounded-full p-1">
+    
+    <button
+      className="px-4 py-2 rounded-full text-sm font-semibold 
+                 bg-gradient-to-r from-blue-500 to-blue-600 text-white 
+                 shadow-md hover:opacity-90 transition"
+    >
+      English
+    </button>
+    
+    <button
+      className="px-4 py-2 rounded-full text-sm font-semibold 
+                 text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition"
+    >
+      اردو
+    </button>
+  </div>
+</motion.div>
+
         </div>
       </div>
     </motion.nav>
