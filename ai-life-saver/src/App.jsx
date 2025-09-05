@@ -10,7 +10,8 @@ function App() {
     <BrowserRouter>
       <div className="min-h-screen bg-gray-50">
         <Navbar />
-        <main className="p-4">
+        {/* Remove extra padding so sections handle layout themselves */}
+        <main className="w-full">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/emergency" element={<Emergency />} />
