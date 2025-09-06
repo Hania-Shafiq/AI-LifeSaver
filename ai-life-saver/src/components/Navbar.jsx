@@ -22,12 +22,18 @@ export default function Navbar({ language, setLanguage }) {
           <div className="p-2 rounded-full bg-gradient-to-r from-red-500 via-[#BC0201] to-blue-500 shadow-md">
             <HeartPulse className="text-white w-6 h-6" />
           </div>
-          <h1 className="text-gray-900 font-extrabold text-2xl tracking-wide">
-            {texts[language].heroTitle.split(" ")[0]}{" "}
-            <span className="bg-gradient-to-r from-red-500 via-[#BC0201] to-[#BC0201] bg-clip-text text-transparent">
-              {texts[language].heroTitle.split(" ")[1]}
-            </span>
-          </h1>
+ <h1 className="text-gray-900 font-extrabold text-2xl tracking-wide">
+  {language === "ur" ? (
+    texts[language].heroTitle
+  ) : (
+    <>
+      {texts[language].heroTitle1}{" "}
+      <span className="bg-gradient-to-r from-red-500 via-[#BC0201] to-[#BC0201] bg-clip-text text-transparent">
+        {texts[language].heroTitle2}
+      </span>
+    </>
+  )}
+</h1>
         </motion.div>
 
         {/* Navigation */}

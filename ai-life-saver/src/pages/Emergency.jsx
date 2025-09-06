@@ -6,28 +6,30 @@ import firstAidData from "../data/firstAid.json";
 import emergGuide from "../assets/guideBox.png";
 import texts from "../data/texts.json";
 
+// utils import
+import { startListening, speakResult } from "../utils/speechUtils.js";
+
 export default function Emergency({ language }) {
   const [input, setInput] = useState("");
   const [resultKey, setResultKey] = useState(null);
   const [micReady, setMicReady] = useState(false);
+  const [listening, setListening] = useState(false);
 
-  // Check if SpeechRecognition supported
+  // CHECK IF SPEECH RECOGNITION SUPPORTED
   useEffect(() => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRecognition) {
-      setMicReady(true);
-    }
+    if (SpeechRecognition) setMicReady(true);
   }, []);
 
-  // Handle Search
+  // HANDLE SEARCH
   const handleSearch = (query = null) => {
     window.speechSynthesis.cancel(); // stop previous speech
 
     const key = (query || input).toLowerCase().trim();
     let foundKey = null;
 
-    // Check in synonyms
+    // search in synonyms
     for (const condition in firstAidData) {
       const data = firstAidData[condition];
       if (
@@ -41,30 +43,29 @@ export default function Emergency({ language }) {
 
     if (foundKey) {
       setResultKey(foundKey);
-      speakSteps(firstAidData[foundKey][language] || firstAidData[foundKey]["en"]);
+      speakResult(
+        firstAidData[foundKey][language] || firstAidData[foundKey]["en"],
+        language
+      );
     } else {
       setResultKey("noMatch");
-      speakSteps([texts[language].emergencyNoMatch]);
+      speakResult([texts[language].emergencyNoMatch], language);
     }
   };
 
-  // Download PDF
+  // DOWNLOAD PDF
   const downloadPDF = () => {
     if (!resultKey || resultKey === "noMatch") return;
 
     const doc = new jsPDF();
 
-    // Header
     doc.setFontSize(20);
     doc.setTextColor(231, 34, 32);
     doc.text(texts[language].emergencyPDFHeader, 14, 20);
 
-    // Line under header
-    doc.setDrawColor(0, 0, 0);
     doc.setLineWidth(0.5);
     doc.line(14, 24, 196, 24);
 
-    // Steps
     const steps =
       firstAidData[resultKey][language] || firstAidData[resultKey]["en"];
     doc.setFontSize(14);
@@ -76,7 +77,7 @@ export default function Emergency({ language }) {
     doc.save("first_aid.pdf");
   };
 
-  // Resolve steps dynamically
+  // GET STEPS DYNAMICALLY
   const getSteps = () => {
     if (resultKey === "noMatch") return [texts[language].emergencyNoMatch];
     if (resultKey && firstAidData[resultKey]) {
@@ -87,47 +88,40 @@ export default function Emergency({ language }) {
 
   const steps = getSteps();
 
-  // Start listening with mic
-  const startListening = () => {
-    window.speechSynthesis.cancel(); // stop previous speech
+  // START LISTENING WITH MIC
+  const handleMicClick = () => {
+    if (!micReady || listening) return;
 
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-      alert("Speech Recognition not supported in this browser.");
-      return;
+    startListening(
+      language,
+      (text) => {
+        setInput(text);
+        handleSearch(text); // 🔥 mic input aate hi direct search
+      },
+      setListening
+    );
+  };
+
+  // STOP OLD SPEECH ON LANGUAGE TOGGLE + RESPEAK
+  useEffect(() => {
+    window.speechSynthesis.cancel();
+    if (resultKey && firstAidData[resultKey]) {
+      speakResult(
+        firstAidData[resultKey][language] || firstAidData[resultKey]["en"],
+        language
+      );
+    } else if (resultKey === "noMatch") {
+      speakResult([texts[language].emergencyNoMatch], language);
     }
-
-    const recognition = new SpeechRecognition();
-    recognition.lang = language === "ur" ? "ur-PK" : "en-US";
-    recognition.start();
-
-    recognition.onresult = (event) => {
-      let transcript = event.results[0][0].transcript.replace(/\.$/, "");
-      setInput(transcript);
-      handleSearch(transcript);
-    };
-
-    recognition.onerror = (err) => {
-      console.error("Speech recognition error:", err);
-    };
-  };
-
-  // Speak results
-  const speakSteps = (steps) => {
-    if (!steps || !window.speechSynthesis) return;
-    const utterance = new SpeechSynthesisUtterance(steps.join(". "));
-    utterance.lang = language === "ur" ? "ur-PK" : "en-US";
-    window.speechSynthesis.speak(utterance);
-  };
+  }, [language]);
 
   return (
     <div className="max-w-4xl mx-auto px-6 pt-24 relative">
-      {/* Background Gradient Circles */}
+      {/* Background Circles */}
       <div className="absolute -top-32 -left-32 w-72 h-72 bg-gradient-to-tr from-red-200 via-blue-200 to-white rounded-full blur-3xl opacity-50"></div>
       <div className="absolute -bottom-32 -right-32 w-72 h-72 bg-gradient-to-tr from-blue-200 via-red-200 to-white rounded-full blur-3xl opacity-50"></div>
 
-      {/* Header with Image */}
+      {/* Header */}
       <div className="flex flex-col items-center gap-4 mb-6 text-center">
         <motion.img
           src={emergGuide}
@@ -137,7 +131,6 @@ export default function Emergency({ language }) {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.8 }}
         />
-
         <motion.h2
           className="text-4xl font-extrabold text-red-600 drop-shadow-md"
           initial={{ y: -50, opacity: 0 }}
@@ -158,8 +151,11 @@ export default function Emergency({ language }) {
         <input
           value={input}
           onChange={(e) => {
-            window.speechSynthesis.cancel(); // stop previous speech
+            window.speechSynthesis.cancel();
             setInput(e.target.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleSearch(); // 🔥 Enter press se search
           }}
           placeholder={texts[language].emergencyPlaceholder}
           className="flex-1 border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
@@ -177,21 +173,23 @@ export default function Emergency({ language }) {
 
         {/* Mic Button */}
         <motion.button
-          onClick={startListening}
+          onClick={handleMicClick}
           disabled={!micReady}
           className={`flex items-center gap-2 px-5 py-3 rounded-xl text-white shadow-md ${
             micReady
-              ? "bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 cursor-pointer"
+              ? listening
+                ? "bg-red-600 animate-pulse" // 🔴 Glow effect when listening
+                : "bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600"
               : "bg-gray-300 cursor-not-allowed"
           } transform hover:scale-105 transition-all duration-300`}
           whileTap={{ scale: 0.95 }}
         >
           <Mic className="w-5 h-5" />
-          {texts[language].voiceSearch}
+          {listening ? texts[language].listening : texts[language].voiceSearch}
         </motion.button>
       </motion.div>
 
-      {/* Results Section */}
+      {/* Results */}
       {steps && (
         <motion.div
           className="mt-8 bg-gradient-to-r from-blue-50 via-white to-red-50 p-6 rounded-2xl shadow-lg relative z-10"
