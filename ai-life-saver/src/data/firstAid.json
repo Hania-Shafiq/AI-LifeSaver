@@ -1,35 +1,44 @@
 {
   "fainting": {
-    "en": [
-      "Lay them flat on their back and elevate legs above heart level.",
-      "Check breathing and pulse. If absent, call ambulance and start CPR.",
-      "Loosen tight clothes for easier breathing.",
-      "If diabetic and sugar is low: give sugar water, juice, or dextrose injection if available.",
-      "If due to panic attack: reassure, slow breathing, move to quiet place.",
-      "If shivering due to fever: cover with blanket, check temperature, call doctor if severe.",
-      "If stroke history and missed medicine: call ambulance immediately.",
-      "If hepatitis history with stomach swelling/fever: call ambulance immediately.",
-      "If due to fits (seizure): protect from injury, place on side after seizure stops.",
-      "If sodium/electrolyte imbalance suspected: give ORS or salt-sugar water if conscious.",
-      "If equipment available: check BP, blood sugar, oxygen level.",
-      "Stay until recovery. If no response within 1 minute, call ambulance."
-    ],
-    "ur": [
-      "مریض کو سیدھا لٹا دیں اور ٹانگیں دل کی سطح سے بلند کریں۔",
-      "سانس اور نبض چیک کریں۔ اگر بند ہو تو فوراً ایمبولینس بلائیں اور سی پی آر شروع کریں۔",
-      "تنگ کپڑے کھول دیں تاکہ سانس لینے میں آسانی ہو۔",
-      "اگر مریض شوگر کا ہے اور شوگر کم ہے تو پانی میں چینی ڈال کر پلائیں، جوس دیں یا ڈیکسٹروز انجکشن لگائیں۔",
-      "اگر گھبراہٹ (پینک اٹیک) کی وجہ سے ہے تو مریض کو تسلی دیں، آہستہ سانس لینے کو کہیں اور پرسکون جگہ پر لے جائیں۔",
-      "اگر بخار کی وجہ سے کپکپی ہو رہی ہے تو کمبل اوڑھائیں، درجہ حرارت چیک کریں اور ڈاکٹر کو دکھائیں۔",
-      "اگر مریض فالج کا مریض ہے اور دوا نہیں لی تو فوراً ایمبولینس بلائیں۔",
-      "اگر ہیپاٹائٹس کی ہسٹری ہے اور پیٹ سوجا ہے یا بخار ہے تو فوراً ایمبولینس بلائیں۔",
-      "اگر دورے کی وجہ سے بیہوشی ہے تو مریض کو بچائیں، اور دورہ ختم ہونے پر پہلو کے بل لٹا دیں۔",
-      "اگر سوڈیم یا الیکٹرولائٹ کی کمی ہے تو مریض کو او آر ایس یا نمکین-میٹھا پانی دیں (اگر ہوش میں ہے)۔",
-      "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
-      "مریض کے ساتھ رہیں۔ اگر ایک منٹ میں ہوش نہ آئے تو فوراً ایمبولینس بلائیں۔"
-    ],
-    "synonyms": ["fainting", "behosh", "unconscious", "بیہوشی"]
-  },
+  "en": [
+    "Lay them flat on their back and elevate legs above heart level.",
+    "Check breathing and pulse. If absent, call ambulance and start CPR.",
+    "Loosen tight clothes for easier breathing.",
+    "If diabetic and sugar is low: give sugar water, juice, or dextrose injection if available.",
+    "If due to panic attack: reassure, slow breathing, move to quiet place.",
+    "If shivering due to fever: cover with blanket, check temperature, call doctor if severe.",
+    "If stroke history and missed medicine: call ambulance immediately.",
+    "If hepatitis history with stomach swelling/fever: call ambulance immediately.",
+    "If due to fits (seizure): protect from injury, place on side after seizure stops.",
+    "If sodium/electrolyte imbalance suspected: give ORS or salt-sugar water if conscious.",
+    "If equipment available: check BP, blood sugar, oxygen level.",
+    "Stay until recovery. If no response within 1 minute, call ambulance."
+  ],
+  "ur": [
+    "مریض کو سیدھا لٹا دیں اور ٹانگیں دل کی سطح سے بلند کریں۔",
+    "سانس اور نبض چیک کریں۔ اگر بند ہو تو فوراً ایمبولینس بلائیں اور سی پی آر شروع کریں۔",
+    "تنگ کپڑے کھول دیں تاکہ سانس لینے میں آسانی ہو۔",
+    "اگر مریض شوگر کا ہے اور شوگر کم ہے تو پانی میں چینی ڈال کر پلائیں، جوس دیں یا ڈیکسٹروز انجکشن لگائیں۔",
+    "اگر گھبراہٹ (پینک اٹیک) کی وجہ سے ہے تو مریض کو تسلی دیں، آہستہ سانس لینے کو کہیں اور پرسکون جگہ پر لے جائیں۔",
+    "اگر بخار کی وجہ سے کپکپی ہو رہی ہے تو کمبل اوڑھائیں، درجہ حرارت چیک کریں اور ڈاکٹر کو دکھائیں۔",
+    "اگر مریض فالج کا مریض ہے اور دوا نہیں لی تو فوراً ایمبولینس بلائیں۔",
+    "اگر ہیپاٹائٹس کی ہسٹری ہے اور پیٹ سوجا ہے یا بخار ہے تو فوراً ایمبولینس بلائیں۔",
+    "اگر دورے کی وجہ سے بیہوشی ہے تو مریض کو بچائیں، اور دورہ ختم ہونے پر پہلو کے بل لٹا دیں۔",
+    "اگر سوڈیم یا الیکٹرولائٹ کی کمی ہے تو مریض کو او آر ایس یا نمکین-میٹھا پانی دیں (اگر ہوش میں ہے)۔",
+    "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
+    "مریض کے ساتھ رہیں۔ اگر ایک منٹ میں ہوش نہ آئے تو فوراً ایمبولینس بلائیں۔"
+  ],
+  "synonyms": [
+    "fainting",
+    "faint",
+    "behosh",
+    "behoshi",
+    "unconscious",
+    "بیہوش",
+    "بیہوشی"
+  ]
+},
+
   "cardiac_arrest": {
     "en": [
       "If sudden collapse: check responsiveness, call ambulance, and start CPR immediately.",

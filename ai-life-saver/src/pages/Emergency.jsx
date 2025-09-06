@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Search, FileText } from "lucide-react";
+import { Search, FileText, Mic } from "lucide-react";
 import { jsPDF } from "jspdf";
 import firstAidData from "../data/firstAid.json";
 import emergGuide from "../assets/guideBox.png";
@@ -9,14 +9,42 @@ import texts from "../data/texts.json";
 export default function Emergency({ language }) {
   const [input, setInput] = useState("");
   const [resultKey, setResultKey] = useState(null);
+  const [micReady, setMicReady] = useState(false);
+
+  // Check if SpeechRecognition supported
+  useEffect(() => {
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+      setMicReady(true);
+    }
+  }, []);
 
   // Handle Search
-  const handleSearch = () => {
-    const key = input.toLowerCase().trim();
-    if (firstAidData[key]) {
-      setResultKey(key); // store only the key
+  const handleSearch = (query = null) => {
+    window.speechSynthesis.cancel(); // stop previous speech
+
+    const key = (query || input).toLowerCase().trim();
+    let foundKey = null;
+
+    // Check in synonyms
+    for (const condition in firstAidData) {
+      const data = firstAidData[condition];
+      if (
+        data.synonyms &&
+        data.synonyms.some((syn) => syn.toLowerCase() === key)
+      ) {
+        foundKey = condition;
+        break;
+      }
+    }
+
+    if (foundKey) {
+      setResultKey(foundKey);
+      speakSteps(firstAidData[foundKey][language] || firstAidData[foundKey]["en"]);
     } else {
       setResultKey("noMatch");
+      speakSteps([texts[language].emergencyNoMatch]);
     }
   };
 
@@ -37,7 +65,8 @@ export default function Emergency({ language }) {
     doc.line(14, 24, 196, 24);
 
     // Steps
-    const steps = firstAidData[resultKey][language] || firstAidData[resultKey]["en"];
+    const steps =
+      firstAidData[resultKey][language] || firstAidData[resultKey]["en"];
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 0);
     steps.forEach((step, i) => {
@@ -57,6 +86,40 @@ export default function Emergency({ language }) {
   };
 
   const steps = getSteps();
+
+  // Start listening with mic
+  const startListening = () => {
+    window.speechSynthesis.cancel(); // stop previous speech
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      alert("Speech Recognition not supported in this browser.");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = language === "ur" ? "ur-PK" : "en-US";
+    recognition.start();
+
+    recognition.onresult = (event) => {
+      let transcript = event.results[0][0].transcript.replace(/\.$/, "");
+      setInput(transcript);
+      handleSearch(transcript);
+    };
+
+    recognition.onerror = (err) => {
+      console.error("Speech recognition error:", err);
+    };
+  };
+
+  // Speak results
+  const speakSteps = (steps) => {
+    if (!steps || !window.speechSynthesis) return;
+    const utterance = new SpeechSynthesisUtterance(steps.join(". "));
+    utterance.lang = language === "ur" ? "ur-PK" : "en-US";
+    window.speechSynthesis.speak(utterance);
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-6 pt-24 relative">
@@ -94,18 +157,37 @@ export default function Emergency({ language }) {
       >
         <input
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => {
+            window.speechSynthesis.cancel(); // stop previous speech
+            setInput(e.target.value);
+          }}
           placeholder={texts[language].emergencyPlaceholder}
           className="flex-1 border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
         />
 
+        {/* Search Button */}
         <motion.button
-          onClick={handleSearch}
+          onClick={() => handleSearch()}
           className="flex items-center gap-2 px-6 py-3 rounded-xl text-white shadow-md transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-red-500 via-[#BC0201] to-blue-500 cursor-pointer"
           whileTap={{ scale: 0.97 }}
         >
           <Search className="w-5 h-5" />
           {texts[language].emergencySearchBtn}
+        </motion.button>
+
+        {/* Mic Button */}
+        <motion.button
+          onClick={startListening}
+          disabled={!micReady}
+          className={`flex items-center gap-2 px-5 py-3 rounded-xl text-white shadow-md ${
+            micReady
+              ? "bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600 cursor-pointer"
+              : "bg-gray-300 cursor-not-allowed"
+          } transform hover:scale-105 transition-all duration-300`}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Mic className="w-5 h-5" />
+          {texts[language].voiceSearch}
         </motion.button>
       </motion.div>
 
