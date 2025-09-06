@@ -4,27 +4,31 @@ import { Search, FileText } from "lucide-react";
 import { jsPDF } from "jspdf";
 import firstAidData from "../data/firstAid.json";
 import emergGuide from "../assets/guideBox.png";
-import texts from "../data/texts.json"; // add this
+import texts from "../data/texts.json";
 
 export default function Emergency({ language }) {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState(null);
+  const [resultKey, setResultKey] = useState(null);
 
   // Handle Search
   const handleSearch = () => {
     const key = input.toLowerCase().trim();
-    if (firstAidData[key]) setResult(firstAidData[key][language] || firstAidData[key]["en"]);
-    else setResult([texts[language].emergencyNoMatch]);
+    if (firstAidData[key]) {
+      setResultKey(key); // store only the key
+    } else {
+      setResultKey("noMatch");
+    }
   };
 
   // Download PDF
   const downloadPDF = () => {
-    if (!result) return;
+    if (!resultKey || resultKey === "noMatch") return;
+
     const doc = new jsPDF();
 
     // Header
     doc.setFontSize(20);
-    doc.setTextColor(231, 34, 32); // red
+    doc.setTextColor(231, 34, 32);
     doc.text(texts[language].emergencyPDFHeader, 14, 20);
 
     // Line under header
@@ -33,14 +37,26 @@ export default function Emergency({ language }) {
     doc.line(14, 24, 196, 24);
 
     // Steps
+    const steps = firstAidData[resultKey][language] || firstAidData[resultKey]["en"];
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 0);
-    result.forEach((step, i) => {
+    steps.forEach((step, i) => {
       doc.text(`${i + 1}. ${step}`, 14, 35 + i * 10);
     });
 
     doc.save("first_aid.pdf");
   };
+
+  // Resolve steps dynamically
+  const getSteps = () => {
+    if (resultKey === "noMatch") return [texts[language].emergencyNoMatch];
+    if (resultKey && firstAidData[resultKey]) {
+      return firstAidData[resultKey][language] || firstAidData[resultKey]["en"];
+    }
+    return null;
+  };
+
+  const steps = getSteps();
 
   return (
     <div className="max-w-4xl mx-auto px-6 pt-24 relative">
@@ -94,7 +110,7 @@ export default function Emergency({ language }) {
       </motion.div>
 
       {/* Results Section */}
-      {result && (
+      {steps && (
         <motion.div
           className="mt-8 bg-gradient-to-r from-blue-50 via-white to-red-50 p-6 rounded-2xl shadow-lg relative z-10"
           initial={{ opacity: 0, y: 30 }}
@@ -106,7 +122,7 @@ export default function Emergency({ language }) {
             {texts[language].emergencyStepsHeading}
           </h3>
           <ul className="list-decimal list-inside space-y-2">
-            {result.map((step, i) => (
+            {steps.map((step, i) => (
               <motion.li
                 key={i}
                 className="p-3 bg-white rounded-lg shadow hover:bg-red-50 transition-colors duration-300"
@@ -120,14 +136,16 @@ export default function Emergency({ language }) {
             ))}
           </ul>
 
-          <motion.button
-            onClick={downloadPDF}
-            className="mt-6 flex items-center gap-2 bg-blue-500 text-white px-5 py-3 rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-md"
-            whileTap={{ scale: 0.95 }}
-          >
-            <FileText className="w-5 h-5" />
-            {texts[language].emergencyDownloadBtn}
-          </motion.button>
+          {resultKey !== "noMatch" && (
+            <motion.button
+              onClick={downloadPDF}
+              className="mt-6 flex items-center gap-2 bg-blue-500 text-white px-5 py-3 rounded-lg hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 shadow-md"
+              whileTap={{ scale: 0.95 }}
+            >
+              <FileText className="w-5 h-5" />
+              {texts[language].emergencyDownloadBtn}
+            </motion.button>
+          )}
         </motion.div>
       )}
     </div>
