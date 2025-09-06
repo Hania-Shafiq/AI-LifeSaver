@@ -36,7 +36,9 @@
     "unconscious",
     "بیہوش",
     "بیہوشی"
-  ]
+  ],
+    "risk": "medium to high"
+
 },
 
   "cardiac_arrest": {
@@ -62,7 +64,9 @@
       "heart pain",
       "heart attack",
        "دل میں درد", 
-      "دل کا دورہ"]
+      "دل کا دورہ"],
+       "risk": "high"
+
   },
   "poisoning": {
     "en": [
@@ -86,7 +90,8 @@
   "zehar",
   "زہر",
   "زہر کھانا"
-]
+],
+"risk": "high"
   },
   "sodium_imbalance": {
     "en": [
@@ -111,7 +116,8 @@
   "سوڈیم کی کمی",
   "نمک کی کمی",
   "الیکٹرولائٹ کی کمی"
-]
+],
+ "risk": "medium to high"
 },
 "burns": {
     "en": [
@@ -136,7 +142,8 @@
   "burn injury",
   "جلنا",
   "جلنے کی چوٹ"
-]
+],
+ "risk": "medium to high"
   },
   "fracture": {
     "en": [
@@ -161,7 +168,8 @@
   "broken bone",
   "ہڈی ٹوٹنا",
   "ہڈی ٹوٹ گئی"
-]
+],
+ "risk": "medium"
   },
   "stroke": {
     "en": [
@@ -186,7 +194,8 @@
   "paralysis",
   "فالج",
   "دماغی فالج"
-]
+],
+ "risk": "high"
   },
   "epilepsy": {
     "en": [
@@ -213,7 +222,8 @@
   "مرگی",
   "دورہ",
   "دورے پڑنا"
-]
+],
+"risk": "medium to high"
         },
 "heatstroke": {
   "en": [
@@ -240,7 +250,8 @@
   "heat exhaustion",
   "ضربِ حرارت",
   "لو لگنا"
-]
+],
+"risk": "high"
 },
   "choking": {
     "en": [
@@ -263,7 +274,8 @@
   "suffocation",
   "دم گھٹنا",
   "سانس رک جانا"
-]
+],
+"risk": "high"
   },
   "drowning": {
     "en": [
@@ -288,7 +300,8 @@
   "pani me doobna",
   "ڈوبنا",
   "پانی میں ڈوبنا"
-]
+],
+"risk": "high"
   },
   "allergic_reaction": {
     "en": [
@@ -312,7 +325,8 @@
   "allergic response",
   "الرجی",
   "الرجک ردعمل"
-]
+],
+"risk": "medium to high"
   }
 ,
   "asthma_attack": {
@@ -338,7 +352,8 @@
   "دمہ",
   "سانس کا اٹیک",
   "دمہ کا دورہ"
-]
+],
+"risk": "medium to high"
   },
   "diabetic_emergency": {
     "en": [
@@ -363,7 +378,8 @@
   "low blood sugar",
   "شوگر کا دورہ",
   "شوگر کی ہنگامی صورتحال"
-]
+],
+"risk": "medium to high"
   },
   "severe_bleeding": {
     "en": [
@@ -389,7 +405,8 @@
   "blood loss",
   "خون بہنا",
   "شدید خون بہنا"
-]
+],
+"risk": "high"
   },
   "electric_shock": {
     "en": [
@@ -415,7 +432,8 @@
   "کرنٹ لگنا",
   "بجلی کا جھٹکا",
   "بجلی لگنا"
-]
+],
+"risk": "high"
 },
   "eye_injury": {
     "en": [
@@ -437,10 +455,12 @@
   "eye accident",
   "آنکھ کی چوٹ",
   "آنکھ کا حادثہ"
-]
+],
+"risk": "medium to high"
 
   },
-    "en": [
+  "snake bite":{
+   "en": [
       "Keep patient still and calm to slow venom spread.",
       "Do not cut, suck, or apply ice.",
       "Immobilize bitten limb and keep at heart level.",
@@ -456,8 +476,15 @@
       "فوراً ایمبولینس بلائیں۔",
       "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔"
     ],
-  "synonyms": ["snake bite", "سانپ کا کاٹنا"]
-,
+  "synonyms": [
+    "snake bite",
+    "سانپ کا کاٹنا",
+    "venomous bite",
+    "snake envenomation",
+    "سانپ کا زہریلا کاٹنا"
+  ],
+  "risk": "high"
+  },
 "dog_bite": {
     "en": [
       "Wash wound with soap and running water for 10 minutes.",
@@ -483,7 +510,8 @@
   "کتا کا حملہ",
   "rabies",
   "ریبیز"
-]
+],
+"risk": "medium to high"
   },
   "childbirth_emergency": {
     "en": [
@@ -511,7 +539,8 @@
   "labor",
   "ایمرجنسی ولادت",
   "ولادت"
-]
+],
+"risk": "medium to high"
 },
 "head_injury": {
     "en": [
@@ -533,7 +562,8 @@
   "traumatic brain injury",
   "سر کی چوٹ",
   "دماغ کی چوٹ"
-]
+],
+"risk": "high"
   },
   "hypothermia": {
     "en": [
@@ -559,7 +589,8 @@
   "severe cold",
   "شدید سردی",
   "سردی لگنا"
-]
+],
+"risk": "high"
   },
   "nosebleed": {
     "en": [
@@ -584,7 +615,8 @@
   "nose bleeding",
   "ناک سے خون آنا",
   "ناک خون بہنا"
-]
+],
+"risk": "low to medium"
   },
   "food_poisoning": {
     "en": [
@@ -609,7 +641,8 @@
   "zehrila khorak",
   "فوڈ پوائزننگ",
   "زہریلا کھانا"
-]
+],
+"risk": "medium to high"
         },
         "road_accident": {
   "en": [
@@ -639,6 +672,7 @@
   "حادثہ",
   "گاڑی کا ایکسیڈنٹ",
   "سڑک کا حادثہ"
-]
+],
+"risk": "high"
 
       } }
