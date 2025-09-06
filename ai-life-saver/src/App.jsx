@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Emergency from "./pages/Emergency";
 import Contacts from "./pages/Contacts";
 import About from "./pages/About";
-import ChatWidget from "./components/ChatWidget";
+import AiChat from "./components/AiChat";
 
 function App() {
   const [language, setLanguage] = useState("en"); // default English
@@ -28,7 +28,7 @@ function App() {
 
         {/* Footer */}
         <Footer language={language} />
-        <ChatWidget/>
+      <AiChat language={language}/>
       </div>
     </BrowserRouter>
   );
