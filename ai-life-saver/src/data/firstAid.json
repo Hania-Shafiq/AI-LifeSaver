@@ -36,7 +36,9 @@
     "unconscious",
     "بیہوش",
     "بیہوشی"
-  ]
+  ],
+    "risk": "medium to high"
+
 },
 
   "cardiac_arrest": {
@@ -56,7 +58,15 @@
       "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
       "ایمبولینس آنے تک مریض کو اکیلا نہ چھوڑیں۔"
     ],
-    "synonyms": ["cardiac arrest", "heart attack", "دل کا دورہ"]
+    "synonyms": [
+      "cardiac arrest",
+      "cardaic",
+      "heart pain",
+      "heart attack",
+       "دل میں درد", 
+      "دل کا دورہ"],
+       "risk": "high"
+
   },
   "poisoning": {
     "en": [
@@ -73,7 +83,15 @@
       "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
       "فوراً ایمبولینس بلائیں۔"
     ],
-    "synonyms": ["poisoning", "zehr", "زہر کھانا"]
+    "synonyms": [
+  "poisoning",
+  "poison",
+  "zehr",
+  "zehar",
+  "زہر",
+  "زہر کھانا"
+],
+"risk": "high"
   },
   "sodium_imbalance": {
     "en": [
@@ -90,7 +108,16 @@
       "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
       "اگر مریض بے ہوش ہے تو منہ سے کچھ نہ دیں۔"
     ],
-    "synonyms": ["sodium imbalance", "electrolyte imbalance", "سوڈیم کی کمی", "الیکٹرولائٹ کی کمی"]
+    "synonyms": [
+  "sodium imbalance",
+  "electrolyte imbalance",
+  "low sodium",
+  "salt imbalance",
+  "سوڈیم کی کمی",
+  "نمک کی کمی",
+  "الیکٹرولائٹ کی کمی"
+],
+ "risk": "medium to high"
 },
 "burns": {
     "en": [
@@ -109,7 +136,14 @@
       "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
       "مریض کو پانی پلاتے رہیں۔"
     ],
-    "synonyms": ["burn", "جلنا", "burn injury"]
+   "synonyms": [
+  "burn",
+  "burns",
+  "burn injury",
+  "جلنا",
+  "جلنے کی چوٹ"
+],
+ "risk": "medium to high"
   },
   "fracture": {
     "en": [
@@ -128,7 +162,14 @@
       "اگر آلات دستیاب ہوں تو بی پی چیک کریں۔",
       "اگر سرجری کی ضرورت ہو سکتی ہے تو کھانے پینے کی چیز نہ دیں۔"
     ],
-    "synonyms": ["fracture", "bone break", "ہڈی ٹوٹنا"]
+   "synonyms": [
+  "fracture",
+  "bone break",
+  "broken bone",
+  "ہڈی ٹوٹنا",
+  "ہڈی ٹوٹ گئی"
+],
+ "risk": "medium"
   },
   "stroke": {
     "en": [
@@ -147,7 +188,14 @@
       "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔",
       "ایمبولینس آنے تک مریض کے ساتھ رہیں۔"
     ],
-    "synonyms": ["stroke", "paralysis", "فالج"]
+    "synonyms": [
+  "stroke",
+  "brain stroke",
+  "paralysis",
+  "فالج",
+  "دماغی فالج"
+],
+ "risk": "high"
   },
   "epilepsy": {
     "en": [
@@ -166,7 +214,16 @@
       "اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔",
       "مریض کے ہوش میں آنے تک ساتھ رہیں۔"
     ],
-    "synonyms": ["epilepsy", "fits", "seizure", "مرگی", "دورہ"]
+    "synonyms": [
+  "epilepsy",
+  "fits",
+  "seizure",
+  "seizures",
+  "مرگی",
+  "دورہ",
+  "دورے پڑنا"
+],
+"risk": "medium to high"
         },
 "heatstroke": {
   "en": [
@@ -185,7 +242,16 @@
     "اگر مریض بے ہوش ہو یا تیز بخار ہو تو فوراً ایمبولینس بلائیں۔",
     "اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔"
   ],
-  "synonyms": ["heatstroke", "loo lagna", "heat illness", "ضربِ حرارت", "لو لگنا"]
+  "synonyms": [
+  "heatstroke",
+  "heat stroke",
+  "loo lagna",
+  "heat illness",
+  "heat exhaustion",
+  "ضربِ حرارت",
+  "لو لگنا"
+],
+"risk": "high"
 },
   "choking": {
     "en": [
@@ -202,7 +268,14 @@
       "اگر آلات دستیاب ہوں تو رکاوٹ ختم ہونے کے بعد آکسیجن لیول چیک کریں۔",
       "اگر فوراً آرام نہ آئے تو ایمبولینس بلائیں۔"
     ],
-    "synonyms": ["choking", "دم گھٹنا", "سانس رک جانا"]
+"synonyms": [
+  "choking",
+  "airway blockage",
+  "suffocation",
+  "دم گھٹنا",
+  "سانس رک جانا"
+],
+"risk": "high"
   },
   "drowning": {
     "en": [
@@ -221,7 +294,14 @@
       "اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔",
       "فوراً ایمبولینس بلائیں۔"
     ],
-    "synonyms": ["drowning", "ڈوبنا", "pani me doobna"]
+    "synonyms": [
+  "drowning",
+  "near drowning",
+  "pani me doobna",
+  "ڈوبنا",
+  "پانی میں ڈوبنا"
+],
+"risk": "high"
   },
   "allergic_reaction": {
     "en": [
@@ -238,7 +318,15 @@
       "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
       "شدید الرجی کی صورت میں فوراً ایمبولینس بلائیں۔"
     ],
-    "synonyms": ["allergy", "allergic reaction", "الرجی"]
+    "synonyms": [
+  "allergy",
+  "allergic reaction",
+  "hypersensitivity",
+  "allergic response",
+  "الرجی",
+  "الرجک ردعمل"
+],
+"risk": "medium to high"
   }
 ,
   "asthma_attack": {
@@ -257,7 +345,15 @@
       "اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔",
       "پرسکون رہیں اور مریض کو تسلی دیں۔"
     ],
-    "synonyms": ["asthma", "asthma attack", "دمہ", "سانس کا اٹیک"]
+    "synonyms": [
+  "asthma",
+  "asthma attack",
+  "bronchial asthma",
+  "دمہ",
+  "سانس کا اٹیک",
+  "دمہ کا دورہ"
+],
+"risk": "medium to high"
   },
   "diabetic_emergency": {
     "en": [
@@ -274,7 +370,16 @@
       "اگر آلات دستیاب ہوں تو شوگر اور بی پی چیک کریں۔",
       "ایمبولینس آنے تک مریض کے ساتھ رہیں۔"
     ],
-    "synonyms": ["diabetes", "sugar attack", "diabetic emergency", "شوگر کا دورہ"]
+    "synonyms": [
+  "diabetes",
+  "diabetic emergency",
+  "sugar attack",
+  "high blood sugar",
+  "low blood sugar",
+  "شوگر کا دورہ",
+  "شوگر کی ہنگامی صورتحال"
+],
+"risk": "medium to high"
   },
   "severe_bleeding": {
     "en": [
@@ -293,7 +398,15 @@
       "اگر آلات دستیاب ہوں تو بی پی چیک کریں۔",
       "اگر کپڑا خون سے بھر جائے تو نہ ہٹائیں بلکہ اوپر دوسرا رکھیں۔"
     ],
-    "synonyms": ["bleeding", "severe bleeding", "خون بہنا"]
+   "synonyms": [
+  "bleeding",
+  "severe bleeding",
+  "hemorrhage",
+  "blood loss",
+  "خون بہنا",
+  "شدید خون بہنا"
+],
+"risk": "high"
   },
   "electric_shock": {
     "en": [
@@ -312,7 +425,15 @@
       "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
       "فوراً ایمبولینس بلائیں۔"
     ],
-    "synonyms": ["electric shock", "کرنٹ لگنا", "بجلی کا جھٹکا"]
+    "synonyms": [
+  "electric shock",
+  "electric injury",
+  "electric current shock",
+  "کرنٹ لگنا",
+  "بجلی کا جھٹکا",
+  "بجلی لگنا"
+],
+"risk": "high"
 },
   "eye_injury": {
     "en": [
@@ -329,9 +450,17 @@
       "اگر آلات دستیاب ہوں تو بی پی چیک کریں۔",
       "مریض کو پرسکون رکھیں اور آنکھ پر دباؤ نہ ڈالیں۔"
     ],
-    "synonyms": ["eye injury", "آنکھ کی چوٹ", "eye accident"]
+"synonyms": [
+  "eye injury",
+  "eye accident",
+  "آنکھ کی چوٹ",
+  "آنکھ کا حادثہ"
+],
+"risk": "medium to high"
+
   },
-    "en": [
+  "snake bite":{
+   "en": [
       "Keep patient still and calm to slow venom spread.",
       "Do not cut, suck, or apply ice.",
       "Immobilize bitten limb and keep at heart level.",
@@ -347,8 +476,15 @@
       "فوراً ایمبولینس بلائیں۔",
       "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔"
     ],
-  "synonyms": ["snake bite", "سانپ کا کاٹنا"]
-,
+  "synonyms": [
+    "snake bite",
+    "سانپ کا کاٹنا",
+    "venomous bite",
+    "snake envenomation",
+    "سانپ کا زہریلا کاٹنا"
+  ],
+  "risk": "high"
+  },
 "dog_bite": {
     "en": [
       "Wash wound with soap and running water for 10 minutes.",
@@ -366,7 +502,16 @@
       "اگر آلات دستیاب ہوں تو بی پی چیک کریں۔",
       "انفیکشن کی علامات پر نظر رکھیں۔"
     ],
-    "synonyms": ["dog bite", "کتا کاٹنا", "rabies"]
+    "synonyms": [
+  "dog bite",
+  "dog attack",
+  "animal bite",
+  "کتا کاٹنا",
+  "کتا کا حملہ",
+  "rabies",
+  "ریبیز"
+],
+"risk": "medium to high"
   },
   "childbirth_emergency": {
     "en": [
@@ -387,7 +532,15 @@
       "اگر آلات دستیاب ہوں تو ماں کا بی پی اور آکسیجن لیول چیک کریں۔",
       "ماں اور بچے کو گرم رکھیں۔"
     ],
-  "synonyms": ["childbirth", "delivery", "emergency birth", "ایمرجنسی ولادت"]
+ "synonyms": [
+  "childbirth",
+  "delivery",
+  "emergency birth",
+  "labor",
+  "ایمرجنسی ولادت",
+  "ولادت"
+],
+"risk": "medium to high"
 },
 "head_injury": {
     "en": [
@@ -403,7 +556,14 @@
       "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
       "سر کو تھوڑا اونچا رکھیں۔"
     ],
-    "synonyms": ["head injury", "سر کی چوٹ", "brain injury"]
+   "synonyms": [
+  "head injury",
+  "brain injury",
+  "traumatic brain injury",
+  "سر کی چوٹ",
+  "دماغ کی چوٹ"
+],
+"risk": "high"
   },
   "hypothermia": {
     "en": [
@@ -422,7 +582,15 @@
       "اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔",
       "جسم کو آہستہ آہستہ گرم کریں، اچانک نہیں۔"
     ],
-    "synonyms": ["hypothermia", "cold exposure", "شدید سردی"]
+   "synonyms": [
+  "hypothermia",
+  "cold exposure",
+  "low body temperature",
+  "severe cold",
+  "شدید سردی",
+  "سردی لگنا"
+],
+"risk": "high"
   },
   "nosebleed": {
     "en": [
@@ -441,7 +609,14 @@
       "اگر خون 20 منٹ سے زیادہ بہے یا بار بار ہو تو ڈاکٹر یا ایمبولینس کو بلائیں۔",
       "اگر آلات دستیاب ہوں تو بی پی چیک کریں (خاص طور پر بڑوں میں)۔"
     ],
-    "synonyms": ["nosebleed", "epistaxis", "ناک سے خون آنا"]
+   "synonyms": [
+  "nosebleed",
+  "epistaxis",
+  "nose bleeding",
+  "ناک سے خون آنا",
+  "ناک خون بہنا"
+],
+"risk": "low to medium"
   },
   "food_poisoning": {
     "en": [
@@ -459,7 +634,15 @@
         "جب تک حالت بہتر نہ ہو کھانے کی چیزیں نہ دیں۔",
         "اگر آلات دستیاب ہوں تو بی پی اور شوگر چیک کریں۔"
       ],
-          "synonyms": ["food poisoning", "zehrila khana", "فوڈ پوائزننگ"]
+     "synonyms": [
+  "food poisoning",
+  "foodborne illness",
+  "zehrila khana",
+  "zehrila khorak",
+  "فوڈ پوائزننگ",
+  "زہریلا کھانا"
+],
+"risk": "medium to high"
         },
         "road_accident": {
   "en": [
@@ -480,7 +663,16 @@
     "اگر موٹر سائیکل حادثہ ہو تو ہیلمٹ نہ اتاریں۔",
     "اگر آلات دستیاب ہوں تو بی پی، آکسیجن اور شوگر چیک کریں۔"
   ],
-  "synonyms": ["road accident", "traffic accident", "car crash", "حادثہ", "گاڑی کا ایکسیڈنٹ"]
-}
+  
+  "synonyms": [
+  "road accident",
+  "traffic accident",
+  "car crash",
+  "vehicle accident",
+  "حادثہ",
+  "گاڑی کا ایکسیڈنٹ",
+  "سڑک کا حادثہ"
+],
+"risk": "high"
 
-      }
+      } }
