@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { HeartPulse, Users, Rocket, Code } from "lucide-react";
+import texts from "../data/texts.json";
 
-function About() {
+function About({ language }) {
   return (
     <section className="min-h-screen bg-[#f0f7ff] py-20 px-6 font-inter">
       {/* Heading */}
@@ -12,7 +13,7 @@ function About() {
           transition={{ duration: 0.6 }}
           className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug"
         >
-          About AI LifeSaver
+          {texts[language].aboutHeading}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -20,9 +21,7 @@ function About() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-gray-700 text-base md:text-lg mt-4 leading-relaxed"
         >
-          AI LifeSaver is a bilingual (Urdu & English) AI-powered first aid assistant 
-          designed to provide instant, step-by-step emergency guidance with text, 
-          visuals, and emergency contacts.
+          {texts[language].aboutSubheading}
         </motion.p>
       </div>
 
@@ -33,9 +32,11 @@ function About() {
           whileHover={{ scale: 1.05 }}
         >
           <HeartPulse className="h-10 w-10 mx-auto text-red-500 mb-3" />
-          <h3 className="font-semibold text-lg">Mission</h3>
+          <h3 className="font-semibold text-lg">
+            {texts[language].aboutMissionTitle}
+          </h3>
           <p className="text-gray-600 text-sm mt-2">
-            To make first aid knowledge accessible to everyone instantly in critical situations.
+            {texts[language].aboutMissionDesc}
           </p>
         </motion.div>
 
@@ -44,9 +45,11 @@ function About() {
           whileHover={{ scale: 1.05 }}
         >
           <Users className="h-10 w-10 mx-auto text-red-500 mb-3" />
-          <h3 className="font-semibold text-lg">Why This Project?</h3>
+          <h3 className="font-semibold text-lg">
+            {texts[language].aboutWhyTitle}
+          </h3>
           <p className="text-gray-600 text-sm mt-2">
-            Many people panic in emergencies. AI LifeSaver helps them act calmly with proper guidance.
+            {texts[language].aboutWhyDesc}
           </p>
         </motion.div>
 
@@ -55,9 +58,11 @@ function About() {
           whileHover={{ scale: 1.05 }}
         >
           <Code className="h-10 w-10 mx-auto text-red-500 mb-3" />
-          <h3 className="font-semibold text-lg">Technology</h3>
+          <h3 className="font-semibold text-lg">
+            {texts[language].aboutTechTitle}
+          </h3>
           <p className="text-gray-600 text-sm mt-2">
-            Built with React, TailwindCSS, Vite, Framer Motion, and jsPDF for seamless experience.
+            {texts[language].aboutTechDesc}
           </p>
         </motion.div>
 
@@ -66,9 +71,11 @@ function About() {
           whileHover={{ scale: 1.05 }}
         >
           <Rocket className="h-10 w-10 mx-auto text-red-500 mb-3" />
-          <h3 className="font-semibold text-lg">Future Scope</h3>
+          <h3 className="font-semibold text-lg">
+            {texts[language].aboutFutureTitle}
+          </h3>
           <p className="text-gray-600 text-sm mt-2">
-            AI chatbot, hospital APIs, offline mobile app, and image recognition for first aid.
+            {texts[language].aboutFutureDesc}
           </p>
         </motion.div>
       </div>
@@ -76,9 +83,7 @@ function About() {
       {/* Closing Note */}
       <div className="max-w-2xl mx-auto text-center">
         <p className="text-gray-700 text-md leading-relaxed">
-          AI LifeSaver is not just a project—it’s an initiative to spread awareness 
-          and save lives. Share it with your family and friends so more people 
-          can be prepared in emergencies.
+          {texts[language].aboutClosingNote}
         </p>
       </div>
     </section>

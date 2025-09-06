@@ -1,8 +1,8 @@
 {
   "en": {
     "heroTitle": "AI LifeSaver",
-      "heroTitle1": "AI",
-  "heroTitle2": "LifeSaver",
+    "heroTitle1": "AI",
+    "heroTitle2": "LifeSaver",
     "heroSubtitle": "A bilingual (Urdu & English) AI-powered first aid app. Get Instant, step-by-step help in emergencies, faster than ever",
     "navHome": "Home",
     "navContacts": "Contacts",
@@ -13,6 +13,7 @@
     "languageUrdu": "اردو",
     "getStarted": "Get Started",
     "learnMore": "Learn More",
+
     "contactHeading": "Emergency Contacts",
     "contactSubheading": "Access critical services instantly, whether it's medical help, blood donations, or nearby hospitals. Stay safe and prepared with just a click.",
     "contactEmergencyTitle": "Emergency & Ambulances",
@@ -23,6 +24,7 @@
     "contactBloodTitle": "Blood Banks",
     "contactBloodDesc": "Locate blood donation centers near you quickly.",
     "contactBloodCTA": "Find Blood Banks",
+
     "emergencyTitle": "Emergency First Aid Assistant",
     "emergencyPlaceholder": "Type your emergency (e.g., burn, cut)",
     "emergencySearchBtn": "Search",
@@ -30,12 +32,25 @@
     "emergencyDownloadBtn": "Download PDF",
     "emergencyNoMatch": "No matching first aid guide found.",
     "emergencyPDFHeader": "AI LifeSaver - First Aid",
-  "emergencyHeaderImageAlt": "Emergency Guide Illustration"
+    "emergencyHeaderImageAlt": "Emergency Guide Illustration",
+
+    "aboutHeading": "About AI LifeSaver",
+    "aboutSubheading": "AI LifeSaver is a bilingual (Urdu & English) AI-powered first aid assistant designed to provide instant, step-by-step emergency guidance with text, visuals, and emergency contacts.",
+    "aboutMissionTitle": "Mission",
+    "aboutMissionDesc": "To make first aid knowledge accessible to everyone instantly in critical situations.",
+    "aboutWhyTitle": "Why This Project?",
+    "aboutWhyDesc": "Many people panic in emergencies. AI LifeSaver helps them act calmly with proper guidance.",
+    "aboutTechTitle": "Technology",
+    "aboutTechDesc": "Built with React, TailwindCSS, Vite, Framer Motion, and jsPDF for seamless experience.",
+    "aboutFutureTitle": "Future Scope",
+    "aboutFutureDesc": "AI chatbot, hospital APIs, offline mobile app, and image recognition for first aid.",
+    "aboutClosingNote": "AI LifeSaver is not just a project—it’s an initiative to spread awareness and save lives. Share it with your family and friends so more people can be prepared in emergencies."
   },
+
   "ur": {
     "heroTitle": "اے آئی لائف سیور",
-     "heroTitle1": "اے آئی",
-  "heroTitle2": "لائف سیور",
+    "heroTitle1": "اے آئی",
+    "heroTitle2": "لائف سیور",
     "heroSubtitle": "اے سے چلنے  چلنے والی اردو و انگریزی فرسٹ ایڈ ایپ۔ ایمرجنسی میں فوری اور آسان  مرحلہ وار مدد حاصل کریں۔",
     "navHome": "ہوم",
     "navContacts": "رابطہ کریں",
@@ -46,6 +61,7 @@
     "languageUrdu": "اردو",
     "getStarted": "شروع کریں",
     "learnMore": "مزید جانیں",
+
     "contactHeading": "ایمرجنسی رابطے",
     "contactSubheading": "اہم خدمات تک فوری رسائی حاصل کریں، چاہے یہ طبی امداد، خون کی عطیات، یا قریب ترین ہسپتال ہوں۔ صرف ایک کلک سے محفوظ اور تیار رہیں۔",
     "contactEmergencyTitle": "ایمرجنسی اور ایمبولینسز",
@@ -56,6 +72,7 @@
     "contactBloodTitle": "بلڈ بینک",
     "contactBloodDesc": "قریبی خون عطیہ مراکز جلدی تلاش کریں۔",
     "contactBloodCTA": "بلڈ بینک تلاش کریں",
+
     "emergencyTitle": "ایمرجنسی فرسٹ ایڈ اسسٹنٹ",
     "emergencyPlaceholder": "ایمرجنسی لکھیں (مثلاً جلنا، کٹنا)",
     "emergencySearchBtn": "تلاش کریں",
@@ -64,11 +81,17 @@
     "emergencyNoMatch": "کوئی میچنگ فرسٹ ایڈ گائیڈ نہیں ملا۔",
     "emergencyPDFHeader": "اے آئی لائف سیور - فرسٹ ایڈ",
     "emergencyHeaderImageAlt": "ایمرجنسی گائیڈ تصویر",
-    "footerAppNamePart1": "اے آئی",
-    "footerAppNamePart2": "لائف سیور",
-    "footerTagline": "آپ کا AI ایمرجنسی ساتھی",
-    "footerCopyright": "© {year} اے آئی لائف سیور۔ جملہ حقوق محفوظ ہیں۔"
+
+    "aboutHeading": "اے آئی لائف سیور کے بارے میں",
+    "aboutSubheading": "اے آئی لائف سیور ایک دو لسانی (اردو اور انگریزی) اے آئی پر مبنی فرسٹ ایڈ اسسٹنٹ ہے جو فوری، مرحلہ وار ایمرجنسی رہنمائی فراہم کرتا ہے۔",
+    "aboutMissionTitle": "مشن",
+    "aboutMissionDesc": "ایمرجنسی کی صورتحال میں فوری طور پر سب کے لیے فرسٹ ایڈ کا علم قابلِ رسائی بنانا۔",
+    "aboutWhyTitle": "یہ منصوبہ کیوں؟",
+    "aboutWhyDesc": "زیادہ تر لوگ ایمرجنسی میں گھبرا جاتے ہیں۔ اے آئی لائف سیور انہیں پرسکون رہنے اور درست رہنمائی کے ساتھ عمل کرنے میں مدد دیتا ہے۔",
+    "aboutTechTitle": "ٹیکنالوجی",
+    "aboutTechDesc": "React، TailwindCSS، Vite، Framer Motion اور jsPDF کے ساتھ بنایا گیا۔",
+    "aboutFutureTitle": "مستقبل کا دائرہ",
+    "aboutFutureDesc": "اے آئی چیٹ بوٹ، ہسپتال API انضمام، آف لائن موبائل ایپ اور فرسٹ ایڈ کے لیے امیج ریکگنیشن۔",
+    "aboutClosingNote": "اے آئی لائف سیور صرف ایک منصوبہ نہیں بلکہ ایک مہم ہے تاکہ آگاہی پھیلائی جائے اور زندگیاں بچائی جائیں۔ اسے اپنے خاندان اور دوستوں کے ساتھ شیئر کریں تاکہ زیادہ لوگ ایمرجنسی میں تیار رہ سکیں۔"
   }
 }
-
-
