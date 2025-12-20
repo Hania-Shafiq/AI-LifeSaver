@@ -2,6 +2,7 @@
 
 **AI LifeSaver** is a bilingual (English/Urdu) web app that provides **fast, clear, and accessible first aid guidance** during emergencies.  
 It’s designed to guide users through the **critical first few minutes** before medical help arrives.  
+<img width="1900" height="882" alt="image" src="https://github.com/user-attachments/assets/fd424551-b5dc-4977-81b4-3dfc57664752" />
 
 ---
 
