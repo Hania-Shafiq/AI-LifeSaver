@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "strict": false,
+    "lib": ["ES2022", "DOM"],
+    "types": []
+  },
+  "include": ["./**/*.ts"]
+}

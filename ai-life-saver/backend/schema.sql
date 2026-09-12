@@ -20,6 +20,7 @@ ALTER TABLE public.conditions ENABLE ROW LEVEL SECURITY;
 
 -- Allow anonymous (unauthenticated) reads – required for the
 -- frontend Supabase client (anon key) to SELECT all rows.
+DROP POLICY IF EXISTS "Allow public read access" ON public.conditions;
 CREATE POLICY "Allow public read access"
   ON public.conditions
   FOR SELECT
@@ -27,6 +28,7 @@ CREATE POLICY "Allow public read access"
   USING (true);
 
 -- Optionally allow authenticated users to read too
+DROP POLICY IF EXISTS "Allow authenticated read access" ON public.conditions;
 CREATE POLICY "Allow authenticated read access"
   ON public.conditions
   FOR SELECT
