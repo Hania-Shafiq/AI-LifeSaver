@@ -49,9 +49,7 @@ export default function Footer({ language }) {
 }
 
 // Optional: Bilingual-safe Footer Link
-export function FooterLink({ to, label, icon, language }) {
-  const lang = texts[language] ? language : "en";
-
+export function FooterLink({ to, label, icon }) {
   return (
     <motion.div whileHover={{ y: -2 }} className="relative group">
       <Link
