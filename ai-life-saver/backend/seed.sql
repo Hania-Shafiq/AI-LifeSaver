@@ -671,7 +671,7 @@ VALUES
     'Clean Minor Cut: Once bleeding slows, gently wash the cut under clean, cool running water to remove dirt. Pat dry with a clean cloth.',
     'Protect & Dress: Apply an antibacterial ointment if available and cover the cut with a sterile bandage or plaster.',
     'What NOT to do: Do NOT apply toothpaste, turmeric, coffee powder, or unverified remedies. Do NOT pull out deeply embedded glass or objects.',
-    'Emergency Red Flags: Seek urgent medical care or call 1122 if bleeding is spurting or won't stop after 10 minutes of pressure, the cut is gaping/deep, causes numbness/loss of sensation, or affects hand/finger movement.'
+    'Emergency Red Flags: Seek urgent medical care or call 1122 if bleeding is spurting or will not stop after 10 minutes of pressure, the cut is gaping/deep, causes numbness/loss of sensation, or affects hand/finger movement.'
   ],
   ARRAY[
     'مسلسل دباؤ ڈالیں: صاف کپڑے، جراثیم سے پاک گوز یا ہاتھ سے کٹے ہوئے حصے پر 5 سے 10 منٹ تک مسلسل دباؤ ڈالیں اور بار بار اٹھا کر نہ دیکھیں۔',
