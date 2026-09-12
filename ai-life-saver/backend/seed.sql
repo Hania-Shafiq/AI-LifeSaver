@@ -634,6 +634,98 @@ VALUES
     'اگر موٹر سائیکل حادثہ ہو تو ہیلمٹ نہ اتاریں۔',
     'اگر آلات دستیاب ہوں تو بی پی، آکسیجن اور شوگر چیک کریں۔'
   ]
+),
+
+-- 26. High Blood Pressure
+(
+  'high_blood_pressure',
+  'High Blood Pressure',
+  'ہائی بلڈ پریشر',
+  ARRAY['high blood pressure','high bp','hypertension','bp high','blood pressure high','high bloodpressure','blood pressure','bp','ہائی بی پی','بلڈ پریشر','ہائی بلڈ پریشر','بلڈ پریشر ہائی'],
+  'high',
+  ARRAY[
+    'Immediate Action: Have the person sit quietly in a calm, upright position. Rest for 5-10 minutes without talking before taking a BP reading.',
+    'Check BP Reading: If a blood pressure monitor is available, take a reading. Note that high BP often has no obvious symptoms.',
+    'What NOT to do: Do NOT give unprescribed medications, do not double prescription doses, and avoid tea, coffee, smoking, or salty food.',
+    'Emergency Red Flags: If BP is 180/120 mmHg or higher, OR accompanied by chest pain, severe headache, shortness of breath, blurry vision, numbness, or difficulty speaking, call 1122 immediately.',
+    'Medical Follow-up: If BP remains consistently elevated above 140/90 mmHg or the person feels unwell, seek urgent medical evaluation at a nearby clinic or hospital.'
+  ],
+  ARRAY[
+    'فوری عمل: مریض کو پرسکون اور سیدھی حالت میں بٹھائیں۔ بی پی چیک کرنے سے پہلے 5 سے 10 منٹ بغیر بولے آرام کرنے دیں۔',
+    'بی پی ریڈنگ چیک کریں: اگر بلڈ پریشر اپریٹس دستیاب ہے تو بی پی چیک کریں۔ واضح رہے کہ ہائی بی پی کی اکثر کوئی ظاہری علامات نہیں ہوتیں۔',
+    'کیا نہیں کرنا: خود سے کوئی غیر تجویز شدہ دوا یا اضافی خوراک نہ دیں۔ چائے، کافی، سگریٹ اور نمکین کھانوں سے پرہیز کروائیں۔',
+    'خطرناک علامات: اگر بی پی 180/120 یا اس سے زیادہ ہو، یا سینے میں درد، شدید سر درد، سانس پھولنا، دھندلا نظر آنا یا بولنے میں دشواری ہو تو فوراً 1122 پر کال کریں۔',
+    'طبی معائنہ: اگر بی پی مسلسل 140/90 سے زیادہ رہے یا مریض طبیعت میں خرابی محسوس کرے تو فوری قریبی ہسپتال یا کلینک سے رجوع کریں۔'
+  ]
+),
+
+-- 27. Cut / Hand Cut Injury
+(
+  'cut_injury',
+  'Cut / Hand Cut Injury',
+  'کٹ / ہاتھ کا کٹ جانا',
+  ARRAY['cut','hand cut','finger cut','cut injury','skin cut','deep cut','minor cut','palm cut','laceration','wound','کٹ','ہاتھ کٹ گیا','انگلی کٹ گئی','کٹ جانا','زخم'],
+  'medium to high',
+  ARRAY[
+    'Apply Direct Pressure: Use a clean cloth, sterile gauze, or your hand to press firmly and continuously directly over the cut for 5-10 minutes without lifting.',
+    'Clean Minor Cut: Once bleeding slows, gently wash the cut under clean, cool running water to remove dirt. Pat dry with a clean cloth.',
+    'Protect & Dress: Apply an antibacterial ointment if available and cover the cut with a sterile bandage or plaster.',
+    'What NOT to do: Do NOT apply toothpaste, turmeric, coffee powder, or unverified remedies. Do NOT pull out deeply embedded glass or objects.',
+    'Emergency Red Flags: Seek urgent medical care or call 1122 if bleeding is spurting or won't stop after 10 minutes of pressure, the cut is gaping/deep, causes numbness/loss of sensation, or affects hand/finger movement.'
+  ],
+  ARRAY[
+    'مسلسل دباؤ ڈالیں: صاف کپڑے، جراثیم سے پاک گوز یا ہاتھ سے کٹے ہوئے حصے پر 5 سے 10 منٹ تک مسلسل دباؤ ڈالیں اور بار بار اٹھا کر نہ دیکھیں۔',
+    'زخم کو دھوئیں: خون رکنے کے بعد صاف ٹھنڈے پانی سے زخم کو ہلکا سا دھوئیں تاکہ مٹی صاف ہو۔ صاف کپڑے سے خشک کریں۔',
+    'پٹی لگائیں: جراثیم سے پاک پٹی یا بینڈ ایڈ لگا کر زخم کو ڈھانپ دیں۔',
+    'کیا نہیں کرنا: ٹوتھ پیسٹ، ہلدی، مٹی یا پاؤڈر ہرگز نہ لگائیں۔ اگر شیشہ یا کوئی چیز زخم کے اندر پھنسی ہو تو اسے خود مت نکالیں۔',
+    'خطرناک علامات: اگر خون فوارے کی طرح نکلے، 10 منٹ دباؤ کے بعد بھی نہ رکے، کٹ بہت گہرا ہو، ہاتھ یا انگلیاں سن ہو جائیں یا حرکت نہ کریں تو فوراً 1122 یا ہسپتال جائیں۔'
+  ]
+),
+
+-- 28. General Injury
+(
+  'general_injury',
+  'General Injury',
+  'عمومی چوٹ اور زخم',
+  ARRAY['injury','general injury','injured','body injury','hurt','trauma','physical injury','accident injury','چوٹ','زخمی','زخم','چوٹ لگنا','تکلیف'],
+  'medium to high',
+  ARRAY[
+    'Initial Safety & Assessment: Ensure the scene is safe. Check if the injured person is conscious, breathing normally, and responsive.',
+    'Control Bleeding & Support: Apply firm pressure with a clean cloth to any bleeding wounds. If a broken bone is suspected, support the limb without moving it.',
+    'Rest & Cold Compress: For bumps, sprains, or bruises, have them rest comfortably and apply an ice pack wrapped in a cloth for 15 minutes.',
+    'What NOT to do: Do NOT move an injured person if neck, back, or spinal injury is suspected. Do NOT apply direct heat to fresh injuries.',
+    'Emergency Red Flags: Call 1122 immediately if there is head injury with loss of consciousness or vomiting, severe pain, inability to move, or suspected internal injury.'
+  ],
+  ARRAY[
+    'حفاظت اور ابتدائی معائنہ: ماحول کی حفاظت یقینی بنائیں۔ چیک کریں کہ مریض ہوش میں ہے، سانس لے رہا ہے اور جواب دے رہا ہے۔',
+    'خون روکیں اور سہارا دیں: اگر خون بہہ رہا ہے تو صاف کپڑے سے دبائیں۔ اگر ہڈی ٹوٹنے کا شبہ ہو تو متاثرہ حصے کو ہلائے بغیر سہارا دیں۔',
+    'آرام اور ٹھنڈی ٹکور: موچ یا چوٹ کی صورت میں مریض کو آرام کروائیں اور کپڑے میں لپٹی برف 15 منٹ لگائیں۔',
+    'کیا نہیں کرنا: اگر گردن، کمر یا ریڑھ کی ہڈی کی چوٹ کا شبہ ہو تو مریض کو مت ہلائیں۔ تازہ چوٹ پر گرم ٹکور نہ کریں۔',
+    'خطرناک علامات: اگر سر پر چوٹ کے بعد بے ہوشی، الٹی آئے، شدید درد ہو، یا اندرونی چوٹ کا شبہ ہو تو فوراً 1122 پر کال کریں۔'
+  ]
+),
+
+-- 29. Fast Heartbeat
+(
+  'fast_heartbeat',
+  'Fast Heartbeat / Palpitations',
+  'تیز دھڑکن / دل گھبرانا',
+  ARRAY['fast heartbeat','fast heart beat','heart racing','heart is beating fast','racing heart','rapid heartbeat','heart pounding','palpitations','tachycardia','rapid pulse','تیز دھڑکن','دل کی دھڑکن تیز','دل تیز دھڑکنا','دل کی تیز دھڑکن','دل گھبرانا','دھڑکن'],
+  'high',
+  ARRAY[
+    'Sit Down & Rest: Have the person immediately sit or lie down in a comfortable position in a cool, quiet room. Loosen tight collar or clothing.',
+    'Deep Breathing & Calming: Practice slow, controlled breathing (breathe in through nose for 4 seconds, hold 2 seconds, exhale through mouth for 6 seconds).',
+    'Safe Vagal Maneuvers & Hydration: Offer small sips of cool water. Gently splashing cold water on the face or coughing can help stimulate the vagus nerve to slow heart rate.',
+    'What NOT to do: Do NOT drink coffee, tea, energy drinks, or smoke. Do NOT take unprescribed cardiac medications or stress the body.',
+    'Emergency Red Flags: Call 1122 immediately if fast heartbeat is accompanied by chest pain or pressure, severe shortness of breath, dizziness, lightheadedness, or fainting.'
+  ],
+  ARRAY[
+    'بیٹھ جائیں اور آرام کریں: مریض کو فوراً پرسکون، ٹھنڈی جگہ پر آرام دہ پوزیشن میں بٹھا یا لٹا دیں۔ گلے اور سینے کے تنگ کپڑے ڈھیلے کریں۔',
+    'گہرے اور آہستہ سانس لیں: مریض کو گہرے اور لمبے سانس لینے کو کہیں۔ (4 سیکنڈ سانس اندر کھینچیں اور 6 سیکنڈ میں آہستہ باہر نکالیں)۔',
+    'ٹھنڈا پانی اور تدابیر: مریض کو گھونٹ گھونٹ ٹھنڈا پانی پلائیں۔ چہرے پر ٹھنڈے پانی کے چھینٹے مارنا یا کھانسنا دل کی رفتار کم کرنے میں مدد دیتا ہے۔',
+    'کیا نہیں کرنا: چائے، کافی، کولڈ ڈرنکس اور سگریٹ سے پرہیز کریں۔ کوئی بھی غیر تجویز شدہ دوا مت دیں۔',
+    'خطرناک علامات: اگر تیز دھڑکن کے ساتھ سینے میں درد یا دباؤ، سانس لینے میں شدید دشواری، چکر یا بے ہوشی محسوس ہو تو فوراً 1122 بلائیں۔'
+  ]
 )
 
 ON CONFLICT (id) DO UPDATE SET

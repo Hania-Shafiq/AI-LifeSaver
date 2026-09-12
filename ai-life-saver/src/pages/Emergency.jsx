@@ -118,21 +118,68 @@ export default function Emergency({ language }) {
   }, []);
 
   // -------------------------------------------------------------------------
-  // 3. HANDLE SEARCH – identical synonym-matching logic, now against the cache
+  // 3. HANDLE SEARCH – smart intent matching & synonym normalization
   // -------------------------------------------------------------------------
   const handleSearch = (query = null) => {
     window.speechSynthesis.cancel();
 
     if (!conditionsCache) return; // Still loading
 
-    const key = (query || input).toLowerCase().trim();
+    const raw = (query || input).toLowerCase().trim();
+    if (!raw) return;
+
+    const normalized = raw.replace(/[^\w\s\u0600-\u06FF]/g, " ").replace(/\s+/g, " ").trim();
     let foundCondition = null;
 
+    // 1. Exact synonym match
     for (const condition of conditionsCache) {
       const syns = condition.synonyms ?? [];
-      if (syns.some((syn) => syn.toLowerCase() === key)) {
+      if (syns.some((syn) => syn.toLowerCase() === raw || syn.toLowerCase() === normalized)) {
         foundCondition = condition;
         break;
+      }
+    }
+
+    // 2. Specialized intent mappings for common variations
+    if (!foundCondition) {
+      const intentMap = [
+        {
+          id: "high_blood_pressure",
+          patterns: [/high\s*bp/i, /high\s*blood\s*pressure/i, /hypertension/i, /blood\s*pressure\s*high/i, /bp\s*high/i, /ہائی\s*بی\s*پی/, /بلڈ\s*پریشر/]
+        },
+        {
+          id: "cut_injury",
+          patterns: [/hand\s*cut/i, /finger\s*cut/i, /palm\s*cut/i, /\bcut\b/i, /deep\s*cut/i, /minor\s*cut/i, /skin\s*cut/i, /کٹ/, /ہاتھ.*کٹ/]
+        },
+        {
+          id: "general_injury",
+          patterns: [/general\s*injury/i, /\binjur(y|ed)\b/i, /\bhurt\b/i, /\btrauma\b/i, /\bwound\b/i, /چوٹ/, /زخمی/]
+        },
+        {
+          id: "fast_heartbeat",
+          patterns: [/fast\s*heart\s*beat/i, /fast\s*heartbeat/i, /heart\s*racing/i, /racing\s*heart/i, /heart.*beating\s*fast/i, /rapid\s*heart/i, /heart\s*pounding/i, /palpitation/i, /tachycardia/i, /تیز\s*دھڑکن/, /دل.*تیز/]
+        }
+      ];
+
+      for (const { id, patterns } of intentMap) {
+        if (patterns.some((p) => p.test(raw) || p.test(normalized))) {
+          foundCondition = conditionsCache.find((c) => c.id === id);
+          if (foundCondition) break;
+        }
+      }
+    }
+
+    // 3. Partial / substring match
+    if (!foundCondition) {
+      for (const condition of conditionsCache) {
+        const syns = condition.synonyms ?? [];
+        if (syns.some((s) => {
+          const sLower = s.toLowerCase();
+          return (sLower.length > 3 && raw.includes(sLower)) || (raw.length > 3 && sLower.includes(raw));
+        })) {
+          foundCondition = condition;
+          break;
+        }
       }
     }
 
