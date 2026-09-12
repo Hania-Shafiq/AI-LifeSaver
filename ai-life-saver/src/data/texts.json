@@ -97,11 +97,25 @@
   "aiChat": {
     "en": {
       "aiChatTitle": "AI Chatbot",
-      "aiChatComingSoon": "Coming soon!"
+      "aiChatComingSoon": "Coming soon!",
+      "aiChatWelcome": "Ask a first-aid question (e.g. burns, choking, bleeding). I only answer first-aid topics.",
+      "aiChatPlaceholder": "Describe the emergency…",
+      "aiChatSend": "Send",
+      "aiChatTyping": "Typing…",
+      "aiChatError": "Could not reach the assistant. Please try again.",
+      "aiChatEmptyReply": "No response received. Please try again.",
+      "aiChatNotConfigured": "Supabase is not configured. Check your environment variables."
     },
     "ur": {
       "aiChatTitle": "AI چیٹ بوٹ",
-      "aiChatComingSoon": "جلد آ رہا ہے!"
+      "aiChatComingSoon": "جلد آ رہا ہے!",
+      "aiChatWelcome": "فرسٹ ایڈ کا سوال پوچھیں (جیسے جلن، دم گھٹنا، خون بہنا)۔ میں صرف فرسٹ ایڈ کے موضوعات پر جواب دیتا ہوں۔",
+      "aiChatPlaceholder": "ایمرجنسی بیان کریں…",
+      "aiChatSend": "بھیجیں",
+      "aiChatTyping": "لکھ رہا ہے…",
+      "aiChatError": "اسسٹنٹ تک رسائی نہیں ہو سکی۔ دوبارہ کوشش کریں۔",
+      "aiChatEmptyReply": "کوئی جواب نہیں ملا۔ دوبارہ کوشش کریں۔",
+      "aiChatNotConfigured": "Supabase ترتیب نہیں ہے۔ ماحول متغیرات چیک کریں۔"
     }
   }
 }

@@ -1,0 +1,7 @@
+# AI LifeSaver – Supabase project config
+# Project: https://wcnwwwsmjcazopltdpbj.supabase.co
+
+project_id = "wcnwwwsmjcazopltdpbj"
+
+[functions.ai-first-aid]
+verify_jwt = true
