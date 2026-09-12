@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import texts from "../data/texts.json";
 import supabase from "../lib/supabaseClient";
 
@@ -262,7 +263,48 @@ export default function AiChat({ language }) {
                   wordBreak: "break-word",
                 }}
               >
-                {m.content || (loading && m.role === "assistant" ? "…" : "")}
+                {m.role === "assistant" ? (
+                  m.content ? (
+                    <span style={{ whiteSpace: "normal", display: "block" }}>
+                      <ReactMarkdown
+                        components={{
+                          p: ({ children }) => (
+                            <p style={{ margin: "0 0 0.5em" }}>{children}</p>
+                          ),
+                          ol: ({ children }) => (
+                            <ol
+                              style={{
+                                margin: "0.35em 0",
+                                paddingLeft: "1.25em",
+                              }}
+                            >
+                              {children}
+                            </ol>
+                          ),
+                          ul: ({ children }) => (
+                            <ul
+                              style={{
+                                margin: "0.35em 0",
+                                paddingLeft: "1.25em",
+                              }}
+                            >
+                              {children}
+                            </ul>
+                          ),
+                          li: ({ children }) => (
+                            <li style={{ margin: "0.2em 0" }}>{children}</li>
+                          ),
+                        }}
+                      >
+                        {m.content}
+                      </ReactMarkdown>
+                    </span>
+                  ) : (
+                    loading ? "…" : ""
+                  )
+                ) : (
+                  m.content
+                )}
               </div>
             ))}
 

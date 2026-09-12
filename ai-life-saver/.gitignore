@@ -31,3 +31,5 @@ dist-ssr
 # Backend (Supabase)
 backend/.branches
 backend/.temp
+supabase/.branches
+supabase/.temp
