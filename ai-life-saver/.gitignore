@@ -28,6 +28,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-# Supabase
-.branches
-.temp
+# Backend (Supabase)
+backend/.branches
+backend/.temp

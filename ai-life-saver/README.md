@@ -1,12 +1,54 @@
-# React + Vite
+# AI LifeSaver
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A bilingual (Urdu & English) AI-powered first aid app built with React + Vite.  
+Get instant, step-by-step emergency guidance — including voice input/output, PDF export, and an AI chat assistant.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+ai-life-saver/
+├── .env                   # Local env vars (never commit) — see .env.example
+├── .env.example           # Template for required env vars
+├── index.html             # Vite entry HTML
+├── vite.config.js         # Vite build config
+├── tailwind.config.js     # Tailwind CSS config
+├── package.json
+│
+├── src/                   # ── FRONTEND (React / Vite) ──────────────────────
+│   ├── main.jsx           # React entry point
+│   ├── App.jsx            # Router + language state
+│   ├── index.css          # Global styles
+│   ├── assets/            # Images and static assets
+│   ├── components/        # Shared UI components (Navbar, Footer, AiChat…)
+│   ├── data/              # Static JSON data (firstAid.json, texts.json)
+│   ├── hooks/             # Custom React hooks
+│   ├── lib/               # supabaseClient.js
+│   ├── pages/             # Route-level pages (Home, Emergency, Contacts, About)
+│   └── utils/             # speechUtils.js
+│
+└── backend/               # ── BACKEND (Supabase) ───────────────────────────
+    ├── README.md          # Backend setup + Supabase CLI usage notes
+    ├── config.toml        # Supabase project config
+    ├── schema.sql         # Database schema + RLS policies
+    ├── seed.sql           # Seed data (first-aid conditions EN + UR)
+    └── functions/
+        └── ai-first-aid/  # Supabase Edge Function (Gemini API proxy)
+```
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Copy and fill in environment variables
+cp .env.example .env
+
+# 3. Start the dev server
+npm run dev
+```
+
+## Backend / Supabase
+
+See [`backend/README.md`](./backend/README.md) for database setup and Edge Function deployment instructions.
+
