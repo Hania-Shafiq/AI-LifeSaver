@@ -17,7 +17,8 @@
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
-const DISCLAIMER = "For emergency contact call 1122.";
+const DISCLAIMER =
+  "For any emergency, please call 1122 immediately.\nStay safe and take care.";
 
 const CORS_HEADERS: Record<string, string> = {
   "Access-Control-Allow-Origin": "*",
