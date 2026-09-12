@@ -1,54 +1,92 @@
-# AI LifeSaver
+﻿# 🩺 AI LifeSaver – Frontend & Backend Overview
 
-A bilingual (Urdu & English) AI-powered first aid app built with React + Vite.  
-Get instant, step-by-step emergency guidance — including voice input/output, PDF export, and an AI chat assistant.
+A bilingual (**English / اردو**) emergency first-aid web platform built with **React 19**, **Vite 7**, **Tailwind CSS v4**, and **Supabase**. Integrated with **Groq API** and **Google Gemini** for high-speed first-aid conversational assistance, voice input/output, interactive hospital mapping, and offline resilience.
 
-## Project Structure
+---
 
-```
+## 📂 Project Structure
+
+`
 ai-life-saver/
-├── .env                   # Local env vars (never commit) — see .env.example
-├── .env.example           # Template for required env vars
-├── index.html             # Vite entry HTML
-├── vite.config.js         # Vite build config
-├── tailwind.config.js     # Tailwind CSS config
-├── package.json
+├── .env.example               # Template for required environment variables
+├── .env.local                 # Local Supabase credentials (gitignored)
+├── index.html                 # Main HTML entry point
+├── package.json               # Frontend dependencies & scripts
+├── vite.config.js             # Vite build configuration
+├── tailwind.config.js         # Tailwind CSS styling configuration
 │
-├── src/                   # ── FRONTEND (React / Vite) ──────────────────────
-│   ├── main.jsx           # React entry point
-│   ├── App.jsx            # Router + language state
-│   ├── index.css          # Global styles
-│   ├── assets/            # Images and static assets
-│   ├── components/        # Shared UI components (Navbar, Footer, AiChat…)
-│   ├── data/              # Static JSON data (firstAid.json, texts.json)
-│   ├── hooks/             # Custom React hooks
-│   ├── lib/               # supabaseClient.js
-│   ├── pages/             # Route-level pages (Home, Emergency, Contacts, About)
-│   └── utils/             # speechUtils.js
+├── src/                       # ── FRONTEND (React 19 / Vite) ──────────────────────
+│   ├── main.jsx               # React entry point
+│   ├── App.jsx                # Router & bilingual language state management
+│   ├── index.css              # Global styles & Tailwind directives
+│   ├── assets/                # Visual assets, illustrations & icons
+│   ├── components/            # Reusable UI components
+│   │   ├── AiChat.jsx         # AI First-Aid Assistant widget
+│   │   ├── Navbar.jsx         # Navigation bar with language toggle
+│   │   ├── Footer.jsx         # Footer with helpline numbers
+│   │   ├── LanguageToggle.jsx # English / Urdu switch
+│   │   └── ResultCard.jsx     # Card rendering first-aid steps & risk levels
+│   ├── data/                  # Static & fallback datasets
+│   │   ├── firstAid.json      # Offline first-aid procedures & guidelines
+│   │   └── texts.json         # Localization strings (EN & UR)
+│   ├── hooks/                 # Custom React hooks
+│   ├── lib/                   # Supabase client (supabaseClient.js)
+│   ├── pages/                 # Main route pages
+│   │   ├── Home.jsx           # Emergency search, quick categories & voice input
+│   │   ├── Emergency.jsx      # Step-by-step guidance, audio TTS & PDF export
+│   │   ├── Contacts.jsx       # Interactive hospital/blood bank map & 1122 dialer
+│   │   └── About.jsx          # About mission & emergency safety guidelines
+│   └── utils/                 # Utilities (speech recognition/TTS, PDF exporter)
 │
-└── backend/               # ── BACKEND (Supabase) ───────────────────────────
-    ├── README.md          # Backend setup + Supabase CLI usage notes
-    ├── config.toml        # Supabase project config
-    ├── schema.sql         # Database schema + RLS policies
-    ├── seed.sql           # Seed data (first-aid conditions EN + UR)
-    └── functions/
-        └── ai-first-aid/  # Supabase Edge Function (Gemini API proxy)
-```
+└── backend/                   # ── BACKEND (Supabase) ───────────────────────────
+    ├── README.md              # Backend setup, database schema & CLI guide
+    ├── config.toml            # Supabase CLI project configuration
+    ├── schema.sql             # PostgreSQL schema, conditions table & RLS policies
+    ├── seed.sql               # Seed dataset of first-aid procedures (EN + UR)
+    └── functions/             # Supabase Edge Functions (Deno / TypeScript)
+        └── ai-first-aid/      # AI First-Aid Edge Function (Groq/Gemini LLM integration)
+`
 
-## Getting Started
+---
 
-```bash
-# 1. Install dependencies
+## 🚀 Getting Started
+
+### 1. Install Dependencies
+`ash
 npm install
+`
 
-# 2. Copy and fill in environment variables
-cp .env.example .env
+### 2. Configure Environment Variables
+Copy the template file to .env.local:
+`ash
+cp .env.example .env.local
+`
 
-# 3. Start the dev server
+Set your Supabase credentials in .env.local:
+`env
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key-here
+`
+
+### 3. Start Development Server
+`ash
 npm run dev
-```
+`
 
-## Backend / Supabase
+The application will be available at http://localhost:5173.
 
-See [`backend/README.md`](./backend/README.md) for database setup and Edge Function deployment instructions.
+---
 
+## 🛠️ Key Technologies & Features
+
+- **AI Inference (Groq / Gemini)**: Ultra-fast emergency assistance with medical safety guardrails deployed on Supabase Edge Functions.
+- **Multimodal Search**: Voice-driven input (Web Speech API) + instant keyword matching in English, Urdu, and Roman Urdu.
+- **Hands-Free Audio Steps**: Step-by-step Text-to-Speech (TTS) narration.
+- **Interactive Mapping**: Hospital, emergency center, and blood bank locator using Leaflet.
+- **Offline Readiness**: Downloadable PDF emergency guides (jsPDF) and local JSON fallback when offline.
+
+---
+
+## 🗄️ Backend Deployment & Management
+
+For instructions on database migration, seed data, and deploying the Edge Function with Groq/Gemini API keys, check out [ackend/README.md](./backend/README.md).
