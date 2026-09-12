@@ -1,0 +1,645 @@
+-- ============================================================
+-- AI LifeSaver – seed data for the conditions table
+-- Run this AFTER schema.sql in the Supabase SQL Editor.
+-- Uses ON CONFLICT ... DO UPDATE so it is safe to re-run.
+-- ============================================================
+
+INSERT INTO public.conditions (id, name_en, name_ur, synonyms, risk_level, steps_en, steps_ur)
+VALUES
+
+-- 1. Fainting
+(
+  'fainting',
+  'Fainting',
+  'بیہوشی',
+  ARRAY['fainting','faint','behosh','behoshi','unconscious','بیہوش','بیہوشی'],
+  'medium to high',
+  ARRAY[
+    'Lay them flat on their back and elevate legs above heart level.',
+    'Check breathing and pulse. If absent, call ambulance and start CPR.',
+    'Loosen tight clothes for easier breathing.',
+    'If diabetic and sugar is low: give sugar water, juice, or dextrose injection if available.',
+    'If due to panic attack: reassure, slow breathing, move to quiet place.',
+    'If shivering due to fever: cover with blanket, check temperature, call doctor if severe.',
+    'If stroke history and missed medicine: call ambulance immediately.',
+    'If hepatitis history with stomach swelling/fever: call ambulance immediately.',
+    'If due to fits (seizure): protect from injury, place on side after seizure stops.',
+    'If sodium/electrolyte imbalance suspected: give ORS or salt-sugar water if conscious.',
+    'If equipment available: check BP, blood sugar, oxygen level.',
+    'Stay until recovery. If no response within 1 minute, call ambulance.'
+  ],
+  ARRAY[
+    'مریض کو سیدھا لٹا دیں اور ٹانگیں دل کی سطح سے بلند کریں۔',
+    'سانس اور نبض چیک کریں۔ اگر بند ہو تو فوراً ایمبولینس بلائیں اور سی پی آر شروع کریں۔',
+    'تنگ کپڑے کھول دیں تاکہ سانس لینے میں آسانی ہو۔',
+    'اگر مریض شوگر کا ہے اور شوگر کم ہے تو پانی میں چینی ڈال کر پلائیں، جوس دیں یا ڈیکسٹروز انجکشن لگائیں۔',
+    'اگر گھبراہٹ (پینک اٹیک) کی وجہ سے ہے تو مریض کو تسلی دیں، آہستہ سانس لینے کو کہیں اور پرسکون جگہ پر لے جائیں۔',
+    'اگر بخار کی وجہ سے کپکپی ہو رہی ہے تو کمبل اوڑھائیں، درجہ حرارت چیک کریں اور ڈاکٹر کو دکھائیں۔',
+    'اگر مریض فالج کا مریض ہے اور دوا نہیں لی تو فوراً ایمبولینس بلائیں۔',
+    'اگر ہیپاٹائٹس کی ہسٹری ہے اور پیٹ سوجا ہے یا بخار ہے تو فوراً ایمبولینس بلائیں۔',
+    'اگر دورے کی وجہ سے بیہوشی ہے تو مریض کو بچائیں، اور دورہ ختم ہونے پر پہلو کے بل لٹا دیں۔',
+    'اگر سوڈیم یا الیکٹرولائٹ کی کمی ہے تو مریض کو او آر ایس یا نمکین-میٹھا پانی دیں (اگر ہوش میں ہے)۔',
+    'اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔',
+    'مریض کے ساتھ رہیں۔ اگر ایک منٹ میں ہوش نہ آئے تو فوراً ایمبولینس بلائیں۔'
+  ]
+),
+
+-- 2. Cardiac Arrest
+(
+  'cardiac_arrest',
+  'Cardiac Arrest / Heart Attack',
+  'دل کا دورہ',
+  ARRAY['cardiac arrest','cardaic','heart pain','heart attack','دل میں درد','دل کا دورہ'],
+  'high',
+  ARRAY[
+    'If sudden collapse: check responsiveness, call ambulance, and start CPR immediately.',
+    'If chest pain but still conscious: give Disprin and Polidogar tablet, and rush to hospital immediately.',
+    'If attack occurs during sleep: wake and check breathing. If absent, start CPR and call ambulance.',
+    'Use AED if available.',
+    'If equipment available: check BP, blood sugar, oxygen level.',
+    'Do not leave patient alone until ambulance arrives.'
+  ],
+  ARRAY[
+    'اگر مریض اچانک گر جائے تو ہوش دیکھیں، فوراً ایمبولینس بلائیں اور سی پی آر شروع کریں۔',
+    'اگر مریض کو سینے میں درد ہے مگر ہوش میں ہے تو ڈسپرین اور پولی ڈوگر گولی دیں اور فوراً اسپتال لے جائیں۔',
+    'اگر سوتے ہوئے حملہ ہو تو جگائیں اور سانس چیک کریں۔ اگر سانس بند ہے تو فوراً سی پی آر شروع کریں اور ایمبولینس بلائیں۔',
+    'اگر AED مشین دستیاب ہے تو استعمال کریں۔',
+    'اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔',
+    'ایمبولینس آنے تک مریض کو اکیلا نہ چھوڑیں۔'
+  ]
+),
+
+-- 3. Poisoning
+(
+  'poisoning',
+  'Poisoning',
+  'زہر',
+  ARRAY['poisoning','poison','zehr','zehar','زہر','زہر کھانا'],
+  'high',
+  ARRAY[
+    'If chemical/phenyl: do NOT induce vomiting. Take container for hospital reference.',
+    'If overdose of medicine (not corrosive): induce vomiting immediately while rushing to hospital.',
+    'If unconscious but breathing: place in recovery position.',
+    'If equipment available: check BP, blood sugar, oxygen level.',
+    'Call ambulance immediately.'
+  ],
+  ARRAY[
+    'اگر زہر کیمیکل یا فینائل ہے تو مریض کو قے نہ کروائیں۔ بوتل یا ڈبہ ڈاکٹر کو دکھانے کے لیے ساتھ رکھیں۔',
+    'اگر دوائی زیادہ کھائی ہے (کیمیکل نہیں) تو فوراً قے کروائیں اور اسپتال لے جائیں۔',
+    'اگر مریض بے ہوش ہے لیکن سانس لے رہا ہے تو اسے پہلو کے بل لٹا دیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔',
+    'فوراً ایمبولینس بلائیں۔'
+  ]
+),
+
+-- 4. Sodium / Electrolyte Imbalance
+(
+  'sodium_imbalance',
+  'Sodium / Electrolyte Imbalance',
+  'سوڈیم کی کمی',
+  ARRAY['sodium imbalance','electrolyte imbalance','low sodium','salt imbalance','سوڈیم کی کمی','نمک کی کمی','الیکٹرولائٹ کی کمی'],
+  'medium to high',
+  ARRAY[
+    'If conscious, give ORS solution or salt-sugar water.',
+    'Keep them lying down in a cool place.',
+    'If vomiting or unconscious, call ambulance immediately.',
+    'If equipment available: check BP, blood sugar, oxygen level.',
+    'Do not give anything by mouth if unconscious.'
+  ],
+  ARRAY[
+    'اگر مریض ہوش میں ہے تو او آر ایس محلول یا نمکین-میٹھا پانی پلائیں۔',
+    'مریض کو ٹھنڈی اور آرام دہ جگہ پر لٹائیں۔',
+    'اگر الٹی ہو رہی ہے یا مریض بے ہوش ہے تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔',
+    'اگر مریض بے ہوش ہے تو منہ سے کچھ نہ دیں۔'
+  ]
+),
+
+-- 5. Burns
+(
+  'burns',
+  'Burns',
+  'جلنا',
+  ARRAY['burn','burns','burn injury','جلنا','جلنے کی چوٹ'],
+  'medium to high',
+  ARRAY[
+    'Immediately pour cool (not ice) water over the burn for 10-15 minutes.',
+    'Do not apply toothpaste, ghee, or oil.',
+    'Cover with a clean cloth or sterile gauze.',
+    'If severe (large area or blistering): call ambulance.',
+    'If equipment available: check BP and oxygen level.',
+    'Keep patient hydrated.'
+  ],
+  ARRAY[
+    'جلنے کی صورت میں فوراً ٹھنڈا (لیکن برف والا نہیں) پانی 10 سے 15 منٹ تک ڈالیں۔',
+    'ٹوٹھ پیسٹ، گھی یا تیل نہ لگائیں۔',
+    'صاف کپڑا یا سٹرل گاز سے ڈھانپ دیں۔',
+    'اگر شدید جلنے یا چھالے ہیں تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔',
+    'مریض کو پانی پلاتے رہیں۔'
+  ]
+),
+
+-- 6. Fracture
+(
+  'fracture',
+  'Fracture / Broken Bone',
+  'ہڈی ٹوٹنا',
+  ARRAY['fracture','bone break','broken bone','ہڈی ٹوٹنا','ہڈی ٹوٹ گئی'],
+  'medium',
+  ARRAY[
+    'Do not move the injured limb unnecessarily.',
+    'Immobilize with a splint (wooden stick, cardboard, etc.).',
+    'Apply ice wrapped in cloth to reduce swelling.',
+    'If bone visible or severe bleeding: call ambulance immediately.',
+    'If equipment available: check BP.',
+    'Do not give food/drink if surgery may be needed.'
+  ],
+  ARRAY[
+    'چوٹ لگنے والی جگہ کو زیادہ حرکت نہ دیں۔',
+    'لکڑی، گتے یا کسی چیز سے سہارا دے کر سیدھا رکھیں۔',
+    'سوجن کم کرنے کے لیے کپڑے میں لپٹی برف لگائیں۔',
+    'اگر ہڈی باہر نکل آئی ہے یا زیادہ خون بہہ رہا ہے تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی چیک کریں۔',
+    'اگر سرجری کی ضرورت ہو سکتی ہے تو کھانے پینے کی چیز نہ دیں۔'
+  ]
+),
+
+-- 7. Stroke
+(
+  'stroke',
+  'Stroke',
+  'فالج',
+  ARRAY['stroke','brain stroke','paralysis','فالج','دماغی فالج'],
+  'high',
+  ARRAY[
+    'Check for FAST signs: Face drooping, Arm weakness, Speech difficulty, Time to act fast.',
+    'Call ambulance immediately.',
+    'Do not give food/drink.',
+    'Keep patient''s head slightly elevated.',
+    'If equipment available: check BP, sugar, oxygen level.',
+    'Stay with patient until help arrives.'
+  ],
+  ARRAY[
+    'فالج کی علامات دیکھیں: چہرہ ٹیڑھا ہونا، بازو کمزور ہونا، بولنے میں مشکل، فوراً وقت ضائع نہ کریں۔',
+    'فوراً ایمبولینس بلائیں۔',
+    'کھانے پینے کی چیز نہ دیں۔',
+    'مریض کا سر تھوڑا اونچا رکھیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔',
+    'ایمبولینس آنے تک مریض کے ساتھ رہیں۔'
+  ]
+),
+
+-- 8. Epilepsy / Seizures
+(
+  'epilepsy',
+  'Epilepsy / Seizures',
+  'مرگی / دورے',
+  ARRAY['epilepsy','fits','seizure','seizures','مرگی','دورہ','دورے پڑنا'],
+  'medium to high',
+  ARRAY[
+    'Do not put anything in the mouth.',
+    'Clear surrounding area to prevent injury.',
+    'After seizure ends, place patient on their side.',
+    'If seizure lasts more than 5 minutes: call ambulance immediately.',
+    'If equipment available: check oxygen level.',
+    'Stay until patient regains full consciousness.'
+  ],
+  ARRAY[
+    'منہ میں کوئی چیز نہ ڈالیں۔',
+    'اطراف کی چیزیں ہٹا دیں تاکہ چوٹ نہ لگے۔',
+    'دورہ ختم ہونے کے بعد مریض کو پہلو کے بل لٹا دیں۔',
+    'اگر دورہ 5 منٹ سے زیادہ رہے تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔',
+    'مریض کے ہوش میں آنے تک ساتھ رہیں۔'
+  ]
+),
+
+-- 9. Heatstroke
+(
+  'heatstroke',
+  'Heatstroke',
+  'لو لگنا',
+  ARRAY['heatstroke','heat stroke','loo lagna','heat illness','heat exhaustion','ضربِ حرارت','لو لگنا'],
+  'high',
+  ARRAY[
+    'Move the patient to a cool, shaded place.',
+    'Remove excess clothing.',
+    'Apply cool wet cloths or sponge the body with water.',
+    'Give sips of cool water if conscious.',
+    'If unconscious or very high fever: call ambulance immediately.',
+    'If equipment available: check BP, sugar, oxygen level.'
+  ],
+  ARRAY[
+    'مریض کو ٹھنڈی اور سایہ دار جگہ پر لے جائیں۔',
+    'اضافی کپڑے اتار دیں۔',
+    'ٹھنڈے پانی کے کپڑے یا اسپنج سے جسم کو صاف کریں۔',
+    'اگر مریض ہوش میں ہے تو ٹھنڈا پانی تھوڑا تھوڑا پلائیں۔',
+    'اگر مریض بے ہوش ہو یا تیز بخار ہو تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی، شوگر اور آکسیجن لیول چیک کریں۔'
+  ]
+),
+
+-- 10. Choking
+(
+  'choking',
+  'Choking',
+  'دم گھٹنا',
+  ARRAY['choking','airway blockage','suffocation','دم گھٹنا','سانس رک جانا'],
+  'high',
+  ARRAY[
+    'If adult: perform Heimlich maneuver (abdominal thrusts).',
+    'If child: back blows and chest thrusts.',
+    'If patient becomes unconscious: start CPR immediately.',
+    'If equipment available: check oxygen level after relief.',
+    'Call ambulance if not relieved quickly.'
+  ],
+  ARRAY[
+    'اگر مریض بالغ ہے تو ہیم لیک حرکت (پیٹ پر دباؤ) کریں۔',
+    'اگر بچہ ہے تو پشت پر تھپتھپائیں اور سینے پر ہلکا دباؤ ڈالیں۔',
+    'اگر مریض بے ہوش ہو جائے تو فوراً سی پی آر شروع کریں۔',
+    'اگر آلات دستیاب ہوں تو رکاوٹ ختم ہونے کے بعد آکسیجن لیول چیک کریں۔',
+    'اگر فوراً آرام نہ آئے تو ایمبولینس بلائیں۔'
+  ]
+),
+
+-- 11. Drowning
+(
+  'drowning',
+  'Drowning',
+  'ڈوبنا',
+  ARRAY['drowning','near drowning','pani me doobna','ڈوبنا','پانی میں ڈوبنا'],
+  'high',
+  ARRAY[
+    'Remove patient from water safely.',
+    'Lay flat and check breathing.',
+    'If not breathing: start rescue breaths and CPR.',
+    'Keep patient warm with blanket.',
+    'If equipment available: check oxygen level.',
+    'Call ambulance immediately.'
+  ],
+  ARRAY[
+    'مریض کو احتیاط سے پانی سے باہر نکالیں۔',
+    'سیدھا لٹا کر سانس چیک کریں۔',
+    'اگر سانس نہ لے رہا ہو تو ریسکیو بریتھ اور سی پی آر شروع کریں۔',
+    'کمبل یا کپڑے سے مریض کو گرم رکھیں۔',
+    'اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔',
+    'فوراً ایمبولینس بلائیں۔'
+  ]
+),
+
+-- 12. Allergic Reaction
+(
+  'allergic_reaction',
+  'Allergic Reaction',
+  'الرجی',
+  ARRAY['allergy','allergic reaction','hypersensitivity','allergic response','الرجی','الرجک ردعمل'],
+  'medium to high',
+  ARRAY[
+    'If mild (rash, itching): give antihistamine if available.',
+    'If severe (swelling, difficulty breathing): use epinephrine (EpiPen) if available.',
+    'Lay patient flat, loosen clothing.',
+    'If equipment available: check BP and oxygen level.',
+    'Call ambulance immediately for severe reaction.'
+  ],
+  ARRAY[
+    'اگر ہلکی الرجی ہو (خارش، دانے) تو اینٹی ہسٹامائن دیں۔',
+    'اگر شدید ہو (سوجن، سانس لینے میں مشکل) تو ایپی نیفرین (ایپی پین) لگائیں اگر دستیاب ہے۔',
+    'مریض کو سیدھا لٹا کر کپڑے ڈھیلے کر دیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔',
+    'شدید الرجی کی صورت میں فوراً ایمبولینس بلائیں۔'
+  ]
+),
+
+-- 13. Asthma Attack
+(
+  'asthma_attack',
+  'Asthma Attack',
+  'دمہ کا دورہ',
+  ARRAY['asthma','asthma attack','bronchial asthma','دمہ','سانس کا اٹیک','دمہ کا دورہ'],
+  'medium to high',
+  ARRAY[
+    'Give their inhaler (2 puffs every few minutes as needed).',
+    'Loosen tight clothing.',
+    'If no improvement within 10 minutes: call ambulance.',
+    'If equipment available: check oxygen level.',
+    'Stay calm and reassure the patient.'
+  ],
+  ARRAY[
+    'مریض کو سیدھا بٹھائیں، لٹائیں نہیں۔',
+    'انہیں انہیلر دیں (ضرورت کے مطابق ہر چند منٹ بعد 2 پف دیں)۔',
+    'تنگ کپڑے ڈھیلے کر دیں۔',
+    'اگر 10 منٹ میں آرام نہ آئے تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو آکسیجن لیول چیک کریں۔',
+    'پرسکون رہیں اور مریض کو تسلی دیں۔'
+  ]
+),
+
+-- 14. Diabetic Emergency
+(
+  'diabetic_emergency',
+  'Diabetic Emergency',
+  'شوگر کا دورہ',
+  ARRAY['diabetes','diabetic emergency','sugar attack','high blood sugar','low blood sugar','شوگر کا دورہ','شوگر کی ہنگامی صورتحال'],
+  'medium to high',
+  ARRAY[
+    'If low sugar (sweating, weakness, confusion): give sugar water, juice, or glucose tablets.',
+    'If high sugar (fruity breath, vomiting, drowsy): do NOT give sugar, call ambulance immediately.',
+    'If unconscious: do not give anything by mouth, call ambulance immediately.',
+    'If equipment available: check blood sugar and BP.',
+    'Stay with patient until help arrives.'
+  ],
+  ARRAY[
+    'اگر شوگر کم ہو (پسینہ، کمزوری، الجھن) تو مریض کو چینی والا پانی، جوس یا گلوکوز ٹیبلٹ دیں۔',
+    'اگر شوگر زیادہ ہو (سانس میں بو، الٹی، غنودگی) تو چینی نہ دیں اور فوراً ایمبولینس بلائیں۔',
+    'اگر مریض بے ہوش ہے تو منہ سے کچھ نہ دیں اور فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو شوگر اور بی پی چیک کریں۔',
+    'ایمبولینس آنے تک مریض کے ساتھ رہیں۔'
+  ]
+),
+
+-- 15. Severe Bleeding
+(
+  'severe_bleeding',
+  'Severe Bleeding',
+  'شدید خون بہنا',
+  ARRAY['bleeding','severe bleeding','hemorrhage','blood loss','خون بہنا','شدید خون بہنا'],
+  'high',
+  ARRAY[
+    'Apply firm pressure on wound with clean cloth.',
+    'Keep pressure until bleeding stops or ambulance arrives.',
+    'Elevate injured part if possible.',
+    'If bleeding severe: call ambulance immediately.',
+    'If equipment available: check BP.',
+    'Do not remove cloth once soaked; keep adding more on top.'
+  ],
+  ARRAY[
+    'زخم پر صاف کپڑے سے زور سے دبائیں۔',
+    'دباؤ کو برقرار رکھیں جب تک خون نہ رک جائے یا ایمبولینس نہ آجائے۔',
+    'اگر ممکن ہو تو زخمی حصے کو اونچا رکھیں۔',
+    'اگر خون زیادہ بہہ رہا ہے تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی چیک کریں۔',
+    'اگر کپڑا خون سے بھر جائے تو نہ ہٹائیں بلکہ اوپر دوسرا رکھیں۔'
+  ]
+),
+
+-- 16. Electric Shock
+(
+  'electric_shock',
+  'Electric Shock',
+  'کرنٹ لگنا',
+  ARRAY['electric shock','electric injury','electric current shock','کرنٹ لگنا','بجلی کا جھٹکا','بجلی لگنا'],
+  'high',
+  ARRAY[
+    'Turn off the power source first.',
+    'Do not touch the person until safe.',
+    'Check breathing and pulse. If absent: start CPR.',
+    'If burns present: cover with clean cloth.',
+    'If equipment available: check BP and oxygen level.',
+    'Call ambulance immediately.'
+  ],
+  ARRAY[
+    'پہلے بجلی کا کنکشن بند کریں۔',
+    'جب تک بجلی بند نہ ہو مریض کو ہاتھ نہ لگائیں۔',
+    'سانس اور نبض چیک کریں۔ اگر بند ہو تو سی پی آر شروع کریں۔',
+    'اگر جلنے کے نشانات ہیں تو صاف کپڑا رکھیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔',
+    'فوراً ایمبولینس بلائیں۔'
+  ]
+),
+
+-- 17. Eye Injury
+(
+  'eye_injury',
+  'Eye Injury',
+  'آنکھ کی چوٹ',
+  ARRAY['eye injury','eye accident','آنکھ کی چوٹ','آنکھ کا حادثہ'],
+  'medium to high',
+  ARRAY[
+    'Do not rub the eye.',
+    'If chemical splash: rinse with clean water for at least 15 minutes.',
+    'If foreign object visible: do not try to remove, cover with clean cloth.',
+    'If severe pain, bleeding, or vision loss: call ambulance immediately.',
+    'If equipment available: check BP.',
+    'Keep patient calm and avoid pressure on eye.'
+  ],
+  ARRAY[
+    'آنکھ نہ رگڑیں۔',
+    'اگر کیمیکل چلا جائے تو کم از کم 15 منٹ تک صاف پانی سے دھوئیں۔',
+    'اگر کوئی چیز آنکھ میں پھنسی ہوئی ہے تو نہ نکالیں بلکہ صاف کپڑا رکھیں۔',
+    'اگر شدید درد، خون یا نظر جانے کا خدشہ ہو تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی چیک کریں۔',
+    'مریض کو پرسکون رکھیں اور آنکھ پر دباؤ نہ ڈالیں۔'
+  ]
+),
+
+-- 18. Snake Bite
+(
+  'snake_bite',
+  'Snake Bite',
+  'سانپ کا کاٹنا',
+  ARRAY['snake bite','سانپ کا کاٹنا','venomous bite','snake envenomation','سانپ کا زہریلا کاٹنا'],
+  'high',
+  ARRAY[
+    'Keep patient still and calm to slow venom spread.',
+    'Do not cut, suck, or apply ice.',
+    'Immobilize bitten limb and keep at heart level.',
+    'Remove tight jewelry or clothing near bite area.',
+    'Call ambulance immediately.',
+    'If equipment available: check BP and oxygen level.'
+  ],
+  ARRAY[
+    'مریض کو پرسکون رکھیں اور حرکت کم کریں تاکہ زہر نہ پھیلے۔',
+    'زخم کو نہ کاٹیں، نہ چوسیں اور نہ برف لگائیں۔',
+    'کاٹے ہوئے حصے کو سیدھا رکھیں اور دل کی سطح پر رکھیں۔',
+    'کٹے حصے کے قریب کڑا یا تنگ کپڑا فوراً ہٹا دیں۔',
+    'فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔'
+  ]
+),
+
+-- 19. Dog Bite
+(
+  'dog_bite',
+  'Dog Bite',
+  'کتا کاٹنا',
+  ARRAY['dog bite','dog attack','animal bite','کتا کاٹنا','کتا کا حملہ','rabies','ریبیز'],
+  'medium to high',
+  ARRAY[
+    'Wash wound with soap and running water for 10 minutes.',
+    'Cover with clean cloth.',
+    'Do not stitch the wound immediately.',
+    'Go to hospital immediately for anti-rabies and tetanus vaccine.',
+    'If equipment available: check BP.',
+    'Monitor for signs of infection.'
+  ],
+  ARRAY[
+    'زخم کو صابن اور بہتے پانی سے 10 منٹ تک دھوئیں۔',
+    'صاف کپڑا باندھ دیں۔',
+    'زخم کو فوراً ٹانکے نہ لگائیں۔',
+    'فوراً اسپتال جائیں اور اینٹی ریبیز اور ٹیٹنس ویکسین لگوائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی چیک کریں۔',
+    'انفیکشن کی علامات پر نظر رکھیں۔'
+  ]
+),
+
+-- 20. Childbirth Emergency
+(
+  'childbirth_emergency',
+  'Childbirth Emergency',
+  'ایمرجنسی ولادت',
+  ARRAY['childbirth','delivery','emergency birth','labor','ایمرجنسی ولادت','ولادت'],
+  'medium to high',
+  ARRAY[
+    'Call ambulance immediately.',
+    'Lay mother on clean surface with knees bent.',
+    'Prepare clean towels and warm cloths.',
+    'If delivery starts: support baby''s head gently.',
+    'Do not pull the baby.',
+    'If equipment available: check BP and oxygen level of mother.',
+    'Keep both mother and baby warm.'
+  ],
+  ARRAY[
+    'فوراً ایمبولینس بلائیں۔',
+    'ماں کو صاف جگہ پر لٹائیں اور گھٹنے موڑ دیں۔',
+    'صاف تولیے اور گرم کپڑے تیار رکھیں۔',
+    'اگر ولادت شروع ہو جائے تو بچے کے سر کو آہستہ سہارا دیں۔',
+    'بچے کو نہ کھینچیں۔',
+    'اگر آلات دستیاب ہوں تو ماں کا بی پی اور آکسیجن لیول چیک کریں۔',
+    'ماں اور بچے کو گرم رکھیں۔'
+  ]
+),
+
+-- 21. Head Injury
+(
+  'head_injury',
+  'Head Injury',
+  'سر کی چوٹ',
+  ARRAY['head injury','brain injury','traumatic brain injury','سر کی چوٹ','دماغ کی چوٹ'],
+  'high',
+  ARRAY[
+    'Apply gentle pressure with clean cloth if bleeding.',
+    'If unconscious or vomiting: place on side (recovery position).',
+    'Do not give food or drink.',
+    'Call ambulance immediately if drowsy, unconscious, or seizure.',
+    'If equipment available: check BP and oxygen level.',
+    'Keep head elevated slightly.'
+  ],
+  ARRAY[
+    'اگر خون نکل رہا ہے تو صاف کپڑے سے ہلکا دباؤ ڈالیں۔',
+    'اگر مریض بے ہوش ہو یا الٹی کر رہا ہو تو پہلو کے بل لٹا دیں۔',
+    'کھانے پینے کی کوئی چیز نہ دیں۔',
+    'اگر مریض غنودگی میں ہو، بے ہوش ہو یا دورہ پڑے تو فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔',
+    'سر کو تھوڑا اونچا رکھیں۔'
+  ]
+),
+
+-- 22. Hypothermia
+(
+  'hypothermia',
+  'Hypothermia',
+  'شدید سردی',
+  ARRAY['hypothermia','cold exposure','low body temperature','severe cold','شدید سردی','سردی لگنا'],
+  'high',
+  ARRAY[
+    'Move patient to warm, dry place.',
+    'Remove wet clothing and cover with blankets.',
+    'Give warm (not hot) drinks if conscious.',
+    'If unconscious: do not give by mouth, call ambulance.',
+    'If equipment available: check BP and oxygen level.',
+    'Warm body gradually, not suddenly.'
+  ],
+  ARRAY[
+    'مریض کو گرم اور خشک جگہ پر لے جائیں۔',
+    'گیلے کپڑے اتار دیں اور کمبل اوڑھائیں۔',
+    'اگر مریض ہوش میں ہے تو نیم گرم مشروب دیں (بہت گرم نہ ہو)۔',
+    'اگر مریض بے ہوش ہے تو منہ سے کچھ نہ دیں اور فوراً ایمبولینس بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی اور آکسیجن لیول چیک کریں۔',
+    'جسم کو آہستہ آہستہ گرم کریں، اچانک نہیں۔'
+  ]
+),
+
+-- 23. Nosebleed
+(
+  'nosebleed',
+  'Nosebleed',
+  'ناک سے خون آنا',
+  ARRAY['nosebleed','epistaxis','nose bleeding','ناک سے خون آنا','ناک خون بہنا'],
+  'low to medium',
+  ARRAY[
+    'Sit patient upright, lean forward slightly.',
+    'Pinch soft part of nose for 10 minutes.',
+    'Apply cold compress on nose bridge.',
+    'Do not tilt head back.',
+    'If bleeding >20 minutes or recurrent: call doctor/ambulance.',
+    'If equipment available: check BP (especially in adults).'
+  ],
+  ARRAY[
+    'مریض کو سیدھا بٹھائیں اور تھوڑا آگے جھکائیں۔',
+    'ناک کے نرم حصے کو 10 منٹ تک دبائے رکھیں۔',
+    'ناک کی ہڈی پر ٹھنڈا کپڑا یا برف رکھیں۔',
+    'سر کو پیچھے نہ جھکائیں۔',
+    'اگر خون 20 منٹ سے زیادہ بہے یا بار بار ہو تو ڈاکٹر یا ایمبولینس کو بلائیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی چیک کریں (خاص طور پر بڑوں میں)۔'
+  ]
+),
+
+-- 24. Food Poisoning
+(
+  'food_poisoning',
+  'Food Poisoning',
+  'فوڈ پوائزننگ',
+  ARRAY['food poisoning','foodborne illness','zehrila khana','zehrila khorak','فوڈ پوائزننگ','زہریلا کھانا'],
+  'medium to high',
+  ARRAY[
+    'If mild: give ORS and plenty of fluids.',
+    'If vomiting severe: give small sips of water frequently.',
+    'If unconscious, blood in vomit, or dehydration signs: call ambulance.',
+    'Do not give solid food until stable.',
+    'If equipment available: check BP and sugar.',
+    'Monitor urine output.'
+  ],
+  ARRAY[
+    'اگر ہلکی حالت ہے تو او آر ایس اور زیادہ سیال دیں۔',
+    'اگر الٹی زیادہ ہو رہی ہو تو تھوڑا تھوڑا پانی بار بار دیں۔',
+    'اگر مریض بے ہوش ہو، الٹی میں خون ہو یا پانی کی شدید کمی ہو تو فوراً ایمبولینس بلائیں۔',
+    'جب تک حالت بہتر نہ ہو کھانے کی چیزیں نہ دیں۔',
+    'اگر آلات دستیاب ہوں تو بی پی اور شوگر چیک کریں۔'
+  ]
+),
+
+-- 25. Road Accident
+(
+  'road_accident',
+  'Road Accident',
+  'سڑک کا حادثہ',
+  ARRAY['road accident','traffic accident','car crash','vehicle accident','حادثہ','گاڑی کا ایکسیڈنٹ','سڑک کا حادثہ'],
+  'high',
+  ARRAY[
+    'Ensure your own safety before helping.',
+    'Call ambulance immediately.',
+    'If patient is bleeding: apply firm pressure with clean cloth.',
+    'If fracture suspected: do not move unnecessarily, support with splint.',
+    'If unconscious: check breathing and pulse, start CPR if needed.',
+    'Do not remove helmet if motorbike accident.',
+    'If equipment available: check BP, oxygen, and sugar.'
+  ],
+  ARRAY[
+    'مدد کرنے سے پہلے اپنی حفاظت یقینی بنائیں۔',
+    'فوراً ایمبولینس بلائیں۔',
+    'اگر مریض کو خون بہہ رہا ہے تو صاف کپڑے سے دباؤ ڈالیں۔',
+    'اگر ہڈی ٹوٹنے کا شک ہے تو مریض کو غیر ضروری نہ ہلائیں، سہارا دیں۔',
+    'اگر مریض بے ہوش ہے تو سانس اور نبض چیک کریں اور ضرورت ہو تو سی پی آر شروع کریں۔',
+    'اگر موٹر سائیکل حادثہ ہو تو ہیلمٹ نہ اتاریں۔',
+    'اگر آلات دستیاب ہوں تو بی پی، آکسیجن اور شوگر چیک کریں۔'
+  ]
+)
+
+ON CONFLICT (id) DO UPDATE SET
+  name_en    = EXCLUDED.name_en,
+  name_ur    = EXCLUDED.name_ur,
+  synonyms   = EXCLUDED.synonyms,
+  risk_level = EXCLUDED.risk_level,
+  steps_en   = EXCLUDED.steps_en,
+  steps_ur   = EXCLUDED.steps_ur;

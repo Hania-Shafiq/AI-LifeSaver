@@ -1,13 +1,47 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Search, FileText, Mic } from "lucide-react";
+import { Search, FileText, Mic, Loader2, WifiOff } from "lucide-react";
 import { jsPDF } from "jspdf";
-import firstAidData from "../data/firstAid.json";
-import emergGuide from "../assets/guideBox.png";
 import texts from "../data/texts.json";
 
-// utils import
+// Static fallback – used when Supabase is unreachable or unconfigured
+import fallbackData from "../data/firstAid.json";
+
+// Supabase client (null when env vars are absent)
+import supabase from "../lib/supabaseClient";
+
+// Speech utilities
 import { startListening, speakResult } from "../utils/speechUtils.js";
+
+// --------------------------------------------------------------------------
+// Helpers – normalise the Supabase row shape to match the legacy JSON shape
+// so the rest of the component is data-source agnostic.
+// --------------------------------------------------------------------------
+
+/**
+ * Convert a Supabase `conditions` row into the internal condition object:
+ * { en: string[], ur: string[], synonyms: string[], risk: string }
+ */
+function rowToCondition(row) {
+  return {
+    en: row.steps_en ?? [],
+    ur: row.steps_ur ?? [],
+    synonyms: row.synonyms ?? [],
+    risk: row.risk_level ?? "",
+  };
+}
+
+/**
+ * Convert the legacy firstAid.json object into an array of { id, ...condition }
+ * so both data sources share the same in-memory shape.
+ */
+function jsonToConditionsArray(json) {
+  return Object.entries(json).map(([id, value]) => ({ id, ...value }));
+}
+
+// --------------------------------------------------------------------------
+// Component
+// --------------------------------------------------------------------------
 
 export default function Emergency({ language }) {
   const [input, setInput] = useState("");
@@ -15,36 +49,93 @@ export default function Emergency({ language }) {
   const [micReady, setMicReady] = useState(false);
   const [listening, setListening] = useState(false);
 
-  // CHECK IF SPEECH RECOGNITION SUPPORTED
+  // All fetched conditions cached here; search runs client-side against this.
+  const [conditionsCache, setConditionsCache] = useState(null); // null = loading
+  const [dataSource, setDataSource] = useState(null); // 'supabase' | 'fallback'
+  const [fetchError, setFetchError] = useState(false);
+
+  // Keep a stable ref so effects that depend on resultKey can read the cache
+  const cacheRef = useRef(null);
+
+  const t = texts[language];
+
+  // -------------------------------------------------------------------------
+  // 1. CHECK SPEECH RECOGNITION SUPPORT
+  // -------------------------------------------------------------------------
   useEffect(() => {
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognition) setMicReady(true);
   }, []);
 
-  // HANDLE SEARCH
+  // -------------------------------------------------------------------------
+  // 2. FETCH ALL CONDITIONS ONCE ON MOUNT
+  //    Priority: Supabase → fallback JSON (when client is null or query fails)
+  // -------------------------------------------------------------------------
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadConditions() {
+      // --- Try Supabase first ---
+      if (supabase) {
+        const { data, error } = await supabase
+          .from("conditions")
+          .select("*");
+
+        if (!cancelled) {
+          if (!error && data && data.length > 0) {
+            // Normalise Supabase rows to internal shape
+            const normalised = data.map((row) => ({
+              id: row.id,
+              ...rowToCondition(row),
+            }));
+            setConditionsCache(normalised);
+            cacheRef.current = normalised;
+            setDataSource("supabase");
+            return;
+          }
+          // Supabase returned an error or empty table → fall through to JSON
+          console.warn("[AI LifeSaver] Supabase query failed, using fallback.", error?.message);
+          setFetchError(true);
+        }
+      }
+
+      // --- Fallback: static firstAid.json ---
+      if (!cancelled) {
+        const fallback = jsonToConditionsArray(fallbackData);
+        setConditionsCache(fallback);
+        cacheRef.current = fallback;
+        setDataSource("fallback");
+      }
+    }
+
+    loadConditions();
+    return () => { cancelled = true; };
+  }, []);
+
+  // -------------------------------------------------------------------------
+  // 3. HANDLE SEARCH – identical synonym-matching logic, now against the cache
+  // -------------------------------------------------------------------------
   const handleSearch = (query = null) => {
-    window.speechSynthesis.cancel(); // stop previous speech
+    window.speechSynthesis.cancel();
+
+    if (!conditionsCache) return; // Still loading
 
     const key = (query || input).toLowerCase().trim();
-    let foundKey = null;
+    let foundCondition = null;
 
-    // search in synonyms
-    for (const condition in firstAidData) {
-      const data = firstAidData[condition];
-      if (
-        data.synonyms &&
-        data.synonyms.some((syn) => syn.toLowerCase() === key)
-      ) {
-        foundKey = condition;
+    for (const condition of conditionsCache) {
+      const syns = condition.synonyms ?? [];
+      if (syns.some((syn) => syn.toLowerCase() === key)) {
+        foundCondition = condition;
         break;
       }
     }
 
-    if (foundKey) {
-      setResultKey(foundKey);
+    if (foundCondition) {
+      setResultKey(foundCondition.id);
       speakResult(
-        firstAidData[foundKey][language] || firstAidData[foundKey]["en"],
+        foundCondition[language] || foundCondition["en"],
         language
       );
     } else {
@@ -53,21 +144,23 @@ export default function Emergency({ language }) {
     }
   };
 
-  // DOWNLOAD PDF
+  // -------------------------------------------------------------------------
+  // 4. DOWNLOAD PDF
+  // -------------------------------------------------------------------------
   const downloadPDF = () => {
     if (!resultKey || resultKey === "noMatch") return;
 
-    const doc = new jsPDF();
+    const condition = conditionsCache?.find((c) => c.id === resultKey);
+    if (!condition) return;
 
+    const doc = new jsPDF();
     doc.setFontSize(20);
     doc.setTextColor(231, 34, 32);
     doc.text(texts[language].emergencyPDFHeader, 14, 20);
-
     doc.setLineWidth(0.5);
     doc.line(14, 24, 196, 24);
 
-    const steps =
-      firstAidData[resultKey][language] || firstAidData[resultKey]["en"];
+    const steps = condition[language] || condition["en"];
     doc.setFontSize(14);
     doc.setTextColor(0, 0, 0);
     steps.forEach((step, i) => {
@@ -77,49 +170,64 @@ export default function Emergency({ language }) {
     doc.save("first_aid.pdf");
   };
 
-  // GET STEPS DYNAMICALLY
+  // -------------------------------------------------------------------------
+  // 5. GET CURRENT STEPS
+  // -------------------------------------------------------------------------
   const getSteps = () => {
     if (resultKey === "noMatch") return [texts[language].emergencyNoMatch];
-    if (resultKey && firstAidData[resultKey]) {
-      return firstAidData[resultKey][language] || firstAidData[resultKey]["en"];
+    if (resultKey && conditionsCache) {
+      const condition = conditionsCache.find((c) => c.id === resultKey);
+      if (condition) return condition[language] || condition["en"];
     }
     return null;
   };
 
   const steps = getSteps();
 
-  // START LISTENING WITH MIC
+  // -------------------------------------------------------------------------
+  // 6. MIC INPUT
+  // -------------------------------------------------------------------------
   const handleMicClick = () => {
     if (!micReady || listening) return;
-
     startListening(
       language,
       (text) => {
         setInput(text);
-        handleSearch(text); // 🔥 mic input aate hi direct search
+        handleSearch(text);
       },
       setListening
     );
   };
 
-  // STOP OLD SPEECH ON LANGUAGE TOGGLE + RESPEAK
+  // -------------------------------------------------------------------------
+  // 7. LANGUAGE TOGGLE → STOP OLD SPEECH + RE-SPEAK IN NEW LANGUAGE
+  // -------------------------------------------------------------------------
   useEffect(() => {
     window.speechSynthesis.cancel();
-    if (resultKey && firstAidData[resultKey]) {
-      speakResult(
-        firstAidData[resultKey][language] || firstAidData[resultKey]["en"],
-        language
-      );
-    } else if (resultKey === "noMatch") {
-      speakResult([texts[language].emergencyNoMatch], language);
+    if (resultKey && conditionsCache) {
+      if (resultKey === "noMatch") {
+        speakResult([texts[language].emergencyNoMatch], language);
+      } else {
+        const condition = conditionsCache.find((c) => c.id === resultKey);
+        if (condition) {
+          speakResult(condition[language] || condition["en"], language);
+        }
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [language]);
+
+  // -------------------------------------------------------------------------
+  // RENDER
+  // -------------------------------------------------------------------------
+  const emergGuide = new URL("../assets/guideBox.png", import.meta.url).href;
+  const isLoading = conditionsCache === null;
 
   return (
     <div className="max-w-4xl mx-auto px-6 pt-24 relative">
       {/* Background Circles */}
-      <div className="absolute -top-32 -left-32 w-72 h-72 bg-gradient-to-tr from-red-200 via-blue-200 to-white rounded-full blur-3xl opacity-50"></div>
-      <div className="absolute -bottom-32 -right-32 w-72 h-72 bg-gradient-to-tr from-blue-200 via-red-200 to-white rounded-full blur-3xl opacity-50"></div>
+      <div className="absolute -top-32 -left-32 w-72 h-72 bg-gradient-to-tr from-red-200 via-blue-200 to-white rounded-full blur-3xl opacity-50" />
+      <div className="absolute -bottom-32 -right-32 w-72 h-72 bg-gradient-to-tr from-blue-200 via-red-200 to-white rounded-full blur-3xl opacity-50" />
 
       {/* Header */}
       <div className="flex flex-col items-center gap-4 mb-6 text-center">
@@ -139,55 +247,79 @@ export default function Emergency({ language }) {
         >
           {texts[language].emergencyTitle}
         </motion.h2>
+
+        {/* Data-source indicator */}
+        {dataSource === "fallback" && (
+          <motion.div
+            className="flex items-center gap-2 text-xs text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <WifiOff className="w-3 h-3" />
+            {fetchError
+              ? "Using offline data (Supabase unavailable)"
+              : "Using local data (Supabase not configured)"}
+          </motion.div>
+        )}
       </div>
 
-      {/* Input Card */}
-      <motion.div
-        className="bg-white shadow-xl rounded-2xl p-6 flex flex-col md:flex-row items-center gap-3 hover:shadow-2xl transition-shadow duration-300 z-10 -mt-2"
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <input
-          value={input}
-          onChange={(e) => {
-            window.speechSynthesis.cancel();
-            setInput(e.target.value);
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") handleSearch(); // 🔥 Enter press se search
-          }}
-          placeholder={texts[language].emergencyPlaceholder}
-          className="flex-1 border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
-        />
+      {/* Loading skeleton */}
+      {isLoading && (
+        <div className="flex items-center justify-center gap-3 mt-10 text-gray-400">
+          <Loader2 className="w-5 h-5 animate-spin" />
+          <span className="text-sm">Loading emergency data…</span>
+        </div>
+      )}
 
-        {/* Search Button */}
-        <motion.button
-          onClick={() => handleSearch()}
-          className="flex items-center gap-2 px-6 py-3 rounded-xl text-white shadow-md transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-red-500 via-[#BC0201] to-blue-500 cursor-pointer"
-          whileTap={{ scale: 0.97 }}
+      {/* Input Card – shown once data is ready */}
+      {!isLoading && (
+        <motion.div
+          className="bg-white shadow-xl rounded-2xl p-6 flex flex-col md:flex-row items-center gap-3 hover:shadow-2xl transition-shadow duration-300 z-10 -mt-2"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
         >
-          <Search className="w-5 h-5" />
-          {texts[language].emergencySearchBtn}
-        </motion.button>
+          <input
+            value={input}
+            onChange={(e) => {
+              window.speechSynthesis.cancel();
+              setInput(e.target.value);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleSearch();
+            }}
+            placeholder={texts[language].emergencyPlaceholder}
+            className="flex-1 border-2 border-gray-200 p-4 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-400 transition-all duration-300"
+          />
 
-        {/* Mic Button */}
-        <motion.button
-          onClick={handleMicClick}
-          disabled={!micReady}
-          className={`flex items-center gap-2 px-5 py-3 rounded-xl text-white shadow-md ${
-            micReady
-              ? listening
-                ? "bg-red-600 animate-pulse" // 🔴 Glow effect when listening
-                : "bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600"
-              : "bg-gray-300 cursor-not-allowed"
-          } transform hover:scale-105 transition-all duration-300`}
-          whileTap={{ scale: 0.95 }}
-        >
-          <Mic className="w-5 h-5" />
-          {listening ? texts[language].listening : texts[language].voiceSearch}
-        </motion.button>
-      </motion.div>
+          {/* Search Button */}
+          <motion.button
+            onClick={() => handleSearch()}
+            className="flex items-center gap-2 px-6 py-3 rounded-xl text-white shadow-md transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-red-500 via-[#BC0201] to-blue-500 cursor-pointer"
+            whileTap={{ scale: 0.97 }}
+          >
+            <Search className="w-5 h-5" />
+            {texts[language].emergencySearchBtn}
+          </motion.button>
+
+          {/* Mic Button */}
+          <motion.button
+            onClick={handleMicClick}
+            disabled={!micReady}
+            className={`flex items-center gap-2 px-5 py-3 rounded-xl text-white shadow-md ${
+              micReady
+                ? listening
+                  ? "bg-red-600 animate-pulse"
+                  : "bg-gradient-to-r from-red-500 to-blue-500 hover:from-red-600 hover:to-blue-600"
+                : "bg-gray-300 cursor-not-allowed"
+            } transform hover:scale-105 transition-all duration-300`}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Mic className="w-5 h-5" />
+            {listening ? texts[language].listening : texts[language].voiceSearch}
+          </motion.button>
+        </motion.div>
+      )}
 
       {/* Results */}
       {steps && (
