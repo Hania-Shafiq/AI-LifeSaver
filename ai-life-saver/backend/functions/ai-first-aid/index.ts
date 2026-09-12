@@ -94,35 +94,68 @@ Deno.serve(async (req) => {
     const systemPrompt = buildSystemPrompt(language, dbContext, matches.length > 0);
     const sanitizedHistory = sanitizeHistory(history);
 
+    // Direct friendly greeting handling
+    const isGreeting = /^(hi|hello|hey|salam|assalam|aoa|hy|hola|good\s+(morning|afternoon|evening|day))[\s!.]*$/i.test(message.trim()) ||
+      /^(سلام|ہیلو|اسلام علیکم|السلام علیکم)/.test(message.trim());
+
+    if (isGreeting) {
+      const greetingReply = language === "ur"
+        ? `ہیلو! میں AI LifeSaver ہوں، آپ کا ابتدائی طبی امداد کا اسسٹنٹ۔ میں آپ کی ایمرجنسی میں کس طرح مدد کر سکتا ہوں؟\n\n${DISCLAIMER}`
+        : `Hello! I am AI LifeSaver, your first-aid emergency assistant. How can I assist you in your emergency?\n\n${DISCLAIMER}`;
+
+      const encoder = new TextEncoder();
+      return new Response(encoder.encode(greetingReply), {
+        headers: {
+          ...CORS_HEADERS,
+          "Content-Type": "text/plain; charset=utf-8",
+        },
+      });
+    }
+
     let fullText = "";
     let providerError = "";
 
-    // Helper to call Groq
+    // Helper to call Groq with model fallback
     const callGroq = async (key: string) => {
-      const groqModel = Deno.env.get("GROQ_MODEL") || "llama-3.3-70b-versatile";
+      const configuredModel = Deno.env.get("GROQ_MODEL");
+      const modelsToTry = configuredModel 
+        ? [configuredModel, "openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b"]
+        : ["openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b", "llama-3.3-70b-versatile"];
+
       const groqMessages = [
         { role: "system", content: systemPrompt },
         ...sanitizedHistory,
         { role: "user", content: message },
       ];
-      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${key}`,
-        },
-        body: JSON.stringify({
-          model: groqModel,
-          messages: groqMessages,
-          temperature: 0.3,
-        }),
-      });
-      if (!res.ok) {
-        const errText = await res.text().catch(() => "");
-        throw new Error(`Groq ${res.status}: ${errText}`);
+
+      let lastError = "";
+      for (const model of modelsToTry) {
+        try {
+          const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${key}`,
+            },
+            body: JSON.stringify({
+              model: model,
+              messages: groqMessages,
+              temperature: 0.3,
+            }),
+          });
+          if (res.ok) {
+            const json = await res.json();
+            const text = json?.choices?.[0]?.message?.content?.trim() || "";
+            if (text) return text;
+          } else {
+            const errText = await res.text().catch(() => "");
+            lastError = `Groq ${res.status} (${model}): ${errText}`;
+          }
+        } catch (err: any) {
+          lastError = err?.message || String(err);
+        }
       }
-      const json = await res.json();
-      return json?.choices?.[0]?.message?.content?.trim() || "";
+      throw new Error(lastError || "All Groq models failed");
     };
 
     // Helper to call Gemini
