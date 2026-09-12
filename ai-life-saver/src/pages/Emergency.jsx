@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Search, FileText, Mic, Loader2, WifiOff } from "lucide-react";
+import { Search, FileText, Mic, Loader2, WifiOff, AlertTriangle } from "lucide-react";
 import { jsPDF } from "jspdf";
 import texts from "../data/texts.json";
 
@@ -53,6 +53,10 @@ export default function Emergency({ language }) {
   const [conditionsCache, setConditionsCache] = useState(null); // null = loading
   const [dataSource, setDataSource] = useState(null); // 'supabase' | 'fallback'
   const [fetchError, setFetchError] = useState(false);
+
+  // SOS state
+  const [sosLoading, setSosLoading] = useState(false);
+  const [sosToast, setSosToast] = useState(null); // { message, type: 'success'|'error' }
 
   // Keep a stable ref so effects that depend on resultKey can read the cache
   const cacheRef = useRef(null);
@@ -200,6 +204,57 @@ export default function Emergency({ language }) {
   };
 
   // -------------------------------------------------------------------------
+  // 7. ONE-TAP SOS
+  // -------------------------------------------------------------------------
+  const showToast = useCallback((message, type = "success") => {
+    setSosToast({ message, type });
+    setTimeout(() => setSosToast(null), 4000);
+  }, []);
+
+  const handleSOS = useCallback(() => {
+    if (sosLoading) return;
+
+    // Browser support check
+    if (!navigator.geolocation) {
+      showToast(t.sosErrNoSupport, "error");
+      return;
+    }
+
+    setSosLoading(true);
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setSosLoading(false);
+        const { latitude, longitude } = position.coords;
+        const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        const message = `${t.sosMessage}${mapsLink}`;
+        // WhatsApp universal link – no phone number required.
+        // Opens WhatsApp and lets the user choose the contact themselves.
+        const waUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+        window.open(waUrl, "_blank", "noopener,noreferrer");
+        showToast(t.sosWhatsAppOpened, "success");
+      },
+      (error) => {
+        setSosLoading(false);
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            showToast(t.sosErrPermission, "error");
+            break;
+          case error.POSITION_UNAVAILABLE:
+            showToast(t.sosErrUnavailable, "error");
+            break;
+          case error.TIMEOUT:
+            showToast(t.sosErrTimeout, "error");
+            break;
+          default:
+            showToast(t.sosErrUnknown, "error");
+        }
+      },
+      { timeout: 10000, maximumAge: 0 }
+    );
+  }, [sosLoading, t, showToast]);
+
+  // -------------------------------------------------------------------------
   // 7. LANGUAGE TOGGLE → STOP OLD SPEECH + RE-SPEAK IN NEW LANGUAGE
   // -------------------------------------------------------------------------
   useEffect(() => {
@@ -228,6 +283,24 @@ export default function Emergency({ language }) {
       {/* Background Circles */}
       <div className="absolute -top-32 -left-32 w-72 h-72 bg-gradient-to-tr from-red-200 via-blue-200 to-white rounded-full blur-3xl opacity-50" />
       <div className="absolute -bottom-32 -right-32 w-72 h-72 bg-gradient-to-tr from-blue-200 via-red-200 to-white rounded-full blur-3xl opacity-50" />
+
+      {/* SOS Toast Notification */}
+      {sosToast && (
+        <motion.div
+          className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-5 py-3 rounded-2xl shadow-2xl text-white text-sm font-semibold ${
+            sosToast.type === "success"
+              ? "bg-gradient-to-r from-green-500 to-emerald-600"
+              : "bg-gradient-to-r from-red-600 to-rose-700"
+          }`}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.35 }}
+        >
+          {sosToast.type === "error" && <AlertTriangle className="w-4 h-4 flex-shrink-0" />}
+          <span>{sosToast.message}</span>
+        </motion.div>
+      )}
 
       {/* Header */}
       <div className="flex flex-col items-center gap-4 mb-6 text-center">
@@ -261,6 +334,35 @@ export default function Emergency({ language }) {
               : "Using local data (Supabase not configured)"}
           </motion.div>
         )}
+
+        {/* ── ONE-TAP SOS BUTTON ── */}
+        <motion.button
+          id="sos-button"
+          onClick={handleSOS}
+          disabled={sosLoading}
+          className="relative mt-2 flex items-center justify-center gap-3 px-10 py-4 rounded-2xl font-extrabold text-2xl tracking-widest text-white shadow-2xl cursor-pointer select-none overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed bg-gradient-to-br from-red-500 via-red-600 to-red-800"
+          initial={{ scale: 0.85, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          whileHover={!sosLoading ? { scale: 1.06 } : {}}
+          whileTap={!sosLoading ? { scale: 0.97 } : {}}
+        >
+          {/* Pulsing ring */}
+          {!sosLoading && (
+            <span className="absolute inset-0 rounded-2xl animate-ping bg-red-500 opacity-30" />
+          )}
+          {sosLoading ? (
+            <>
+              <Loader2 className="w-6 h-6 animate-spin" />
+              <span className="text-base font-semibold tracking-normal">{t.sosGettingLocation}</span>
+            </>
+          ) : (
+            <>
+              <span className="text-3xl leading-none">🚨</span>
+              <span>{t.sosButtonLabel}</span>
+            </>
+          )}
+        </motion.button>
       </div>
 
       {/* Loading skeleton */}
