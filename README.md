@@ -13,15 +13,49 @@ Equipped with high-speed LLM integration (**Groq API / Google Gemini API** via *
 
 ---
 
+## 📸 Application Interface & Screenshots
+
+<div align="center">
+
+### 1. 🏠 Home & Emergency Hub
+*Bilingual emergency companion with instant emergency navigation and one-click voice support.*
+
+<img src="./screenshots/home-hero.png" alt="AI LifeSaver Landing Page" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 24px;" />
+
+---
+
+### 2. 🔍 Multimodal Emergency First Aid Search & SOS
+*Instant search across first-aid procedures with keyword matching, voice input, and one-tap emergency SOS broadcast.*
+
+<img src="./screenshots/emergency-search.png" alt="Emergency First Aid Search & SOS" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 24px;" />
+
+---
+
+### 3. 🤖 AI First Aid Assistant (Groq & Gemini)
+*Ultra-low latency conversational assistant with structured medical emergency guides, red flags, and 1122 emergency protocol.*
+
+<img src="./screenshots/ai-chatbot.png" alt="AI First Aid Chatbot" width="450" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 24px;" />
+
+---
+
+### 4. 🏥 Emergency Contacts & Medical Services
+*Instant dialer for Rescue 1122, Edhi, and interactive map for nearby hospitals and blood donation centers.*
+
+<img src="./screenshots/support-contacts.png" alt="Emergency Services & Hospital Map" width="900" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 24px;" />
+
+</div>
+
+---
+
 ## 🌟 Key Features
 
 ### 🤖 1. AI First Aid Assistant (Groq & Gemini Powered)
-- **High-Speed Emergency AI Chat**: Interactive conversational assistant powered by ultra-low-latency **Groq API** and **Google Gemini** models via secure Supabase Edge Functions.
-- **Strict Medical Guardrails**: Embedded first-aid system instructions prevent hallucinations, refuse non-medical queries, prioritize verified database procedures, and append mandatory emergency service disclaimers.
+- **High-Speed Emergency AI Chat**: Interactive conversational assistant powered by ultra-low-latency **Groq API** (LLaMA 3.3) and **Google Gemini** models via secure Supabase Edge Functions.
+- **Strict Medical Guardrails**: Embedded first-aid system instructions prevent hallucinations, refuse non-medical queries, prioritize verified database procedures, and append mandatory emergency service contact information.
 - **Context-Aware Database Retrieval**: Matches incoming user queries against verified Supabase first-aid condition records before generating responses.
 
 ### 🔍 2. Multimodal Emergency Search (Voice & Text)
-- **Instant Search & Keyword Matching**: Rapid lookup across conditions (e.g., CPR, Burns, Choking, Severe Bleeding, Heatstroke, Fractures).
+- **Instant Search & Keyword Matching**: Rapid lookup across conditions (e.g., High Blood Pressure, Fast Heartbeat, Injury, Cuts, CPR, Burns, Choking, Severe Bleeding, Heatstroke, Fractures).
 - **Voice Commands (Web Speech API)**: Speak symptoms or emergency terms directly for hands-free lookup during critical situations.
 - **Risk Level Badges**: Visual risk indicators (**High**, **Medium to High**, **Low to Medium**) for quick triage.
 
@@ -45,7 +79,7 @@ Equipped with high-speed LLM integration (**Groq API / Google Gemini API** via *
 
 ## 🏗️ Architecture & Technology Stack
 
-`mermaid
+```mermaid
 graph TD
     User([👤 User / Bystander]) <-->|Voice / Text / UI| Frontend[⚛️ React 19 + Vite + Tailwind CSS]
     Frontend <-->|Direct Query (Public Data)| SupabaseDB[(🗄️ Supabase PostgreSQL)]
@@ -54,7 +88,7 @@ graph TD
     EdgeFunction <-->|High-Speed LLM Inference| GroqGemini[🚀 Groq API / Google Gemini API]
     Frontend -->|Offline Fallback| LocalData[📁 Local JSON Datasets]
     Frontend -->|Map Rendering| LeafletMap[🗺️ Leaflet / OpenStreetMap]
-`
+```
 
 ### Tech Stack Summary
 | Area | Technology | Purpose |
@@ -73,9 +107,10 @@ graph TD
 
 ## 📁 Repository Layout
 
-`
+```
 AI-LifeSaver/
 ├── README.md                          # Main project overview & documentation
+├── screenshots/                       # Application interface screenshots
 └── ai-life-saver/
     ├── package.json                   # Frontend dependencies & npm scripts
     ├── vite.config.js                 # Vite build configuration
@@ -112,7 +147,7 @@ AI-LifeSaver/
         └── functions/
             └── ai-first-aid/          # Supabase Edge Function (Groq/Gemini API integration)
                 └── index.ts
-`
+```
 
 ---
 
@@ -125,7 +160,7 @@ AI-LifeSaver/
 
 ### 2. Frontend Installation & Setup
 
-`ash
+```bash
 # Clone repository
 git clone https://github.com/Hania-Shafiq/AI-LifeSaver.git
 
@@ -137,42 +172,42 @@ npm install
 
 # Set up environment variables
 cp .env.example .env.local
-`
+```
 
-Edit .env.local with your Supabase credentials:
-`env
+Edit `.env.local` with your Supabase credentials:
+```env
 VITE_SUPABASE_URL=https://your-project-ref.supabase.co
 VITE_SUPABASE_ANON_KEY=your-public-anon-key
-`
+```
 
 ### 3. Run Development Server
 
-`ash
+```bash
 npm run dev
-`
+```
 
-Visit http://localhost:5173 in your browser.
+Visit `http://localhost:5173` in your browser.
 
 ---
 
 ## ⚙️ Backend & AI Setup (Supabase + Groq / Gemini)
 
 1. **Database Schema & Data**:
-   Execute ackend/schema.sql and ackend/seed.sql in your Supabase SQL Editor.
+   Execute `backend/schema.sql` and `backend/seed.sql` in your Supabase SQL Editor.
 
 2. **Configure AI Secrets in Supabase**:
-   `ash
+   ```bash
    # Link Supabase project
-   npx supabase --workdir backend link --project-ref your-project-ref
+   npx supabase link --project-ref your-project-ref
 
    # Set Groq API or Gemini API key secret
-   npx supabase --workdir backend secrets set GROQ_API_KEY=your_groq_api_key
+   npx supabase secrets set GROQ_API_KEY=your_groq_api_key
    # OR
-   npx supabase --workdir backend secrets set GEMINI_API_KEY=your_gemini_api_key
+   npx supabase secrets set GEMINI_API_KEY=your_gemini_api_key
 
    # Deploy the AI Edge Function
-   npx supabase --workdir backend functions deploy ai-first-aid
-   `
+   npx supabase functions deploy ai-first-aid --no-verify-jwt
+   ```
 
 ---
 

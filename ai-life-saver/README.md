@@ -1,4 +1,4 @@
-﻿# 🩺 AI LifeSaver – Frontend & Backend Overview
+# 🩺 AI LifeSaver – Frontend & Backend Overview
 
 A bilingual (**English / اردو**) emergency first-aid web platform built with **React 19**, **Vite 7**, **Tailwind CSS v4**, and **Supabase**. Integrated with **Groq API** and **Google Gemini** for high-speed first-aid conversational assistance, voice input/output, interactive hospital mapping, and offline resilience.
 
@@ -6,7 +6,7 @@ A bilingual (**English / اردو**) emergency first-aid web platform built with
 
 ## 📂 Project Structure
 
-`
+```
 ai-life-saver/
 ├── .env.example               # Template for required environment variables
 ├── .env.local                 # Local Supabase credentials (gitignored)
@@ -45,35 +45,35 @@ ai-life-saver/
     ├── seed.sql               # Seed dataset of first-aid procedures (EN + UR)
     └── functions/             # Supabase Edge Functions (Deno / TypeScript)
         └── ai-first-aid/      # AI First-Aid Edge Function (Groq/Gemini LLM integration)
-`
+```
 
 ---
 
 ## 🚀 Getting Started
 
 ### 1. Install Dependencies
-`ash
+```bash
 npm install
-`
+```
 
 ### 2. Configure Environment Variables
-Copy the template file to .env.local:
-`ash
+Copy the template file to `.env.local`:
+```bash
 cp .env.example .env.local
-`
+```
 
-Set your Supabase credentials in .env.local:
-`env
+Set your Supabase credentials in `.env.local`:
+```env
 VITE_SUPABASE_URL=https://your-project-ref.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key-here
-`
+```
 
 ### 3. Start Development Server
-`ash
+```bash
 npm run dev
-`
+```
 
-The application will be available at http://localhost:5173.
+The application will be available at `http://localhost:5173`.
 
 ---
 
@@ -89,4 +89,4 @@ The application will be available at http://localhost:5173.
 
 ## 🗄️ Backend Deployment & Management
 
-For instructions on database migration, seed data, and deploying the Edge Function with Groq/Gemini API keys, check out [ackend/README.md](./backend/README.md).
+For instructions on database migration, seed data, and deploying the Edge Function with Groq/Gemini API keys, check out [backend/README.md](./backend/README.md).
