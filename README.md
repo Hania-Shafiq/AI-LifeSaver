@@ -81,13 +81,13 @@ Equipped with high-speed LLM integration (**Groq API / Google Gemini API** via *
 
 ```mermaid
 graph TD
-    User([👤 User / Bystander]) <-->|Voice / Text / UI| Frontend[⚛️ React 19 + Vite + Tailwind CSS]
-    Frontend <-->|Direct Query (Public Data)| SupabaseDB[(🗄️ Supabase PostgreSQL)]
-    Frontend <-->|Secure AI Chat Request| EdgeFunction[⚡ Supabase Edge Function: ai-first-aid]
-    EdgeFunction <-->|Fetch Condition Steps & Synonyms| SupabaseDB
-    EdgeFunction <-->|High-Speed LLM Inference| GroqGemini[🚀 Groq API / Google Gemini API]
-    Frontend -->|Offline Fallback| LocalData[📁 Local JSON Datasets]
-    Frontend -->|Map Rendering| LeafletMap[🗺️ Leaflet / OpenStreetMap]
+    User(["👤 User / Bystander"]) <-->|"Voice / Text / UI"| Frontend["⚛️ React 19 + Vite + Tailwind CSS"]
+    Frontend <-->|"Direct Query - Public Data"| SupabaseDB[("🗄️ Supabase PostgreSQL")]
+    Frontend <-->|"Secure AI Chat Request"| EdgeFunction["⚡ Supabase Edge Function: ai-first-aid"]
+    EdgeFunction <-->|"Fetch Condition Steps and Synonyms"| SupabaseDB
+    EdgeFunction <-->|"High-Speed LLM Inference"| GroqGemini["🚀 Groq API / Google Gemini API"]
+    Frontend -->|"Offline Fallback"| LocalData["📁 Local JSON Datasets"]
+    Frontend -->|"Map Rendering"| LeafletMap["🗺️ Leaflet / OpenStreetMap"]
 ```
 
 ### Tech Stack Summary
